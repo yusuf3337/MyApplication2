@@ -1,10 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.loginScreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.registerScreen.RegisterPage
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,12 +19,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loginPage(view : View){
-        val intent = Intent(this@MainActivity,LoginPage::class.java)
+        val intent = Intent(this@MainActivity, LoginPage::class.java)
         startActivity(intent)
     }
 
     fun registerPage(view: View){
-        val intent = Intent(this@MainActivity,RegisterPage::class.java)
+        val intent = Intent(this@MainActivity, RegisterPage::class.java)
         startActivity(intent)
     }
 

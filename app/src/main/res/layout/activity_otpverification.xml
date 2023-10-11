@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OTPverification">
+    android:background="#FFFFFF"
+    tools:context=".verificationScreen.OTPverification">
 
     <EditText
         android:id="@+id/editTextText3"
@@ -14,6 +15,7 @@
         android:ems="10"
         android:hint="."
         android:inputType="text"
+        android:textColor="#000000"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.012"
@@ -27,6 +29,7 @@
         android:layout_marginTop="76dp"
         android:text="OTP Verification"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +57,8 @@
         android:ems="10"
         android:hint="."
         android:inputType="text"
-        android:textColorHint="#FFFEFE"
+        android:textColor="#000000"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +72,7 @@
         android:ems="10"
         android:hint="."
         android:inputType="text"
+        android:textColor="#000000"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
@@ -82,6 +87,7 @@
         android:ems="10"
         android:hint="."
         android:inputType="text"
+        android:textColor="#000000"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.318"
@@ -89,11 +95,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/verifyButton"
         android:layout_width="330dp"
         android:layout_height="56dp"
         android:backgroundTint="#000000"
+        android:onClick="verify"
         android:text="Verify"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -108,11 +116,27 @@
         android:layout_marginTop="720dp"
         android:text="Didn’t received code? Resend"
         android:textAlignment="center"
+        android:textColorHint="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#000000"
+        android:onClick="backEmail"
+        android:text="Send back to e-mail"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

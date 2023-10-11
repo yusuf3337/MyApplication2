@@ -1,11 +1,13 @@
-package com.example.myapplication
+package com.example.myapplication.registerScreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myapplication.R
 
-class LoginPage : AppCompatActivity() {
+class Register3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_page)
+        setContentView(R.layout.activity_register3)
     }
+
 }

@@ -11,24 +11,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
+        tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
-            android:name=".ResetPassword"
+            android:name=".registerScreen.Register3"
             android:exported="false" />
         <activity
-            android:name=".OTPverification"
+            android:name=".registerScreen.Personalinformation"
             android:exported="false" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".passwordScreen.PasswordChanged"
             android:exported="false" />
         <activity
-            android:name=".RegisterPage"
+            android:name=".passwordScreen.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".LoginPage"
+            android:name=".verificationScreen.OTPverification"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".passwordScreen.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".registerScreen.RegisterPage"
+            android:exported="false" />
+        <activity
+            android:name=".loginScreen.LoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".gif.splashgif"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +46,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".loginScreen.MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

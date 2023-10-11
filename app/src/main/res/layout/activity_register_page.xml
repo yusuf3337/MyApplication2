@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterPage">
+    android:background="#FFFFFF"
+    tools:context=".registerScreen.RegisterPage">
 
   <TextView
       android:id="@+id/loginPageTextView"
@@ -18,6 +19,7 @@
       android:lineSpacingExtra="3sp"
       android:text="Welcome back! Glad to see you, Again!"
       android:textAlignment="center"
+      android:textColor="#000000"
       android:textSize="30sp"
       android:textStyle="bold"
       android:translationY="-1.5sp"
@@ -29,10 +31,10 @@
 
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/textInputLayout5"
-      android:layout_width="368dp"
+      android:layout_width="308dp"
       android:layout_height="64dp"
       android:layout_marginStart="15dp"
-      android:layout_marginTop="42dp"
+      android:layout_marginTop="150dp"
       android:layout_marginEnd="15dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +43,19 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Username"
+        android:textAlignment="center"
+        android:textColor="#000000" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/textInputLayout6"
-      android:layout_width="368dp"
+      android:layout_width="308dp"
       android:layout_height="64dp"
       android:layout_marginStart="15dp"
-      android:layout_marginTop="42dp"
+      android:layout_marginTop="10dp"
       android:layout_marginEnd="15dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -58,15 +64,19 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Email"
+        android:textAlignment="center"
+        android:textColor="#000000" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/textInputLayout7"
-      android:layout_width="368dp"
+      android:layout_width="308dp"
       android:layout_height="64dp"
       android:layout_marginStart="15dp"
-      android:layout_marginTop="42dp"
+      android:layout_marginTop="10dp"
       android:layout_marginEnd="15dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -75,14 +85,18 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Password"
+        android:textAlignment="center"
+        android:textColor="#000000" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
-      android:layout_width="368dp"
+      android:layout_width="308dp"
       android:layout_height="64dp"
       android:layout_marginStart="15dp"
-      android:layout_marginTop="42dp"
+      android:layout_marginTop="10dp"
       android:layout_marginEnd="15dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +105,11 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirm Password" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Confirm Password"
+        android:textAlignment="center"
+        android:textColor="#000000" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <Button
@@ -101,12 +119,26 @@
       android:layout_marginStart="23dp"
       android:layout_marginEnd="22dp"
       android:backgroundTint="#000000"
-      android:text="Agree and Register"
+      android:onClick="backLogin"
+      android:text="Accept and Continue"
+      android:textColor="#FFFFFF"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.496"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.856" />
+
+<ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="356dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
