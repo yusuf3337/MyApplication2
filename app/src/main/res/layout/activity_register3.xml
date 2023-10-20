@@ -13,7 +13,7 @@
         android:layout_width="308dp"
         android:layout_height="64dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,8 @@
 
     <TextView
         android:id="@+id/loginPageTextView"
-        android:layout_width="332dp"
-        android:layout_height="90dp"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -122,6 +122,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginEnd="22dp"
         android:backgroundTint="#000000"
+        android:onClick="goSuccessPage"
         android:text="Register Now"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -133,13 +134,13 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="195dp"
-        android:layout_height="151dp"
+        android:layout_width="291dp"
+        android:layout_height="183dp"
         android:src="@drawable/register3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintVertical_bias="0.198" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

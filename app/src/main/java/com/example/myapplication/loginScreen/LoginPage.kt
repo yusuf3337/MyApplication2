@@ -3,8 +3,10 @@ package com.example.myapplication.loginScreen
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import com.example.myapplication.R
+import com.example.myapplication.menu.LoginMenu
 import com.example.myapplication.passwordScreen.ForgotPassword
 import com.example.myapplication.registerScreen.RegisterPage
 
@@ -34,7 +36,13 @@ gotoRegister.setOnClickListener {
 
     // Yeni sayfaya geçiş yapın
     startActivity(intent)
+
 }
 
+    }
+      fun goMenu(view: View) {
+        val intent = Intent(this,LoginMenu::class.java)
+        startActivity(intent)
+          finish()
     }
 }

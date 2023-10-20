@@ -14,5 +14,6 @@ class Personalinformation : AppCompatActivity() {
     fun register3(view : View){
         val intent = Intent(this,Register3::class.java)
         startActivity(intent)
+        finish()
 }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612632739417",
+    "project_id": "kibrisev-b8f93",
+    "storage_bucket": "kibrisev-b8f93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612632739417:android:6a6b8048c7d3f6d5ba7b48",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWIskJXARkS_PKsMY2CbKGRlJ8Nsgi11s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

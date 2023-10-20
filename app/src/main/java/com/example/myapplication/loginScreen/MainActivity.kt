@@ -7,7 +7,6 @@ import android.view.View
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.registerScreen.RegisterPage
-
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
