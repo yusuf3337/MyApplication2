@@ -1,8 +1,9 @@
+package com.example.myapplication
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.example.myapplication.loginScreen.LoginPage
 
@@ -13,14 +14,21 @@ class Register3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegister3Binding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val view = binding.root
+        setContentView(view)
 
         val singletonName = Singelton.name
-        if (singletonName != null) {
-            binding.nameSingelton.text = singletonName
+        val singletonSurname = Singelton.surname
+        val singletenPhone = Singelton.phone
+        val singletonEmail = Singelton.email
+
+        if (singletonName != null && singletonSurname != null && singletenPhone != null && singletonEmail != null ) {
+            binding.nameSingelton.setText(singletonName)
+            binding.surnameSingelton.setText(singletonSurname)
+            binding.phoneSingelton.setText(singletenPhone)
+            binding.emailSingelton.setText(singletonEmail)
         } else {
-            // Singleton'daki 'name' özelliği null ise, ekrandaki öğeye bir varsayılan değer atayabilirsiniz veya atama işlemini atlayabilirsiniz.
-            // Örnek: binding.nameSingelton.text = "Varsayılan Değer"
+
         }
 
         // EditText öğesini düzenlenebilir hale getirin
