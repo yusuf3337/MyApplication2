@@ -32,13 +32,19 @@ class RegisterPage : AppCompatActivity() {
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
-            // Alanlar doluysa kayıt işlemini başlat
-            Singelton.username = username
-            Singelton.email = email
-            Singelton.password = confirmPassword
 
-             val intent = Intent(this,Personalinformation::class.java)
-        startActivity(intent)
+            if (password == confirmPassword){
+                Singelton.username = username
+                Singelton.email = email
+                Singelton.password = confirmPassword
+
+                val intent = Intent(this,Personalinformation::class.java)
+                startActivity(intent)
+            }else{
+                showAlertDialog("Hata", "Sifreler Ayni Degul")
+            }
+
+
         }
     }
 
