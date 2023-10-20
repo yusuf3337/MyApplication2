@@ -21,6 +21,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameSingelton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -62,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout15">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/surnameSingelton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Surname"
@@ -81,6 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneSingelton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone"
@@ -100,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailSingelton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-mail"

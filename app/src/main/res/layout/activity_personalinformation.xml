@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/personalText">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -60,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Surname"
@@ -79,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
@@ -98,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age"
@@ -117,6 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/universityDepartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="University Department"
@@ -136,6 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/universityYears"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Univery Years"
