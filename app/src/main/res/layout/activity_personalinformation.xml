@@ -43,8 +43,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="Name"
             android:textAlignment="center"
             android:textColor="#000000" />
@@ -64,8 +62,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="Surname"
             android:textAlignment="center"
             android:textColor="#000000" />
@@ -85,8 +81,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="Phone Number"
             android:textAlignment="center"
             android:textColor="#000000" />
@@ -106,8 +100,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="Age"
             android:textAlignment="center"
             android:textColor="#000000" />
@@ -127,8 +119,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="University Department"
             android:textAlignment="center"
             android:textColor="#000000" />
@@ -148,8 +138,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:hint="Univery Years"
             android:textAlignment="center"
             android:textColor="#000000" />

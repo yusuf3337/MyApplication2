@@ -44,8 +44,6 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:hint="Username"
         android:textAlignment="center"
         android:textColor="#000000" />
@@ -66,8 +64,6 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:hint="Email"
         android:textAlignment="center"
         android:textColor="#000000" />
@@ -88,8 +84,6 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:hint="Password"
         android:textAlignment="center"
         android:textColor="#000000" />
@@ -109,8 +103,6 @@
         android:id="@+id/confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:hint="Confirm Password"
         android:textAlignment="center"
         android:textColor="#000000" />

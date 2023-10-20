@@ -1,10 +1,12 @@
 package com.example.myapplication.registerScreen
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityRegisterPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -31,7 +33,12 @@ class RegisterPage : AppCompatActivity() {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
-            registerUser(email, password)
+            Singelton.username = username
+            Singelton.email = email
+            Singelton.password = confirmPassword
+
+             val intent = Intent(this,Personalinformation::class.java)
+        startActivity(intent)
         }
     }
 

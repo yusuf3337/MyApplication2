@@ -15,5 +15,6 @@ class Personalinformation : AppCompatActivity() {
         val intent = Intent(this,Register3::class.java)
         startActivity(intent)
         finish()
-}
+    }
+
 }
