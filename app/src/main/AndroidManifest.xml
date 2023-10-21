@@ -18,7 +18,7 @@
             android:name=".menu.LoginMenu"
             android:exported="false" />
         <activity
-            android:name=".registerScreen.Register3"
+            android:name=".Register3"
             android:exported="false" />
         <activity
             android:name=".registerScreen.Personalinformation"

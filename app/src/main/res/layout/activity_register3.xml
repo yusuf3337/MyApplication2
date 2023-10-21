@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#F6F6F6"
-    tools:context=".registerScreen.Register3">
+    tools:context=".Register3">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout15"
@@ -31,8 +31,8 @@
 
     <TextView
         android:id="@+id/loginPageTextView"
-        android:layout_width="344dp"
-        android:layout_height="52dp"
+        android:layout_width="236dp"
+        android:layout_height="42dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"

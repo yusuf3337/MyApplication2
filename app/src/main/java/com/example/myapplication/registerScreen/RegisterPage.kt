@@ -38,8 +38,15 @@ class RegisterPage : AppCompatActivity() {
                 Singelton.email = email
                 Singelton.password = confirmPassword
 
-                val intent = Intent(this,Personalinformation::class.java)
-                startActivity(intent)
+                if (Singelton.username != null &&  Singelton.email != null && Singelton.password != null) {
+
+                    val intent = Intent(this,Personalinformation::class.java)
+                    startActivity(intent)
+                }else{
+                    showAlertDialog("Hata", "Singeltopn Calismiyor ")
+                }
+
+
             }else{
                 showAlertDialog("Hata", "Şifreler Aynı Olmalı")
             }
