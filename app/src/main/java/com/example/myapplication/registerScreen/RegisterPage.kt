@@ -41,7 +41,7 @@ class RegisterPage : AppCompatActivity() {
                 val intent = Intent(this,Personalinformation::class.java)
                 startActivity(intent)
             }else{
-                showAlertDialog("Hata", "Sifreler Ayni Degul")
+                showAlertDialog("Hata", "Şifreler Aynı Olmalı")
             }
 
 

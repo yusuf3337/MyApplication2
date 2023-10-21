@@ -1,6 +1,5 @@
 package com.example.myapplication.registerScreen
 
-import com.example.myapplication.Register3
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +15,7 @@ class Personalinformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPersonalinformationBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
     }
 
     fun register3(view: View) {
@@ -33,7 +31,6 @@ class Personalinformation : AppCompatActivity() {
         } else {
             // Alanlar doluysa kayıt işlemini başlat
             Singelton.name = name
-            Singelton.surname = surname
             Singelton.phone = phoneNumber
             Singelton.age = age
             Singelton.universitydepartment = universityDepartment

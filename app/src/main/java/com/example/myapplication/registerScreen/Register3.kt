@@ -1,5 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.registerScreen
 
+import android.app.AlertDialog
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -14,6 +15,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.myapplication.R
+import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.example.myapplication.loginScreen.LoginPage
 import com.google.android.material.snackbar.Snackbar
@@ -30,10 +33,40 @@ class Register3 : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+        val textInputLayout = binding.nameSingelton
+        val textInputLayout2 = binding.surnameSingelton
+        val textInputLayout3 = binding.phoneSingelton
+        val textInputLayout4 = binding.emailSingelton
+
+        val editText = textInputLayout.editableText
+        val editText2 = textInputLayout2.editableText
+        val editText3 = textInputLayout3.editableText
+        val editText4 = textInputLayout4.editableText
+
+//TEXT INPUT TIKLAMA DALGASI BAŞLANGIÇ
+        textInputLayout.isEnabled = false
+        textInputLayout.isFocusable = false
+        textInputLayout.isClickable = false
+
+        textInputLayout2.isEnabled = false
+        textInputLayout2.isFocusable = false
+        textInputLayout2.isClickable = false
+
+        textInputLayout3.isEnabled = false
+        textInputLayout3.isFocusable = false
+        textInputLayout3.isClickable = false
+
+        textInputLayout4.isEnabled = false
+        textInputLayout4.isFocusable = false
+        textInputLayout4.isClickable = false
+ //TEXT INPUT TIKLAMA DALGASI BİTİŞ
+
         val singletonName = Singelton.name
         val singletonSurname = Singelton.surname
         val singletenPhone = Singelton.phone
         val singletonEmail = Singelton.email
+
 
         if (singletonName != null && singletonSurname != null && singletenPhone != null && singletonEmail != null ) {
             binding.nameSingelton.setText(singletonName)
@@ -41,7 +74,7 @@ class Register3 : AppCompatActivity() {
             binding.phoneSingelton.setText(singletenPhone)
             binding.emailSingelton.setText(singletonEmail)
         } else {
-
+            showAlertDialog("HATA!","HATA!")
         }
 
         // EditText öğesini düzenlenebilir hale getirin
@@ -103,7 +136,16 @@ class Register3 : AppCompatActivity() {
         startActivity(intent)
     }
 
-
+      private fun showAlertDialog(title: String, message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("Tamam") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
 
 
 }
