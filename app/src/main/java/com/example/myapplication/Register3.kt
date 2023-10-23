@@ -140,11 +140,10 @@ class Register3 : AppCompatActivity() {
         // Firebase Auth !!!
         val email = Singelton.email
         val password = Singelton.password
-
+        if (selectedPicture != null){
         auth.createUserWithEmailAndPassword(email!!, password!!).addOnSuccessListener(this) {
             // Kayit olma Basarili
 
-            if (selectedPicture != null){
                 // foto yukleme islmei
                 imageReferance.putFile(selectedPicture!!).addOnSuccessListener {
                     val uploadPictureReference =
@@ -152,22 +151,31 @@ class Register3 : AppCompatActivity() {
                     uploadPictureReference.downloadUrl.addOnSuccessListener {
                         val downloadURL = it.toString()
 
-
-
-
                     }.addOnFailureListener {
+                        // Foto Link Indirme Basarisiz!
                         binding.registerButton.isEnabled = true
 
                     }
 
+                }.addOnFailureListener {
+                    // Fotograf yukleme Basarisiz!
+                    showAlertDialog("Hata", "Fotograf Karsiya yuklenemedi, Daha Sonra Tekrar Deneyiniz! ")
                 }
+
+
+            // Mail Gondermek!
+            val user = auth.currentUser
+            user?.sendEmailVerification()?.addOnCompleteListener {
 
             }
 
-        }.addOnFailureListener {
-            // Kayit olma Basarisiz
-            binding.registerButton.isEnabled = true
+            }.addOnFailureListener {
+                // auth Basarisiz    !
+                showAlertDialog("Hata", "Kayit olma isleminde bir aksaklik oldu!")
+            }
 
+        }else{
+            showAlertDialog("Hata", "Lutfen Fotograf Seciniz")
         }
 
 
