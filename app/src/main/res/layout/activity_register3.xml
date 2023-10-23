@@ -112,7 +112,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="330dp"
         android:layout_height="56dp"
         android:layout_marginStart="23dp"

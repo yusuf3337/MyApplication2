@@ -18,6 +18,14 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.example.myapplication.loginScreen.LoginPage
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
+import java.util.UUID
 
 class Register3 : AppCompatActivity() {
 
@@ -25,11 +33,21 @@ class Register3 : AppCompatActivity() {
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissonLauncher: ActivityResultLauncher<String>
     var selectedPicture: Uri? = null
+
+    // Firebase Progress
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseDB: FirebaseFirestore
+    private lateinit var firebaseStorage: FirebaseStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegister3Binding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        auth = Firebase.auth
+        firebaseDB = Firebase.firestore
+        firebaseStorage = Firebase.storage
 
         val singletonName = Singelton.name
         val singletonSurname = Singelton.surname
@@ -38,10 +56,10 @@ class Register3 : AppCompatActivity() {
 
         //showAlertDialog("veri", singletenPhone + singletonEmail)
 
-            binding.nameSingelton.setText(singletonName)
             binding.surnameSingelton.setText(singletonSurname)
             binding.phoneSingelton.setText(singletenPhone)
             binding.emailSingelton.setText(singletonEmail)
+            binding.nameSingelton.setText(singletonName)
 
 
 
@@ -103,9 +121,58 @@ class Register3 : AppCompatActivity() {
 
 
     fun goSuccessPage(view: View) {
-        val intent = Intent(this, LoginPage::class.java)
-        startActivity(intent)
+        //upload()
     }
+
+
+
+
+
+
+    fun upload(){
+        binding.registerButton.isEnabled = false
+        val uuid = UUID.randomUUID()
+        val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
+
+        val fotoDatabase = firebaseStorage.reference
+        val imageReferance = fotoDatabase.child("profile_photos").child(imageName)
+
+        // Firebase Auth !!!
+        val email = Singelton.email
+        val password = Singelton.password
+
+        auth.createUserWithEmailAndPassword(email!!, password!!).addOnSuccessListener(this) {
+            // Kayit olma Basarili
+
+            if (selectedPicture != null){
+                // foto yukleme islmei
+                imageReferance.putFile(selectedPicture!!).addOnSuccessListener {
+                    val uploadPictureReference =
+                        firebaseStorage.reference.child("profile_photos").child(imageName)
+                    uploadPictureReference.downloadUrl.addOnSuccessListener {
+                        val downloadURL = it.toString()
+
+
+
+
+                    }.addOnFailureListener {
+                        binding.registerButton.isEnabled = true
+
+                    }
+
+                }
+
+            }
+
+        }.addOnFailureListener {
+            // Kayit olma Basarisiz
+            binding.registerButton.isEnabled = true
+
+        }
+
+
+    }
+
 
       private fun showAlertDialog(title: String, message: String) {
         AlertDialog.Builder(this)
