@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:lineSpacingExtra="3sp"
         android:text="Welcome back! Glad to see you, Again!"
         android:textColor="#000000"
@@ -34,7 +34,7 @@
         android:layout_width="308dp"
         android:layout_height="64dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -161,9 +161,26 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="0.976" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gender" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

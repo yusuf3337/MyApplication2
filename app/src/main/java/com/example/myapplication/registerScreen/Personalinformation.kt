@@ -26,6 +26,7 @@ class Personalinformation : AppCompatActivity() {
         val age = binding.age.text.toString()
         val universityDepartment = binding.universityDepartment.text.toString()
         val universityYear = binding.universityYears.text.toString()
+        val gender = binding.gender.text.toString()
 
         if (name.isEmpty() || surname.isEmpty() || phoneNumber.isEmpty() || age.isEmpty() || universityDepartment.isEmpty() || universityYear.isEmpty()) {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
@@ -37,6 +38,7 @@ class Personalinformation : AppCompatActivity() {
             Singelton.age = age
             Singelton.universitydepartment = universityDepartment
             Singelton.universityyear = universityYear
+            Singelton.gender = gender
 
             if ( Singelton.name != "" && Singelton.surname != "" && Singelton.phone != "" && Singelton.age != "" && Singelton.universitydepartment != "" && Singelton.universityyear != ""){
                 val intent = Intent(this, Register3::class.java)

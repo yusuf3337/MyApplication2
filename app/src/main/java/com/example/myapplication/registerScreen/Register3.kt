@@ -184,6 +184,7 @@ class Register3 : AppCompatActivity() {
                 userMap.put("CreateDateUser", com.google.firebase.Timestamp.now())
                 userMap.put("universityDepartment",Singelton.universitydepartment!!)
                 userMap.put("universityYears", Singelton.universityyear!!)
+                userMap.put("gender",Singelton.gender!!)
 
                 val uuid = UUID.randomUUID()
                 val customDocumentName = Singelton.name + Singelton.surname + uuid
