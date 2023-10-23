@@ -39,7 +39,8 @@ class Personalinformation : AppCompatActivity() {
             Singelton.universityyear = universityYear
 
             if ( Singelton.name != "" && Singelton.surname != "" && Singelton.phone != "" && Singelton.age != "" && Singelton.universitydepartment != "" && Singelton.universityyear != ""){
-                showAlertSingelton("3 asama", "zink")
+                val intent = Intent(this, Register3::class.java)
+                startActivity(intent)
             }else{
                 showAlertDialog("hata", "singleton veri yok ")
             }
@@ -65,8 +66,7 @@ class Personalinformation : AppCompatActivity() {
             .setTitle(title)
             .setMessage(message)
             .setPositiveButton("Tamam") { dialog, _ ->
-                val intent = Intent(this, Register3::class.java)
-                startActivity(intent)
+
             }
             .create()
             .show()

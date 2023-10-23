@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import java.util.UUID
 
@@ -121,8 +122,9 @@ class Register3 : AppCompatActivity() {
 
 
     fun goSuccessPage(view: View) {
-        //upload()
+        upload()
     }
+
 
 
 
@@ -151,6 +153,41 @@ class Register3 : AppCompatActivity() {
                     uploadPictureReference.downloadUrl.addOnSuccessListener {
                         val downloadURL = it.toString()
 
+                        val userMap = hashMapOf<String, Any>()
+                        userMap.put("downloadURL", downloadURL)
+                        userMap.put("email", Singelton.email!!)
+                        userMap.put("name", Singelton.name!!)
+                        userMap.put("surname", Singelton.surname!!)
+                        userMap.put("age", Singelton.age!!)
+                        userMap.put("username", Singelton.username!!)
+                        userMap.put("password", Singelton.password!!)
+                        userMap.put("phone", Singelton.phone!!)
+                        userMap.put("CreateDateUser", com.google.firebase.Timestamp.now())
+                        userMap.put("universityDepartment",Singelton.universitydepartment!!)
+                        userMap.put("universityYears", Singelton.universityyear!!)
+                        //userMap.put("gender", Singelton.gender!!)
+
+                        val customDocumentName = Singelton.name + Singelton.surname
+
+                        firebaseDB.collection("userInformation").document(customDocumentName).set(userMap).addOnSuccessListener {
+                            // Kullaniciya Mail Gondermek!
+                            val user = auth.currentUser
+                            user?.sendEmailVerification()?.addOnCompleteListener { task ->
+                                if (task.isSuccessful){
+                                    showAlertDialog("Basarili", "Kayit isleminiz Basarilir bir sekilde Gerceklesmistir! E-postaniza Gelen onay linki ile devam edebilirsiniz")
+                                }else{
+                                    showAlertDialog("Hata", "Kayit isleminiz Gerceklesmemistir!")
+                                }
+                            }
+
+
+                        }.addOnFailureListener {
+                            showAlertDialog("Hata", "Kullanici bilgileri Kaydedilmedi!")
+                        }
+
+
+
+
                     }.addOnFailureListener {
                         // Foto Link Indirme Basarisiz!
                         binding.registerButton.isEnabled = true
@@ -164,10 +201,7 @@ class Register3 : AppCompatActivity() {
 
 
             // Mail Gondermek!
-            val user = auth.currentUser
-            user?.sendEmailVerification()?.addOnCompleteListener {
 
-            }
 
             }.addOnFailureListener {
                 // auth Basarisiz    !
@@ -181,8 +215,95 @@ class Register3 : AppCompatActivity() {
 
     }
 
+    fun upload2() {
+        binding.registerButton.isEnabled = false
 
-      private fun showAlertDialog(title: String, message: String) {
+        if (selectedPicture != null) {
+            createUserAndUploadImage()
+        } else {
+            showAlertDialog("Hata", "Lütfen Fotograf Seciniz")
+        }
+    }
+
+    private fun createUserAndUploadImage() {
+        val uuid = UUID.randomUUID()
+        val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
+        val fotoDatabase = firebaseStorage.reference
+        val imageReferance = fotoDatabase.child("profile_photos").child(imageName)
+
+        val email = Singelton.email
+        val password = Singelton.password
+
+        auth.createUserWithEmailAndPassword(email!!, password!!)
+            .addOnSuccessListener {
+                // Kullanıcı oluşturuldu, şimdi fotoğrafı yükle
+                uploadImage(imageReferance)
+            }
+            .addOnFailureListener {
+                showAlertDialog("Hata", "Kayit olma isleminde bir aksaklik oldu!")
+                binding.registerButton.isEnabled = true
+            }
+    }
+
+    private fun uploadImage(imageReference: StorageReference) {
+        imageReference.putFile(selectedPicture!!)
+            .addOnSuccessListener {
+                // Fotoğraf yüklendi, şimdi Firestore'a kullanıcı bilgilerini kaydet
+                saveUserDataToFirestore(imageReference)
+            }
+            .addOnFailureListener {
+                showAlertDialog("Hata", "Fotograf Karsiya yuklenemedi, Daha Sonra Tekrar Deneyiniz!")
+                binding.registerButton.isEnabled = true
+            }
+    }
+
+    private fun saveUserDataToFirestore(imageReference: StorageReference) {
+        imageReference.downloadUrl
+            .addOnSuccessListener { uri ->
+                val downloadURL = uri.toString()
+                val userMap = hashMapOf<String, Any>()
+
+                // Null kontrolü yaparak Singleton özelliklerini ekleyin
+                Singelton.email?.let { userMap.put("email", it) }
+                Singelton.name?.let { userMap.put("name", it) }
+                Singelton.surname?.let { userMap.put("surname", it) }
+                Singelton.age?.let { userMap.put("age", it) }
+                Singelton.username?.let { userMap.put("username", it) }
+                Singelton.password?.let { userMap.put("password", it) }
+                Singelton.phone?.let { userMap.put("phone", it) }
+                Singelton.universitydepartment?.let { userMap.put("universityDepartment", it) }
+                Singelton.universityyear?.let { userMap.put("universityYears", it) }
+                Singelton.gender?.let { userMap.put("gender", it) }
+                userMap.put("downloadURL", downloadURL)
+
+                val customDocumentName = Singelton.name + Singelton.surname
+                firebaseDB.collection("userInformation").document(customDocumentName)
+                    .set(userMap)
+                    .addOnSuccessListener {
+                        sendEmailVerification()
+                    }
+                    .addOnFailureListener {
+                        showAlertDialog("Hata", "Kullanici bilgileri Kaydedilmedi!")
+                        binding.registerButton.isEnabled = true
+                    }
+            }
+    }
+
+    private fun sendEmailVerification() {
+        val user = auth.currentUser
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    showAlertDialog("Basarili", "Kayit isleminiz Basarilir bir sekilde Gerceklesmistir! E-postaniza Gelen onay linki ile devam edebilirsiniz")
+                } else {
+                    showAlertDialog("Hata", "Kayit isleminiz Gerceklesmemistir!")
+                }
+            }
+    }
+
+
+
+    private fun showAlertDialog(title: String, message: String) {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
