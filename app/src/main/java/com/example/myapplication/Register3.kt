@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.example.myapplication.loginScreen.LoginPage
 import com.google.android.material.snackbar.Snackbar
@@ -56,6 +57,11 @@ class Register3 : AppCompatActivity() {
         val singletonEmail = Singelton.email
 
         //showAlertDialog("veri", singletenPhone + singletonEmail)
+
+            binding.surnameSingelton.isEnabled = false
+            binding.phoneSingelton.isEnabled = false
+            binding.nameSingelton.isEnabled = false
+            binding.emailSingelton.isEnabled = false
 
             binding.surnameSingelton.setText(singletonSurname)
             binding.phoneSingelton.setText(singletenPhone)

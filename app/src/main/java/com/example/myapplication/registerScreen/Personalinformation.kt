@@ -28,7 +28,7 @@ class Personalinformation : AppCompatActivity() {
         val universityYear = binding.universityYears.text.toString()
         val gender = binding.gender.text.toString()
 
-        if (name.isEmpty() || surname.isEmpty() || phoneNumber.isEmpty() || age.isEmpty() || universityDepartment.isEmpty() || universityYear.isEmpty()) {
+        if (name.isEmpty() || surname.isEmpty() || phoneNumber.isEmpty() || age.isEmpty() || universityDepartment.isEmpty() || universityYear.isEmpty() || gender.isEmpty()) {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
@@ -40,7 +40,7 @@ class Personalinformation : AppCompatActivity() {
             Singelton.universityyear = universityYear
             Singelton.gender = gender
 
-            if ( Singelton.name != "" && Singelton.surname != "" && Singelton.phone != "" && Singelton.age != "" && Singelton.universitydepartment != "" && Singelton.universityyear != ""){
+            if ( Singelton.name != "" && Singelton.surname != "" && Singelton.phone != "" && Singelton.age != "" && Singelton.universitydepartment != "" && Singelton.universityyear != "" && Singelton.gender != ""){
                 val intent = Intent(this, Register3::class.java)
                 startActivity(intent)
             }else{
