@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.myapplication.Home
+import com.example.myapplication.HomeScreen
 import com.example.myapplication.R
-import com.example.myapplication.menu.LoginMenu
 import com.example.myapplication.passwordScreen.ForgotPassword
 import com.example.myapplication.registerScreen.RegisterPage
 
@@ -41,7 +40,7 @@ class LoginPage : AppCompatActivity() {
     }
 
     fun goMenu(view: View) {
-        val intent = Intent(this, LoginMenu::class.java)
+        val intent = Intent(this@LoginPage,HomeScreen::class.java)
         startActivity(intent)
         finish()
     }
