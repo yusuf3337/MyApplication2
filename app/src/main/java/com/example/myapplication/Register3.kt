@@ -215,7 +215,7 @@ class Register3 : AppCompatActivity() {
         user?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    showAlertDialog("Basarili", "Kayit isleminiz Basarilir bir sekilde Gerceklesmistir! E-postaniza Gelen onay linki ile devam edebilirsiniz")
+                    showAlertDialogSuccess("Basarili", "Kayit isleminiz Basarilir bir sekilde Gerceklesmistir! E-postaniza Gelen onay linki ile devam edebilirsiniz")
                 } else {
                     showAlertDialog("Hata", "Kayit isleminiz Gerceklesmemistir!")
                 }
@@ -232,6 +232,18 @@ class Register3 : AppCompatActivity() {
                 dialog.dismiss()
             }
 
+    }
+
+    private fun showAlertDialogSuccess(title: String, message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("Tamam") { dialog, _ ->
+                val intent = Intent(this@Register3, LoginPage::class.java)
+                startActivity(intent)
+            }
+            .create()
+            .show()
     }
 
 
