@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/white" />
+    <corners android:radius="20dp" /> <!-- Yuvarlak köşelerin yarıçapı -->
+
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="414dp"
+        android:layout_height="383dp"
+        android:background="@drawable/rounded_corner"
+        android:scaleType = "centerCrop"
+        android:src = "@drawable/home"/>
+</shape>

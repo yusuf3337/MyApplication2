@@ -56,11 +56,12 @@
         app:layout_constraintVertical_bias="0.802" />
 
     <ImageView
-        android:id="@+id/myImageView"
-        android:layout_width="653dp"
-        android:layout_height="508dp"
-        android:background="@drawable/imageradius"
+        android:id="@+id/mainImage"
+        android:layout_width="414dp"
+        android:layout_height="383dp"
+        android:background="@drawable/main_image_radius"
         android:focusable="auto"
+        android:scaleType="centerCrop"
         android:src="@drawable/home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,15 +72,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="396dp"
-        android:layout_height="113dp"
+        android:layout_width="264dp"
+        android:layout_height="102dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_bias="0.709"
+        app:srcCompat="@drawable/evim_kbrs_seffaf" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

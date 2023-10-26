@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.example.myapplication.loginScreen.LoginPage
+import com.example.myapplication.passwordScreen.PasswordChanged
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -128,7 +129,10 @@ class Register3 : AppCompatActivity() {
 
 
     fun goSuccessPage(view: View) {
+        val intent = Intent(this, LoginPage::class.java)
+        startActivity(intent)
         upload()
+        finish()
     }
 
 
@@ -227,8 +231,7 @@ class Register3 : AppCompatActivity() {
             .setPositiveButton("Tamam") { dialog, _ ->
                 dialog.dismiss()
             }
-            .create()
-            .show()
+
     }
 
 

@@ -23,28 +23,38 @@ class RegisterPage : AppCompatActivity() {
         auth = Firebase.auth
     }
 
-    fun backLogin(view: View) {
+    fun register2(view: View) {
         val username = binding.username.text.toString()
         val email = binding.email.text.toString()
         val password = binding.password.text.toString()
         val confirmPassword = binding.confirmPassword.text.toString()
+
+        val passwordCount = binding.password.length()
+        val confirmPasswordCount = binding.confirmPassword.length()
+
+
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
 
             if (password == confirmPassword){
-                Singelton.username = username
-                Singelton.email = email
-                Singelton.password = confirmPassword
+                if (passwordCount == 6 && confirmPasswordCount == 6){
+                    Singelton.username = username
+                    Singelton.email = email
+                    Singelton.password = confirmPassword
 
-                if (Singelton.username != null &&  Singelton.email != null && Singelton.password != null) {
+                    if (Singelton.username != null &&  Singelton.email != null && Singelton.password != null) {
 
-                    val intent = Intent(this,Personalinformation::class.java)
-                    startActivity(intent)
+                        val intent = Intent(this,Personalinformation::class.java)
+                        startActivity(intent)
+                    }else{
+                        showAlertDialog("Hata", "Singeltopn Calismiyor ")
+                    }
                 }else{
-                    showAlertDialog("Hata", "Singeltopn Calismiyor ")
+                    showAlertDialog("Hata!","En az 6 karater uzunluğunda olmalı!")
                 }
+
 
 
             }else{
