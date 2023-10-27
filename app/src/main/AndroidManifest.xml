@@ -16,6 +16,15 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".AdInformationThree"
+            android:exported="false" />
+        <activity
+            android:name=".AdInformationTwo"
+            android:exported="false" />
+        <activity
+            android:name=".AdInformationOne"
+            android:exported="false" />
+        <activity
             android:name=".loginScreen.HomeScreen"
             android:exported="false" />
         <activity

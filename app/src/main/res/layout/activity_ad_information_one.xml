@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".AdInformationOne">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout25"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/balkon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Balkon" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="İlan Bilgileri"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="Step; 1-3"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout19"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="22dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ilanBasligi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="İlan Başlığı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout20"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout19">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fiyat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fiyat" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout21"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout20">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/m2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="m2 (Net)" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout22"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout21">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/odaSayisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Oda Sayısı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout23"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout22">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/binaYasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bina Yaşı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout24"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout23">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/banyoSayisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Banyo Sayısı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout26"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout25">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/esyali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Eşyalı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#000000"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+</androidx.constraintlayout.widget.ConstraintLayout>
