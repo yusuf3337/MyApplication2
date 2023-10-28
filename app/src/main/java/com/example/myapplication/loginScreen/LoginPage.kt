@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.myapplication.HomeScreen
 import com.example.myapplication.R
 import com.example.myapplication.passwordScreen.ForgotPassword
 import com.example.myapplication.registerScreen.RegisterPage

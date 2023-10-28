@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.example.myapplication.Informations.AdInformationOne
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +32,9 @@ class Add : Fragment() {
         }
     }
 
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +42,27 @@ class Add : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
+
+    //// BUTTONLAR BURAYA EKLENECEK!!!
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val goToAdInformationOneButton = view.findViewById<Button>(R.id.evEkle)
+        goToAdInformationOneButton.setOnClickListener {
+            val intent = Intent(requireActivity(), AdInformationOne::class.java)
+            startActivity(intent)
+        }
+
+
+        // BUTTON =
+
+
+
+    }
+
+
+
+
 
     companion object {
         /**
