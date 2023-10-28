@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".AdInformationOne">
+    tools:context=".Informations.AdInformationOne">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout25"
@@ -22,6 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Balkon" />
+
+        <Spinner
+            android:id="@+id/balkonSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -114,7 +120,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Oda Sayısı" />
+
+        <Spinner
+            android:id="@+id/odaSayisiSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Ev" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout23"
@@ -125,12 +139,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout22">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/binaYasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bina Yaşı" />
+
+        <Spinner
+            android:id="@+id/binaYasiSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -148,6 +167,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Banyo Sayısı" />
+
+        <Spinner
+            android:id="@+id/banyoSayisiSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -165,6 +190,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Eşyalı" />
+
+        <Spinner
+            android:id="@+id/esyaliSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

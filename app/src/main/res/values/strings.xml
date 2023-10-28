@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">EvimKıbrıs</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="Ev">
+        <item>Oda Sayısı</item>
+        <item>Bina Yaşı</item>
+        <item>Banyo Sayısı</item>
+        <item>Balkon</item>
+        <item>Eşyalı</item>
+
+        <item>Kat Sayısı</item>
+        <item>Bulunduğu Kat</item>
+        <item>Kullanım Durumu</item>
+        <item>Cephe</item>
+        <item>Ulaşım</item>
+        <item>Isıtma</item>
+        <item>Öğrenciye Uygun</item>
+    </string-array>
+
+
 </resources>

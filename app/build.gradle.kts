@@ -72,5 +72,5 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.27")
     implementation ("com.onesignal:OneSignal:[5.0.0, 5.99.99]")
     implementation("com.squareup.picasso:picasso:2.8")
-
 }
+

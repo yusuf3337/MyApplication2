@@ -16,13 +16,13 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
-            android:name=".AdInformationThree"
+            android:name=".Informations.AdInformationThree"
             android:exported="false" />
         <activity
-            android:name=".AdInformationTwo"
+            android:name=".Informations.AdInformationTwo"
             android:exported="false" />
         <activity
-            android:name=".AdInformationOne"
+            android:name=".Informations.AdInformationOne"
             android:exported="false" />
         <activity
             android:name=".loginScreen.HomeScreen"
