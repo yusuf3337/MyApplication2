@@ -17,12 +17,99 @@
         <item>Öğrenciye Uygun</item>
     </string-array>
 
-    <string-array name="OdaSayisi">
-        <item>Oda Sayısı</item>
+    <string-array name="OdaSayısı">
+        <item>1 + 0</item>
+        <item>1 + 1</item>
+        <item>2 + 1</item>
+        <item>3 + 1</item>
+        <item>4 + 1</item>
+    </string-array>
+    
+    <string-array name="BinaYaşı">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10+</item>
+    </string-array>
+    
+    <string-array name="BanyoSayısı">
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
+    
+    <string-array name="Balkon">
+        <item>Var</item>
+        <item>Yok</item>
+    </string-array>
 
+    <string-array name="Eşyalı">
+        <item>Evet</item>
+        <item>Hayır</item>
+    </string-array>
+
+    <string-array name="KatSayısı">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10+</item>
+    </string-array>
+
+    <string-array name="BulunduğuKat">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10+</item>
+    </string-array>
+
+    <string-array name="KullanımDurumu">
+        <item>Hazır</item>
+        <item>Kullanımda</item>
+        <item>Boş</item>
+        <item>Yakında Kiracı Ayrılacak</item>
+    </string-array>
+
+    <string-array name="Cephe">
+        <item>Kuzey</item>
+        <item>Güney</item>
+        <item>Doğu</item>
+        <item>Batı</item>
+        <item>Bilinmiyor</item>
+    </string-array>
+
+    <string-array name="Isıtma">
+        <item>Klima</item>
+        <item>Soba</item>
+        <item>Doğalgaz</item>
+        <item>Yok</item>
+    </string-array>
+    
+    <string-array name="ÖğrenciyeUygun">
+        <item>Öğrenciye Uygun</item>
+        <item>Öğrenci Kabul Edilmiyor</item>
+    </string-array>
+
+    <string-array name="Ulasim">
+        <item>Var</item>
+        <item>Yok</item>
+    </string-array>
 
 </resources>

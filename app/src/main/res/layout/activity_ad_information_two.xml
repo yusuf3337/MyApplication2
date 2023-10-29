@@ -45,7 +45,16 @@
             android:id="@+id/katSayisi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kat Sayısı" />
+            android:hint="Kat Sayısı"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/katSayisiSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +71,15 @@
             android:id="@+id/bulunduguKat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bulunduğu Kat" />
+            android:hint="Bulunduğu Kat"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/bulunduguKatSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +96,15 @@
             android:id="@+id/kullanimDurumu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kullanım Durumu" />
+            android:hint="Kullanım Durumu"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/kullanimDurumuSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -96,7 +121,15 @@
             android:id="@+id/cephe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cephe" />
+            android:hint="Cephe"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/cepheSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +146,17 @@
             android:id="@+id/ulasim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ulaşım" />
+            android:hint="Ulaşım"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/ulasimSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -130,7 +173,15 @@
             android:id="@+id/isitma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Isıtma" />
+            android:hint="Isıtma"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/isitmaSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -182,7 +233,15 @@
             android:id="@+id/ogrenciyeUygun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Öğrenciye Uygun" />
+            android:hint="Öğrenciye Uygun"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <Spinner
+            android:id="@+id/ogrenciyeUygunSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
