@@ -24,7 +24,7 @@
         <item>3 + 1</item>
         <item>4 + 1</item>
     </string-array>
-    
+
     <string-array name="BinaYaşı">
         <item>1</item>
         <item>2</item>
@@ -37,13 +37,13 @@
         <item>9</item>
         <item>10+</item>
     </string-array>
-    
+
     <string-array name="BanyoSayısı">
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
-    
+
     <string-array name="Balkon">
         <item>Var</item>
         <item>Yok</item>
@@ -101,7 +101,7 @@
         <item>Doğalgaz</item>
         <item>Yok</item>
     </string-array>
-    
+
     <string-array name="ÖğrenciyeUygun">
         <item>Öğrenciye Uygun</item>
         <item>Öğrenci Kabul Edilmiyor</item>
@@ -111,5 +111,4 @@
         <item>Var</item>
         <item>Yok</item>
     </string-array>
-
 </resources>

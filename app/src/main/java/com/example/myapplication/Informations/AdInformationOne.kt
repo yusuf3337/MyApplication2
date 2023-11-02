@@ -22,7 +22,6 @@ class AdInformationOne : AppCompatActivity() {
     var secilenEsyali: String = ""
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ad_information_one)
@@ -166,7 +165,7 @@ class AdInformationOne : AppCompatActivity() {
                         secilenEsyali = esyali[position]
 
                         // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-
+                        binding.esyali.setText(secilenEsyali)
                     }
                 }
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -175,6 +174,7 @@ class AdInformationOne : AppCompatActivity() {
             }
         }
     }
+
     fun goAdInformation2(view: View){
     val intent = Intent(this@AdInformationOne, AdInformationTwo::class.java)
     startActivity(intent)

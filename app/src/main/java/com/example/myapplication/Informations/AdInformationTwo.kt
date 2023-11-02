@@ -121,7 +121,7 @@ class AdInformationTwo : AppCompatActivity() {
 
     fun spinnerCephe() {
         val spinnerCephe= binding.cepheSpinner
-        val Cephe = resources.getStringArray(R.array.KullanımDurumu)
+        val Cephe = resources.getStringArray(R.array.Cephe)
 
         if (spinnerCephe != null) {
             val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, Cephe)
@@ -229,6 +229,11 @@ class AdInformationTwo : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun goAdInformation3(view: View){
+        val intent = Intent(this@AdInformationTwo, AdInformationThree::class.java)
+        startActivity(intent)
     }
 
 

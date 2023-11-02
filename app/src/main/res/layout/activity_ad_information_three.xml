@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:rotationY="0"
     tools:context=".Informations.AdInformationThree">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="941dp"
+            android:rotationY="0"
+            tools:layout_editor_absoluteY="1dp">
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
@@ -55,20 +67,26 @@
             android:id="@+id/acikAdres"
             android:layout_width="match_parent"
             android:layout_height="253dp"
-            android:hint="Açık Adres, (Zorunlu)" />
+            android:hint="Açık Adres, (Zorunlu)"
+            android:textColor="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="330dp"
-        android:layout_height="56dp"
-        android:backgroundTint="#000000"
-        android:text="Devam"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="330dp"
+                android:layout_height="56dp"
+                android:backgroundTint="#000000"
+                android:onClick="goAdInformation4"
+                android:text="Devam"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.794" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>
