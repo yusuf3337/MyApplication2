@@ -21,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376" />
+        app:layout_constraintVertical_bias="0.424" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout36"
@@ -41,6 +41,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout39"
         android:layout_width="308dp"
         android:layout_height="64dp"
         android:layout_marginTop="15dp"
@@ -69,4 +70,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="304dp"
+        android:layout_height="184dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117"
+        app:srcCompat="@drawable/yukle" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ev Fotoğrafı"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
 </androidx.constraintlayout.widget.ConstraintLayout>
