@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import AddRecyclerAdapter
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.Informations.AdInformationOne
+import com.example.myapplication.databinding.FragmentAddBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +26,10 @@ class Add : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var binding: FragmentAddBinding? = null
+    private val addList = ArrayList<addClass>() // RecyclerView için bir veri listesi oluşturun
+    private lateinit var addRecyclerAdapter: AddRecyclerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +46,14 @@ class Add : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false)
+        binding = FragmentAddBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     //// BUTTONLAR BURAYA EKLENECEK!!!
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val goToAdInformationOneButton = view.findViewById<Button>(R.id.evEkle)
         goToAdInformationOneButton.setOnClickListener {
@@ -53,16 +61,22 @@ class Add : Fragment() {
             startActivity(intent)
         }
 
+        // Add some data to your addList
+        addList.add(addClass("dsfsdfssdf"))
+
+        addRecyclerAdapter = AddRecyclerAdapter(requireContext(), addList)
+        binding?.addRecylerView?.adapter = addRecyclerAdapter
 
         // BUTTON =
-
-
 
     }
 
 
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null // Bellek sızıntısını önlemek için ViewBinding nesnesini null olarak ayarlayın
+    }
 
     companion object {
         /**

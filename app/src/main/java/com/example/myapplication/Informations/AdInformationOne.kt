@@ -28,14 +28,14 @@ class AdInformationOne : AppCompatActivity() {
         binding = ActivityAdInformationOneBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        spinnerOdaSayi()
+        /*spinnerOdaSayi()
         spinnerBinaYasi()
         spinnerBanyoSayisi()
         spinnerBalkon()
-        spinnerEsyali()
+        spinnerEsyali()*/
     }
 
-    fun spinnerOdaSayi() {
+    /*fun spinnerOdaSayi() {
         val spinneroda= binding.odaSayisiSpinner
         val odaSayisi = resources.getStringArray(R.array.OdaSayısı)
 
@@ -178,7 +178,7 @@ class AdInformationOne : AppCompatActivity() {
     fun goAdInformation2(view: View){
     val intent = Intent(this@AdInformationOne, AdInformationTwo::class.java)
     startActivity(intent)
-    }
+    }*/
 
 
 
