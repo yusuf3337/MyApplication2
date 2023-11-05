@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.Informations.AdInformationOne
+import com.example.myapplication.adapter.addClass
 import com.example.myapplication.databinding.FragmentAddBinding
 
 // TODO: Rename parameter arguments, choose names that match

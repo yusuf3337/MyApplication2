@@ -2,7 +2,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.addClass
+import com.example.myapplication.adapter.addClass
 import com.example.myapplication.databinding.AddReyclerViewBinding
 
 class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>) : RecyclerView.Adapter<AddRecyclerAdapter.AddHolder>() {
@@ -15,7 +15,7 @@ class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>)
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return addList.size
     }
 
     override fun onBindViewHolder(holder: AddHolder, position: Int) {
