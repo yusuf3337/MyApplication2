@@ -8,4 +8,5 @@ class Onizleme : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onizleme)
     }
+    //bircani siktim
 }
