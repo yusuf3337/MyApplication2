@@ -61,11 +61,22 @@ class Add : Fragment() {
             startActivity(intent)
         }
 
-        // Add some data to your addList
-        addList.add(addClass("dsfsdfssdf"))
 
+        val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" }
+        val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" }
+        val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" }
+        val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" }
+
+        addList.add(object1)
+        addList.add(object2)
+        addList.add(object3)
+        addList.add(object4)
+
+        binding?.addRecylerView?.layoutManager = LinearLayoutManager(requireContext())
         addRecyclerAdapter = AddRecyclerAdapter(requireContext(), addList)
         binding?.addRecylerView?.adapter = addRecyclerAdapter
+
+
 
         // BUTTON =
 

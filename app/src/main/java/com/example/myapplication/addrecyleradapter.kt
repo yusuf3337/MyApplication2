@@ -15,10 +15,14 @@ class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>)
     }
 
     override fun getItemCount(): Int {
-        return addList.size
+        return 4
     }
 
     override fun onBindViewHolder(holder: AddHolder, position: Int) {
-       holder.binding.addLabel.text = "fdgdfg"
+       holder.binding.addLabel.text = addList[position].addTitle
+
+
+        val drawableResourceId = context.resources.getIdentifier(addList[position].addImage, "drawable", context.packageName)
+        holder.binding.addImage.setImageResource(drawableResourceId)
     }
 }

@@ -173,12 +173,12 @@ class AdInformationOne : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 
     fun goAdInformation2(view: View){
     val intent = Intent(this@AdInformationOne, AdInformationTwo::class.java)
     startActivity(intent)
-    }*/
+    }
 
 
 
