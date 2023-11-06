@@ -35,7 +35,7 @@ class AdInformationOne : AppCompatActivity() {
         spinnerEsyali()*/
     }
 
-    /*fun spinnerOdaSayi() {
+    fun spinnerOdaSayi() {
         val spinneroda= binding.odaSayisiSpinner
         val odaSayisi = resources.getStringArray(R.array.OdaSayısı)
 
@@ -174,7 +174,7 @@ class AdInformationOne : AppCompatActivity() {
             }
         }
     }
-*/
+
     fun goAdInformation2(view: View){
     val intent = Intent(this@AdInformationOne, AdInformationTwo::class.java)
     startActivity(intent)

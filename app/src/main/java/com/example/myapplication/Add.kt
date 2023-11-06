@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import AddRecyclerAdapter
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Informations.AdInformationOne
 import com.example.myapplication.adapter.addClass
 import com.example.myapplication.databinding.FragmentAddBinding
@@ -63,10 +65,10 @@ class Add : Fragment() {
         }
 
 
-        val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" }
-        val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" }
-        val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" }
-        val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" }
+        val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" ;addCategory}
+        val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" ;addCategory}
+        val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" ;addCategory}
+        val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" ;addCategory}
 
         addList.add(object1)
         addList.add(object2)
@@ -109,4 +111,5 @@ class Add : Fragment() {
                 }
             }
     }
+
 }
