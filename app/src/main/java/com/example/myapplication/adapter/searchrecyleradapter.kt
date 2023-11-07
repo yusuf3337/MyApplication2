@@ -1,7 +1,9 @@
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Informations.AdInformationOne
 import com.example.myapplication.adapter.searchClass
 import com.example.myapplication.databinding.SearchReyclerViewBinding
 
@@ -24,5 +26,9 @@ class SearchRecyclerAdapter(val context: Context, val searchList: ArrayList<sear
 
         val drawableResourceId = context.resources.getIdentifier(searchList[position].searchImage, "drawable", context.packageName)
         holder.binding.searchImage.setImageResource(drawableResourceId)
+
+
     }
+
+
 }

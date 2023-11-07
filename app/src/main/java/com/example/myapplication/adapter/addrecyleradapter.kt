@@ -29,11 +29,12 @@ class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, AdInformationOne::class.java)
-            intent.putExtra("Kategori", addList[position])
+            intent.putExtra("Kategori", addList[position].addCategory)
             context.startActivity(intent)
 
-
         }
+
+
 
     }
 

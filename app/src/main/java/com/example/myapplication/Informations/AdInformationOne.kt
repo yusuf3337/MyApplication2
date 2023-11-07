@@ -33,7 +33,21 @@ class AdInformationOne : AppCompatActivity() {
         spinnerBanyoSayisi()
         spinnerBalkon()
         spinnerEsyali()*/
+
+        val intent = intent
+
+        // Intent üzerinden verilere eriş
+        val kategori = intent.getStringExtra("Kategori")
+
+        // Verileri kullan
+        if (kategori != null) {
+            // Kategori verisini kullanabilirsiniz
+            // Örnek olarak bir TextView'e atayabilirsiniz:
+            println(kategori)
+        }
     }
+
+
 
     fun spinnerOdaSayi() {
         val spinneroda= binding.odaSayisiSpinner

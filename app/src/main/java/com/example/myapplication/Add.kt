@@ -65,10 +65,10 @@ class Add : Fragment() {
         }
 
 
-        val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" ;addCategory}
-        val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" ;addCategory}
-        val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" ;addCategory}
-        val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" ;addCategory}
+        val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" ;addCategory = "Kiralık"}
+        val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" ;addCategory = "Satılık"}
+        val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" ;addCategory = "Yurt"}
+        val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" ;addCategory = "Ev Arkadaşı"}
 
         addList.add(object1)
         addList.add(object2)
