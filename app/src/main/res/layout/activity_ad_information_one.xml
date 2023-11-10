@@ -34,16 +34,8 @@
                     android:id="@+id/balkon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="Balkon"
                     android:textColor="#000000" />
-
-                <Spinner
-                    android:id="@+id/balkonSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,16 +131,8 @@
                     android:id="@+id/odaSayisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="Oda Sayısı"
                     android:textColor="#000000" />
-
-                <Spinner
-                    android:id="@+id/odaSayisiSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="7dp"
-                    android:layout_weight="5" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,16 +151,9 @@
                     android:id="@+id/binaYasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="Bina Yaşı"
                     android:textColor="#000000" />
 
-                <Spinner
-                    android:id="@+id/binaYasiSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,16 +171,9 @@
                     android:id="@+id/banyoSayisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="Banyo Sayısı"
                     android:textColor="#000000" />
 
-                <Spinner
-                    android:id="@+id/banyoSayisiSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -221,21 +191,13 @@
                     android:id="@+id/esyali"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="Eşyalı"
                     android:textColor="#000000" />
-
-                <Spinner
-                    android:id="@+id/esyaliSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="93dp"
-                    android:layout_weight="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/devamButton"
                 android:layout_width="334dp"
                 android:layout_height="60dp"
                 android:backgroundTint="#000000"

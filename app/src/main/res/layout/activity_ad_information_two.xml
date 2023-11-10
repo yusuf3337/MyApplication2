@@ -58,16 +58,8 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/katSayisi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Kat Sayısı"
                 android:textColor="#000000" />
-
-            <Spinner
-                android:id="@+id/katSayisiSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_weight="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,16 +77,9 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/bulunduguKat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Bulunduğu Kat"
                 android:textColor="#000000" />
 
-            <Spinner
-                android:id="@+id/bulunduguKatSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -111,16 +96,9 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/kullanimDurumu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Kullanım Durumu"
                 android:textColor="#000000" />
 
-            <Spinner
-                android:id="@+id/kullanimDurumuSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -137,16 +115,9 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/cephe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Cephe"
                 android:textColor="#000000" />
 
-            <Spinner
-                android:id="@+id/cepheSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -163,17 +134,8 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/ulasim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Ulaşım"
                 android:textColor="#000000" />
-
-            <Spinner
-                android:id="@+id/ulasimSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,16 +153,9 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/isitma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Isıtma"
                 android:textColor="#000000" />
 
-            <Spinner
-                android:id="@+id/isitmaSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -227,7 +182,7 @@ tools:context=".Informations.AdInformationTwo">
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/devamButton2"
             android:layout_width="330dp"
             android:layout_height="56dp"
             android:backgroundTint="#000000"
@@ -255,16 +210,9 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/ogrenciyeUygun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Öğrenciye Uygun"
                 android:textColor="#000000" />
 
-            <Spinner
-                android:id="@+id/ogrenciyeUygunSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

@@ -34,7 +34,7 @@
             android:name=".loginScreen.HomeScreen"
             android:exported="false" />
         <activity
-            android:name=".menu.LoginMenu"
+            android:name=".menu.LoginPage"
             android:exported="false" />
         <activity
             android:name=".Register3"

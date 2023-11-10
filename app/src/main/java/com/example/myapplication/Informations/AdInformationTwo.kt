@@ -6,12 +6,26 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import com.example.myapplication.R
+import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.databinding.ActivityAdInformationOneBinding
 import com.example.myapplication.databinding.ActivityAdInformationTwoBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.storage
+import java.util.UUID
 
 class AdInformationTwo : AppCompatActivity() {
     private lateinit var binding: ActivityAdInformationTwoBinding
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseDB: FirebaseFirestore
+    private lateinit var firebaseStorage: FirebaseStorage
 
     var secilenKatSayisi: String = ""
     var secilenBulunduguKat: String = ""
@@ -26,216 +40,51 @@ class AdInformationTwo : AppCompatActivity() {
         binding = ActivityAdInformationTwoBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        spinnerKatSayisi()
-        spinnerBulunduguKat()
-        spinnerKullanimDurumu()
-        spinnerCephe()
-        spinnerUlasim()
-        spinnerIsıtma()
-        spinnerOgrenciyeUygun()
+
+        auth = Firebase.auth
+        firebaseDB = Firebase.firestore
+        firebaseStorage = Firebase.storage
+
     }
 
-    fun spinnerKatSayisi() {
-        val spinnerKatSayisi = binding.katSayisiSpinner
-        val katSayisi = resources.getStringArray(R.array.KatSayısı)
-        if (spinnerKatSayisi != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, katSayisi)
+    fun goAdInformation3(view: View) {
+        val katSayisi = binding.katSayisi.text.toString()
+        val bulunduguKat = binding.bulunduguKat.text.toString()
+        val kullanimDurumu = binding.kullanimDurumu.text.toString()
+        val cephe = binding.cephe.text.toString()
+        val ulasim = binding.ulasim.text.toString()
+        val isitma = binding.isitma.text.toString()
+        val ogrenciyeUygun = binding.ogrenciyeUygun.text.toString()
 
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
+        if (katSayisi.isEmpty() || bulunduguKat.isEmpty() || kullanimDurumu.isEmpty() || cephe.isEmpty() || ulasim.isEmpty() || isitma.isEmpty() || ogrenciyeUygun.isEmpty()) {
+            // showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
+        } else {
+            // Alanlar doluysa kayıt işlemini başlat
+            SallerHomeSingelton.katSayisi = katSayisi
+            SallerHomeSingelton.bulunduguKat = bulunduguKat
+            SallerHomeSingelton.kullanimDurumu = kullanimDurumu
+            SallerHomeSingelton.cephe = cephe
+            SallerHomeSingelton.ulasim = ulasim
+            SallerHomeSingelton.isitma = isitma
+            SallerHomeSingelton.ogrenciyeUygun = ogrenciyeUygun
 
-            spinnerKatSayisi.adapter = adapter
-
-            spinnerKatSayisi.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenKatSayisi = katSayisi[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.katSayisi.setText(secilenKatSayisi)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
+            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.fiyat != "" &&
+                SallerHomeSingelton.m2 != "" && SallerHomeSingelton.odaSayisi != "" &&
+                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSayisi != "" &&
+                SallerHomeSingelton.balkon != "" && SallerHomeSingelton.esyali != ""
+            ) {
+                val intent = Intent(this, AdInformationThree::class.java)
+                startActivity(intent) // startActivity fonksiyonunu ContextCompat.startActivity olarak değiştirin
+            } else {
+                //showAlertDialog("hata", "singleton veri yok ")
             }
+
+
+
         }
     }
 
-
-    fun spinnerBulunduguKat() {
-        val spinnerBulunduguKat= binding.bulunduguKatSpinner
-        val bulunduguKat = resources.getStringArray(R.array.BulunduğuKat)
-
-        if (spinnerBulunduguKat != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, bulunduguKat)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerBulunduguKat.adapter = adapter
-
-            spinnerBulunduguKat.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenBulunduguKat = bulunduguKat[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.bulunduguKat.setText(secilenBulunduguKat)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun spinnerKullanimDurumu() {
-        val spinnerKullanimDurumu= binding.kullanimDurumuSpinner
-        val kullanimDurumu = resources.getStringArray(R.array.KullanımDurumu)
-
-        if (spinnerKullanimDurumu != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, kullanimDurumu)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerKullanimDurumu.adapter = adapter
-
-            spinnerKullanimDurumu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenKullanimDurumu = kullanimDurumu[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.kullanimDurumu.setText(secilenKullanimDurumu)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun spinnerCephe() {
-        val spinnerCephe= binding.cepheSpinner
-        val Cephe = resources.getStringArray(R.array.Cephe)
-
-        if (spinnerCephe != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, Cephe)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerCephe.adapter = adapter
-
-            spinnerCephe.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenCehpe = Cephe[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.cephe.setText(secilenCehpe)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun spinnerUlasim() {
-        val spinnerUlasim = binding.ulasimSpinner
-        val ulasim = resources.getStringArray(R.array.Ulasim)
-
-        if (spinnerUlasim != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, ulasim)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerUlasim.adapter = adapter
-
-            spinnerUlasim.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenUlasim = ulasim[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.ulasim.setText(secilenUlasim)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun spinnerIsıtma() {
-        val spinnerIsitma= binding.isitmaSpinner
-        val Isitma = resources.getStringArray(R.array.Isıtma)
-
-        if (spinnerIsitma != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, Isitma)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerIsitma.adapter = adapter
-
-            spinnerIsitma.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenIsıtma = Isitma[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.isitma.setText(secilenIsıtma)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun spinnerOgrenciyeUygun() {
-        val spinnerOgrenciyeUygun= binding.ogrenciyeUygunSpinner
-        val OgrenciyeUygun = resources.getStringArray(R.array.ÖğrenciyeUygun)
-
-        if (spinnerOgrenciyeUygun != null) {
-            val adapter = ArrayAdapter(this@AdInformationTwo, R.layout.custom_spinner_item, OgrenciyeUygun)
-
-            // Spinner açılır menüsünün görünümünü ayarlayın
-            adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-
-            spinnerOgrenciyeUygun.adapter = adapter
-
-            spinnerOgrenciyeUygun.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    if (position != 0) {
-                        secilenOgrenciyeUygun = OgrenciyeUygun[position]
-
-                        // Secilen Ogeyi yusuf Atayabilirsin bir degeskene!
-                        binding.ogrenciyeUygun.setText(secilenOgrenciyeUygun)
-                    }
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    // Hiçbir şey seçilmediğinde yapılacak işlem!!!! YSF
-                }
-            }
-        }
-    }
-
-    fun goAdInformation3(view: View){
-        val intent = Intent(this@AdInformationTwo, AdInformationThree::class.java)
-        startActivity(intent)
-    }
+}
 
 
-    }
 

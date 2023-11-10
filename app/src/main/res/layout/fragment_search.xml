@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="283dp"
-            android:layout_height="182dp"
+            android:layout_width="260dp"
+            android:layout_height="176dp"
             android:src="@drawable/evinkibris"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="244dp"
             android:text="Ne Arıyorsunuz? "
-            android:textSize="22sp"
+            android:textColor="#000000"
+            android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,12 +38,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecylerView"
             android:layout_width="409dp"
-            android:layout_height="376dp"
+            android:layout_height="302dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.985" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

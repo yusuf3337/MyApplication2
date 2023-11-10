@@ -21,56 +21,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout36"
-        android:layout_width="308dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="40dp"
-        app:boxStrokeColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="İlan Başlığı"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout39"
-        android:layout_width="308dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="15dp"
-        app:boxStrokeColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout36">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fiyat"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="0.454" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/yayinButton"
         android:layout_width="334dp"
         android:layout_height="60dp"
         android:backgroundTint="#000000"
-        android:text="Yükle!"
+        android:onClick="firebaseButton"
+        android:text="İlanı Yayına Gönder"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        android:onClick="yukleButton"/>
+        app:layout_constraintVertical_bias="0.9" />
 
     <ImageView
         android:id="@+id/imageViewUpload"

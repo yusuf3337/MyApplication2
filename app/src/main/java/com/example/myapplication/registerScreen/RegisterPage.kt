@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityRegisterPageBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -29,39 +28,27 @@ class RegisterPage : AppCompatActivity() {
         val password = binding.password.text.toString()
         val confirmPassword = binding.confirmPassword.text.toString()
 
-        val passwordCount = binding.password.length()
-        val confirmPasswordCount = binding.confirmPassword.length()
-
-
-
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
-
-            if (password == confirmPassword){
-                if (passwordCount == 6 && confirmPasswordCount == 6){
+            if (password == confirmPassword) {
+                if (password.length >= 6 && confirmPassword.length >= 6) {
                     Singelton.username = username
                     Singelton.email = email
                     Singelton.password = confirmPassword
 
-                    if (Singelton.username != null &&  Singelton.email != null && Singelton.password != null) {
-
-                        val intent = Intent(this,Personalinformation::class.java)
+                    if (Singelton.username != null && Singelton.email != null && Singelton.password != null) {
+                        val intent = Intent(this, Personalinformation::class.java)
                         startActivity(intent)
-                    }else{
-                        showAlertDialog("Hata", "Singeltopn Calismiyor ")
+                    } else {
+                        showAlertDialog("Hata", "Singelton Calismiyor ")
                     }
-                }else{
-                    showAlertDialog("Hata!","En az 6 karater uzunluğunda olmalı!")
+                } else {
+                    showAlertDialog("Hata!", "Şifre en az 6 karakter uzunluğunda olmalı!")
                 }
-
-
-
-            }else{
+            } else {
                 showAlertDialog("Hata", "Şifreler Aynı Olmalı")
             }
-
-
         }
     }
 
