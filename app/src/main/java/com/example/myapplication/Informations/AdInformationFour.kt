@@ -1,5 +1,3 @@
-package com.example.myapplication.Informations
-
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.Singelton
@@ -23,11 +20,6 @@ import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import id.zelory.compressor.Compressor
-import id.zelory.compressor.constraint.quality
-import id.zelory.compressor.constraint.resolution
-import kotlinx.coroutines.launch
-import java.io.File
 import java.util.*
 
 class AdInformationFour : AppCompatActivity() {
@@ -35,11 +27,20 @@ class AdInformationFour : AppCompatActivity() {
     private lateinit var binding: ActivityAdInformationFourBinding
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private lateinit var activityResultLauncher2: ActivityResultLauncher<Intent>
+    private lateinit var permissionLauncher2: ActivityResultLauncher<String>
+    private lateinit var activityResultLauncher3: ActivityResultLauncher<Intent>
+    private lateinit var permissionLauncher3: ActivityResultLauncher<String>
+    private lateinit var activityResultLauncher4: ActivityResultLauncher<Intent>
+    private lateinit var permissionLauncher4: ActivityResultLauncher<String>
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseDB: FirebaseFirestore
     private lateinit var firebaseStorage: FirebaseStorage
+    var selectedPicture: Uri? = null
     var selectedPicture2: Uri? = null
+    var selectedPicture3: Uri? = null
+    var selectedPicture4: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,9 @@ class AdInformationFour : AppCompatActivity() {
         firebaseStorage = FirebaseStorage.getInstance()
 
         uploadLauncher()
+        uploadLauncher2()
+        uploadLauncher3()
+        uploadLauncher4()
     }
 
     private fun showToast(message: String) {
@@ -66,7 +70,8 @@ class AdInformationFour : AppCompatActivity() {
             .show()
     }
 
-    fun selectImage2(view: View) {
+
+    fun selectImage(view: View) {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_MEDIA_IMAGES
@@ -94,8 +99,119 @@ class AdInformationFour : AppCompatActivity() {
         }
     }
 
+    fun selectImage2(view: View) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_MEDIA_IMAGES
+                )
+            ) {
+                AlertDialog.Builder(this)
+                    .setTitle("Permission Needed")
+                    .setMessage("Permission needed for gallery")
+                    .setPositiveButton("Give Permission") { _, _ ->
+                        permissionLauncher2.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                    }
+                    .show()
+            } else {
+                permissionLauncher2.launch(Manifest.permission.READ_MEDIA_IMAGES)
+            }
+        } else {
+            val intentToGallery =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            activityResultLauncher2.launch(intentToGallery)
+        }
+    }
+
+    fun selectImage3(view: View) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_MEDIA_IMAGES
+                )
+            ) {
+                AlertDialog.Builder(this)
+                    .setTitle("Permission Needed")
+                    .setMessage("Permission needed for gallery")
+                    .setPositiveButton("Give Permission") { _, _ ->
+                        permissionLauncher3.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                    }
+                    .show()
+            } else {
+                permissionLauncher3.launch(Manifest.permission.READ_MEDIA_IMAGES)
+            }
+        } else {
+            val intentToGallery =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            activityResultLauncher3.launch(intentToGallery)
+        }
+    }
+
+    fun selectImage4(view: View) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_MEDIA_IMAGES
+                )
+            ) {
+                AlertDialog.Builder(this)
+                    .setTitle("Permission Needed")
+                    .setMessage("Permission needed for gallery")
+                    .setPositiveButton("Give Permission") { _, _ ->
+                        permissionLauncher4.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                    }
+                    .show()
+            } else {
+                permissionLauncher4.launch(Manifest.permission.READ_MEDIA_IMAGES)
+            }
+        } else {
+            val intentToGallery =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            activityResultLauncher4.launch(intentToGallery)
+        }
+    }
+
     private fun uploadLauncher() {
-        activityResultLauncher = registerForActivityResult(
+        activityResultLauncher2 = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ActivityResultCallback { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val intentFromResult = result.data
+                    if (intentFromResult != null) {
+                        selectedPicture = intentFromResult.data
+                        selectedPicture?.let { uri ->
+                            binding.imageViewUpload.setImageURI(uri)
+                        }
+                    }
+                }
+            })
+
+        permissionLauncher2 =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+                if (result) {
+                    val intentToGallery =
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    activityResultLauncher2.launch(intentToGallery)
+                } else {
+                    showToast("Permission needed")
+                }
+            }
+    }
+
+    private fun uploadLauncher2() {
+        activityResultLauncher3 = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
             ActivityResultCallback { result ->
                 if (result.resultCode == RESULT_OK) {
@@ -103,116 +219,147 @@ class AdInformationFour : AppCompatActivity() {
                     if (intentFromResult != null) {
                         selectedPicture2 = intentFromResult.data
                         selectedPicture2?.let { uri ->
-                            binding.imageViewUpload.setImageURI(uri)
+                            binding.imageViewUpload2.setImageURI(uri)
                         }
                     }
                 }
             })
 
-        permissionLauncher =
+        permissionLauncher3 =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
                 if (result) {
                     val intentToGallery =
                         Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                    activityResultLauncher.launch(intentToGallery)
+                    activityResultLauncher3.launch(intentToGallery)
                 } else {
                     showToast("Permission needed")
                 }
             }
     }
 
-    private suspend fun compressImage(inputImage: File): File {
-        val compressedImage = Compressor.compress(this, inputImage) {
-            resolution(1280, 720) // İstediğiniz çözünürlüğü ayarlayabilirsiniz.
-            quality(80) // 0 ile 100 arasında bir kalite seviyesi belirleyebilirsiniz.
-        }
+    private fun uploadLauncher3() {
+        activityResultLauncher4 = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ActivityResultCallback { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val intentFromResult = result.data
+                    if (intentFromResult != null) {
+                        selectedPicture3 = intentFromResult.data
+                        selectedPicture3?.let { uri ->
+                            binding.imageViewUpload3.setImageURI(uri)
+                        }
+                    }
+                }
+            })
 
-        // Hedef dizini burada belirle
-        val destinationDirectory = File(externalCacheDir!!.absolutePath)
+        permissionLauncher4 =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+                if (result) {
+                    val intentToGallery =
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    activityResultLauncher4.launch(intentToGallery)
+                } else {
+                    showToast("Permission needed")
+                }
+            }
+    }
 
-        // Dosyayı taşı
-        val compressedFile = File(destinationDirectory, compressedImage.name)
-        compressedImage.copyTo(compressedFile)
+    private fun uploadLauncher4() {
+        activityResultLauncher4 = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ActivityResultCallback { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val intentFromResult = result.data
+                    if (intentFromResult != null) {
+                        selectedPicture4 = intentFromResult.data
+                        selectedPicture4?.let { uri ->
+                            binding.imageViewUpload3.setImageURI(uri)
+                        }
+                    }
+                }
+            })
 
-        return compressedFile
+        permissionLauncher4 =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+                if (result) {
+                    val intentToGallery =
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    activityResultLauncher4.launch(intentToGallery)
+                } else {
+                    showToast("Permission needed")
+                }
+            }
     }
 
     fun firebaseButton(view: View) {
         binding.yayinButton.isEnabled = false
 
-        lifecycleScope.launch {
-            if (selectedPicture2 != null) {
-                val uuid = UUID.randomUUID()
-                val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
-                val fotoDatabase = firebaseStorage.reference
-                val imageReference = fotoDatabase.child("homePhoto").child(imageName)
+        if (selectedPicture != null && selectedPicture2 != null && selectedPicture3 != null && selectedPicture4 != null) {
+            val uuid = UUID.randomUUID()
+            val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
+            val fotoDatabase = firebaseStorage.reference
+            val imageReference = fotoDatabase.child("homePhoto").child(imageName)
 
-                // Fotoğrafı sıkıştır
-                val compressedFile = compressImage(File(selectedPicture2!!.path))
+            imageReference.putFile(selectedPicture!!)
+            imageReference.putFile(selectedPicture2!!)
+            imageReference.putFile(selectedPicture3!!)
+            imageReference.putFile(selectedPicture4!!)
+                .addOnSuccessListener { _ ->
+                    showToast("İlan başarıyla oluşturuldu!")
 
-                // Sıkıştırılmış fotoğrafı yükle
-                try {
-                    imageReference.putFile(Uri.fromFile(compressedFile))
-                        .addOnSuccessListener { _ ->
-                            showToast("İlan başarıyla oluşturuldu!")
+                    imageReference.downloadUrl
+                        .addOnSuccessListener { uri ->
+                            val downloadURL = uri.toString()
+                            val userMap = hashMapOf(
+                                "downloadURL" to downloadURL,
+                                "İlan Başlığı" to SallerHomeSingelton.ilanBasligi!!,
+                                "Fiyat" to SallerHomeSingelton.fiyat!!,
+                                "M2(Net)" to SallerHomeSingelton.m2!!,
+                                "Oda Sayısı" to SallerHomeSingelton.odaSayisi!!,
+                                "Bina Yaşı" to SallerHomeSingelton.binaYasi!!,
+                                "Banyo Sayısı" to SallerHomeSingelton.banyoSayisi!!,
+                                "Balkon" to SallerHomeSingelton.balkon!!,
+                                "CreateDateUser" to com.google.firebase.Timestamp.now(),
+                                "Eşyalı" to SallerHomeSingelton.esyali!!,
+                                "Kat Sayısı" to SallerHomeSingelton.katSayisi!!,
+                                "Bulunduğu Kat" to SallerHomeSingelton.bulunduguKat!!,
+                                "Kullanım Durumu" to SallerHomeSingelton.kullanimDurumu!!,
+                                "Cephe" to SallerHomeSingelton.cephe!!,
+                                "Ulaşım" to SallerHomeSingelton.ulasim!!,
+                                "Isıtıma" to SallerHomeSingelton.isitma!!,
+                                "Öğrenciye Uygun" to SallerHomeSingelton.ogrenciyeUygun!!
+                            )
 
-                            imageReference.downloadUrl
-                                .addOnSuccessListener { uri ->
-                                    val downloadURL = uri.toString()
-                                    val userMap = hashMapOf(
-                                        "downloadURL" to downloadURL,
-                                        "İlan Başlığı" to SallerHomeSingelton.ilanBasligi!!,
-                                        "Fiyat" to SallerHomeSingelton.fiyat!!,
-                                        "M2(Net)" to SallerHomeSingelton.m2!!,
-                                        "Oda Sayısı" to SallerHomeSingelton.odaSayisi!!,
-                                        "Bina Yaşı" to SallerHomeSingelton.binaYasi!!,
-                                        "Banyo Sayısı" to SallerHomeSingelton.banyoSayisi!!,
-                                        "Balkon" to SallerHomeSingelton.balkon!!,
-                                        "CreateDateUser" to com.google.firebase.Timestamp.now(),
-                                        "Eşyalı" to SallerHomeSingelton.esyali!!,
-                                        "Kat Sayısı" to SallerHomeSingelton.katSayisi!!,
-                                        "Bulunduğu Kat" to SallerHomeSingelton.bulunduguKat!!,
-                                        "Kullanım Durumu" to SallerHomeSingelton.kullanimDurumu!!,
-                                        "Cephe" to SallerHomeSingelton.cephe!!,
-                                        "Ulaşım" to SallerHomeSingelton.ulasim!!,
-                                        "Isıtıma" to SallerHomeSingelton.isitma!!,
-                                        "Öğrenciye Uygun" to SallerHomeSingelton.ogrenciyeUygun!!
-                                    )
-
+                            val uuid = UUID.randomUUID()
+                            val customDocumentName = Singelton.name + Singelton.surname + uuid
+                            firebaseDB.collection("ilanlar").document(customDocumentName).set(userMap)
+                                .addOnSuccessListener {
                                     val uuid = UUID.randomUUID()
                                     val customDocumentName = Singelton.name + Singelton.surname + uuid
-                                    firebaseDB.collection("ilanlar").document(customDocumentName).set(userMap)
+                                    firebaseDB.collection(SallerHomeSingelton.kategori!!).document(customDocumentName).set(userMap)
                                         .addOnSuccessListener {
-                                            // Başarıyla eklendi
-
-                                            firebaseDB.collection(SallerHomeSingelton.kategori!!).document(customDocumentName).set(userMap)
-                                                .addOnSuccessListener {
-                                                    // Başarıyla eklendi
-                                                }
-                                                .addOnFailureListener { exception ->
-                                                    showAlertDialog("Hata", "Kullanıcı bilgileri kaydedilemedi! ${exception.localizedMessage}")
-                                                }
 
                                         }
                                         .addOnFailureListener { exception ->
                                             showAlertDialog("Hata", "Kullanıcı bilgileri kaydedilemedi! ${exception.localizedMessage}")
                                         }
+                                    // Başarıyla eklendi
+                                }
+                                .addOnFailureListener { exception ->
+                                    showAlertDialog("Hata", "Kullanıcı bilgileri kaydedilemedi! ${exception.localizedMessage}")
                                 }
                         }
-                        .addOnFailureListener { exception ->
-                            showAlertDialog("Hata", "Fotoğraf karşıya yüklenemedi. Lütfen daha sonra tekrar deneyiniz! ${exception.localizedMessage}")
-                        }
-                        .addOnCompleteListener {
-                            binding.yayinButton.isEnabled = true
-                        }
-                } catch (e: Exception) {
-                    showAlertDialog("Hata", "Fotoğraf sıkıştırılırken bir hata oluştu! ${e.localizedMessage}")
+                }
+                .addOnFailureListener { exception ->
+                    showAlertDialog("Hata", "Fotoğraf karşıya yüklenemedi. Lütfen daha sonra tekrar deneyiniz! ${exception.localizedMessage}")
+                }
+                .addOnCompleteListener {
                     binding.yayinButton.isEnabled = true
                 }
-            } else {
-                showToast("Lütfen Fotoğraf Seçiniz")
-                binding.yayinButton.isEnabled = true
-            }
+        } else {
+            showToast("Lütfen Fotoğraf Seçiniz")
+            binding.yayinButton.isEnabled = true
         }
     }
 }
+

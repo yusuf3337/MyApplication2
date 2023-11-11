@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loginPage(view : View){
-        val intent = Intent(this@MainActivity, LoginPage::class.java)
+        val intent = Intent(this, LoginPage::class.java)
         startActivity(intent)
+
     }
 
     fun registerPage(view: View){

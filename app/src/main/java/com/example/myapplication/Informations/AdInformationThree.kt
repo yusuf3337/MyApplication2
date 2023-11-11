@@ -1,12 +1,13 @@
 package com.example.myapplication.Informations
 
+import AdInformationFour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityAdInformationThreeBinding
-import com.example.myapplication.databinding.ActivityAdInformationTwoBinding
+
 
 class AdInformationThree : AppCompatActivity() {
     private lateinit var binding: ActivityAdInformationThreeBinding
@@ -18,7 +19,8 @@ class AdInformationThree : AppCompatActivity() {
     }
 
     fun goAdInformation4(view: View){
-        val intent = Intent(this@AdInformationThree, AdInformationFour::class.java)
+        val intent = Intent(this, AdInformationFour::class.java)
         startActivity(intent)
+
     }
 }

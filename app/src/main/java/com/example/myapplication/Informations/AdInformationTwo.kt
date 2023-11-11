@@ -9,15 +9,15 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.SallerHomeSingelton
-import com.example.myapplication.databinding.ActivityAdInformationOneBinding
 import com.example.myapplication.databinding.ActivityAdInformationTwoBinding
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.storage
+
 import java.util.UUID
 
 class AdInformationTwo : AppCompatActivity() {
