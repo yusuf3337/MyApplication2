@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication.R
 import com.example.myapplication.Register3
 import com.example.myapplication.SallerHomeSingelton
+import com.example.myapplication.SallerHomeSingelton.kategori
 import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityAdInformationOneBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +23,7 @@ import java.util.UUID
 class AdInformationOne : AppCompatActivity() {
     private lateinit var binding: ActivityAdInformationOneBinding
 
-
+    private var kategori :String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdInformationOneBinding.inflate(layoutInflater)
@@ -30,7 +31,7 @@ class AdInformationOne : AppCompatActivity() {
         setContentView(view)
 
         val intent = intent
-        val kategori = intent.getStringExtra("Kategori")
+        kategori = intent.getStringExtra("Kategori")
 
     }
 
@@ -56,6 +57,7 @@ class AdInformationOne : AppCompatActivity() {
             SallerHomeSingelton.banyoSayisi = banyoSayisi
             SallerHomeSingelton.balkon = balkon
             SallerHomeSingelton.esyali = esyali
+            SallerHomeSingelton.kategori = kategori
 
             if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.fiyat != "" &&
                 SallerHomeSingelton.m2 != "" && SallerHomeSingelton.odaSayisi != "" &&
