@@ -1,3 +1,5 @@
+package com.example.myapplication.Informations
+
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,7 +15,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.myapplication.R
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.Singelton
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
@@ -273,7 +274,7 @@ class AdInformationFour : AppCompatActivity() {
                     if (intentFromResult != null) {
                         selectedPicture4 = intentFromResult.data
                         selectedPicture4?.let { uri ->
-                            binding.imageViewUpload3.setImageURI(uri)
+                            binding.imageViewUpload4.setImageURI(uri)
                         }
                     }
                 }

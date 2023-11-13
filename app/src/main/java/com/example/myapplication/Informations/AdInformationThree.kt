@@ -1,6 +1,5 @@
 package com.example.myapplication.Informations
 
-import AdInformationFour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,9 +17,8 @@ class AdInformationThree : AppCompatActivity() {
         val view = binding.root
     }
 
-    fun goAdInformation4(view: View){
+    fun goAdInformation4(view: View) {
         val intent = Intent(this, AdInformationFour::class.java)
         startActivity(intent)
-
     }
 }
