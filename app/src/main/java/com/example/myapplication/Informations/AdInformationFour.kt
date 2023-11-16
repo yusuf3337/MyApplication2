@@ -29,19 +29,19 @@ class AdInformationFour : AppCompatActivity() {
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     private lateinit var activityResultLauncher2: ActivityResultLauncher<Intent>
-    private lateinit var permissionLauncher2: ActivityResultLauncher<String>
-    private lateinit var activityResultLauncher3: ActivityResultLauncher<Intent>
-    private lateinit var permissionLauncher3: ActivityResultLauncher<String>
-    private lateinit var activityResultLauncher4: ActivityResultLauncher<Intent>
-    private lateinit var permissionLauncher4: ActivityResultLauncher<String>
+   // private lateinit var permissionLauncher2: ActivityResultLauncher<String>
+   // private lateinit var activityResultLauncher3: ActivityResultLauncher<Intent>
+   // private lateinit var permissionLauncher3: ActivityResultLauncher<String>
+   // private lateinit var activityResultLauncher4: ActivityResultLauncher<Intent>
+   // private lateinit var permissionLauncher4: ActivityResultLauncher<String>
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseDB: FirebaseFirestore
     private lateinit var firebaseStorage: FirebaseStorage
-    var selectedPicture: Uri? = null
-    var selectedPicture2: Uri? = null
-    var selectedPicture3: Uri? = null
-    var selectedPicture4: Uri? = null
+   // var selectedPicture: Uri? = null
+   // var selectedPicture2: Uri? = null
+   // var selectedPicture3: Uri? = null
+   // var selectedPicture4: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +53,14 @@ class AdInformationFour : AppCompatActivity() {
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
 
+        /*
         uploadLauncher()
         uploadLauncher2()
         uploadLauncher3()
         uploadLauncher4()
+         */
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -100,6 +103,7 @@ class AdInformationFour : AppCompatActivity() {
         }
     }
 
+    /*
     fun selectImage2(view: View) {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -291,7 +295,9 @@ class AdInformationFour : AppCompatActivity() {
                 }
             }
     }
+    */
 
+   /*
     fun firebaseButton(view: View) {
         binding.yayinButton.isEnabled = false
 
@@ -361,6 +367,6 @@ class AdInformationFour : AppCompatActivity() {
             showToast("Lütfen Fotoğraf Seçiniz")
             binding.yayinButton.isEnabled = true
         }
-    }
+    }*/
 }
 
