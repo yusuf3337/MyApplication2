@@ -1,12 +1,15 @@
 package com.example.myapplication.adapter
 
-import android.media.Image
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 
-class ImageRecyclerAdapter(private val imageList: ArrayList<Image>) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageHolder>() {
+class ImageRecyclerAdapter(
+    private val imageList: ArrayList<Uri>,
+    private val onDeleteClickListener: (Int) -> Unit
+) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageHolder>() {
 
     class ImageHolder(val binding: ActivityAdInformationFourBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -19,9 +22,8 @@ class ImageRecyclerAdapter(private val imageList: ArrayList<Image>) : RecyclerVi
         return imageList.size
     }
 
-
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        holder.binding.imageRecyclerView.adapter //= imageList[position].email
-        holder.binding.imageRecyclerView.adapter//= imageList[position].comment
+        holder.binding.fotoYukle.setImageURI(imageList[position])
+
     }
 }
