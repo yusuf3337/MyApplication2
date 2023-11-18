@@ -17,6 +17,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.SallerHomeSingelton
+import com.example.myapplication.Singelton
 import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 import com.google.android.material.snackbar.Snackbar
@@ -147,8 +149,61 @@ class AdInformationFour : AppCompatActivity() {
     }
 
     fun firebaseButton(view: View) {
-        // İlanı Firebase'e kaydetme işlemi buraya eklenir
-        // Seçilen fotoğraflar: selectedImages
-        // Diğer ilan bilgileri: SallerHomeSingelton ilgili alanlarından alınır
+        binding.yayinButton.isEnabled = false
+
+        if (selectedPicture != null) {
+            val uuid = UUID.randomUUID()
+            val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
+            val fotoDatabase = firebaseStorage.reference
+            val imageReference = fotoDatabase.child("homePhoto").child(imageName)
+
+            imageReference.putFile(selectedPicture!!)
+                .addOnSuccessListener { _ ->
+                    showToast("İlan başarıyla oluşturuldu!")
+
+                    imageReference.downloadUrl
+                        .addOnSuccessListener { uri ->
+                            val downloadURL = uri.toString()
+                            val userMap = hashMapOf(
+                                "downloadURL" to downloadURL,
+                                "İlan Başlığı" to SallerHomeSingelton.ilanBasligi!!,
+                                "Fiyat" to SallerHomeSingelton.ilanfiyat!!,
+                                "M2(Net)" to SallerHomeSingelton.evM2!!,
+                                "Oda Sayısı" to SallerHomeSingelton.odaSayisi!!,
+                                "Bina Yaşı" to SallerHomeSingelton.binaYasi!!,
+                                "Banyo Sayısı" to SallerHomeSingelton.banyoSyisi!!,
+                                "Balkon" to SallerHomeSingelton.balkonVarMi!!,
+                                "CreateDateUser" to com.google.firebase.Timestamp.now(),
+                                "Eşyalı" to SallerHomeSingelton.esyaliMi!!,
+                                "Kat Sayısı" to SallerHomeSingelton.binaKatSayisi!!,
+                                "Bulunduğu Kat" to SallerHomeSingelton.bulunduguKatSayisi!!,
+                                "Kullanım Durumu" to SallerHomeSingelton.kullanimDurumu!!,
+                                "Cephe" to SallerHomeSingelton.cephe!!,
+                                "Ulaşım" to SallerHomeSingelton.ulasim!!,
+                                "Isıtıma" to SallerHomeSingelton.isitmaVarMiNedir!!,
+                                "Öğrenciye Uygun" to SallerHomeSingelton.ogrenciyeUygunmudur!!
+                            )
+
+                            val uuid = UUID.randomUUID()
+                            val customDocumentName = Singelton.name + Singelton.surname + uuid
+                            firebaseDB.collection("ilanlar").document(customDocumentName).set(userMap)
+                                .addOnSuccessListener {
+                                    // Başarıyla eklendi
+                                }
+                                .addOnFailureListener { exception ->
+                                    showAlertDialog("Hata", "Kullanıcı bilgileri kaydedilemedi! ${exception.localizedMessage}")
+                                }
+                        }
+                }
+                .addOnFailureListener { exception ->
+                    showAlertDialog("Hata", "Fotoğraf karşıya yüklenemedi. Lütfen daha sonra tekrar deneyiniz! ${exception.localizedMessage}")
+                }
+                .addOnCompleteListener {
+                    binding.yayinButton.isEnabled = true
+                }
+        } else {
+            showToast("Lütfen Fotoğraf Seçiniz")
+            binding.yayinButton.isEnabled = true
+        }
     }
 }
