@@ -48,19 +48,19 @@ class AdInformationOne : AppCompatActivity() {
         } else {
             // Alanlar doluysa kayıt işlemini başlat
             SallerHomeSingelton.ilanBasligi = ilanBasligi
-            SallerHomeSingelton.fiyat = fiyat
-            SallerHomeSingelton.m2 = m2
+            SallerHomeSingelton.ilanfiyat = fiyat
+            SallerHomeSingelton.evM2 = m2
             SallerHomeSingelton.odaSayisi = odaSayisi
             SallerHomeSingelton.binaYasi = binaYasi
-            SallerHomeSingelton.banyoSayisi = banyoSayisi
-            SallerHomeSingelton.balkon = balkon
-            SallerHomeSingelton.esyali = esyali
-            SallerHomeSingelton.kategori = kategori
+            SallerHomeSingelton.banyoSyisi = banyoSayisi
+            SallerHomeSingelton.balkonVarMi = balkon
+            SallerHomeSingelton.esyaliMi = esyali
+            SallerHomeSingelton.ilanKategorisi = kategori
 
-            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.fiyat != "" &&
-                SallerHomeSingelton.m2 != "" && SallerHomeSingelton.odaSayisi != "" &&
-                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSayisi != "" &&
-                SallerHomeSingelton.balkon != "" && SallerHomeSingelton.esyali != ""
+            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
+                SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
+                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSyisi != "" &&
+                SallerHomeSingelton.balkonVarMi != "" && SallerHomeSingelton.esyaliMi != ""
             ) {
                 val intent = Intent(this, AdInformationTwo::class.java)
                 startActivity(intent)

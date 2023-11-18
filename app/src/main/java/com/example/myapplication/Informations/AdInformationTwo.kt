@@ -60,18 +60,18 @@ class AdInformationTwo : AppCompatActivity() {
             // showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
-            SallerHomeSingelton.katSayisi = katSayisi
-            SallerHomeSingelton.bulunduguKat = bulunduguKat
+            SallerHomeSingelton.binaKatSayisi = katSayisi
+            SallerHomeSingelton.bulunduguKatSayisi = bulunduguKat
             SallerHomeSingelton.kullanimDurumu = kullanimDurumu
             SallerHomeSingelton.cephe = cephe
             SallerHomeSingelton.ulasim = ulasim
-            SallerHomeSingelton.isitma = isitma
-            SallerHomeSingelton.ogrenciyeUygun = ogrenciyeUygun
+            SallerHomeSingelton.isitmaVarMiNedir = isitma
+            SallerHomeSingelton.ogrenciyeUygunmudur = ogrenciyeUygun
 
-            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.fiyat != "" &&
-                SallerHomeSingelton.m2 != "" && SallerHomeSingelton.odaSayisi != "" &&
-                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSayisi != "" &&
-                SallerHomeSingelton.balkon != "" && SallerHomeSingelton.esyali != ""
+            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
+                SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
+                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSyisi != "" &&
+                SallerHomeSingelton.balkonVarMi != "" && SallerHomeSingelton.esyaliMi != ""
             ) {
                 val intent = Intent(this, AdInformationThree::class.java)
                 startActivity(intent) // startActivity fonksiyonunu ContextCompat.startActivity olarak değiştirin
