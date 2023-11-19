@@ -3,6 +3,7 @@ package com.example.myapplication.Informations
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -22,9 +23,12 @@ import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 import java.util.*
+
 
 class AdInformationFour : AppCompatActivity() {
 
@@ -156,59 +160,106 @@ class AdInformationFour : AppCompatActivity() {
     fun firebaseButton(view: View) {
         binding.yayinButton.isEnabled = false
 
-        if (selectedPicture != null) {
-            val uuid = UUID.randomUUID()
-            val imageName = "${Singelton.name + Singelton.surname}$uuid.jpg"
-            val fotoDatabase = firebaseStorage.reference
-            val imageReference = fotoDatabase.child("homePhoto").child(imageName)
-
-            imageReference.putFile(selectedPicture!!)
-                .addOnSuccessListener { _ ->
-                    showToast("İlan başarıyla oluşturuldu!")
-
-                    imageReference.downloadUrl
-                        .addOnSuccessListener { uri ->
-                            val downloadURL = uri.toString()
-                            val userMap = hashMapOf(
-                                "downloadURL" to downloadURL,
-                                "İlan Başlığı" to SallerHomeSingelton.ilanBasligi!!,
-                                "Fiyat" to SallerHomeSingelton.ilanfiyat!!,
-                                "M2(Net)" to SallerHomeSingelton.evM2!!,
-                                "Oda Sayısı" to SallerHomeSingelton.odaSayisi!!,
-                                "Bina Yaşı" to SallerHomeSingelton.binaYasi!!,
-                                "Banyo Sayısı" to SallerHomeSingelton.banyoSyisi!!,
-                                "Balkon" to SallerHomeSingelton.balkonVarMi!!,
-                                "CreateDateUser" to com.google.firebase.Timestamp.now(),
-                                "Eşyalı" to SallerHomeSingelton.esyaliMi!!,
-                                "Kat Sayısı" to SallerHomeSingelton.binaKatSayisi!!,
-                                "Bulunduğu Kat" to SallerHomeSingelton.bulunduguKatSayisi!!,
-                                "Kullanım Durumu" to SallerHomeSingelton.kullanimDurumu!!,
-                                "Cephe" to SallerHomeSingelton.cephe!!,
-                                "Ulaşım" to SallerHomeSingelton.ulasim!!,
-                                "Isıtıma" to SallerHomeSingelton.isitmaVarMiNedir!!,
-                                "Öğrenciye Uygun" to SallerHomeSingelton.ogrenciyeUygunmudur!!
-                            )
-
-                            val uuid = UUID.randomUUID()
-                            val customDocumentName = Singelton.name + Singelton.surname + uuid
-                            firebaseDB.collection("ilanlar").document(customDocumentName).set(userMap)
-                                .addOnSuccessListener {
-                                    // Başarıyla eklendi
-                                }
-                                .addOnFailureListener { exception ->
-                                    showAlertDialog("Hata", "Kullanıcı bilgileri kaydedilemedi! ${exception.localizedMessage}")
-                                }
-                        }
-                }
-                .addOnFailureListener { exception ->
-                    showAlertDialog("Hata", "Fotoğraf karşıya yüklenemedi. Lütfen daha sonra tekrar deneyiniz! ${exception.localizedMessage}")
-                }
-                .addOnCompleteListener {
-                    binding.yayinButton.isEnabled = true
-                }
-        } else {
-            showToast("Lütfen Fotoğraf Seçiniz")
-            binding.yayinButton.isEnabled = true
+        val uuid = UUID.randomUUID().toString()
+        var customDocumentName = Singelton.username + uuid
+        val userInfo = mutableListOf<String>().apply {
+            add("email : " + Singelton.email)
+            add("name : " + Singelton.name)
+            add("Surname : " + Singelton.surname)
+            add("telefonNo : " + Singelton.phone)
         }
+
+        val photoURLs = mutableListOf<String>()
+
+        for ((index, image) in images.withIndex()) {
+            val compressedImage = compressImage(image, maxFileSizeKB = 200)
+
+            val photoStorage = FirebaseStorage.getInstance()
+            val storageReference = photoStorage.reference
+            val mediaFolder = storageReference.child("homePhoto")
+
+            val photoFileName = "${customDocumentName}-$index.jpg"
+            val photoReference = mediaFolder.child(photoFileName)
+
+            val uploadTask = photoReference.putBytes(compressedImage)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Fotoğraf başarıyla yüklendi
+                        photoReference.downloadUrl
+                            .addOnSuccessListener { url ->
+                                val urlString = url.toString()
+                                photoURLs.add(urlString)
+
+                                val db = FirebaseFirestore.getInstance()
+
+                                val docData = hashMapOf(
+                                    "photoURLs" to photoURLs,
+                                    "isActive" to 0,
+                                    "ilanBasligi" to SallerHomeSingelton.ilanBasligi,
+                                    "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
+                                    // ... (diğer alanları ekleyin)
+
+                                    "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
+                                    // ... (diğer alanları ekleyin)
+                                )
+
+                                db.collection("ilanlar").document(customDocumentName)
+                                    .set(docData)
+                                    .addOnCompleteListener { innerTask ->
+                                        if (innerTask.isSuccessful) {
+                                            // Ortak Ilanlara kaydedildi!
+                                            db.collection(SallerHomeSingelton.ilanKategorisi)
+                                                .document(customDocumentName)
+                                                .set(docData)
+                                                .addOnCompleteListener { finalTask ->
+                                                    if (finalTask.isSuccessful) {
+                                                        // Ortak Ilanlara kaydedildi!
+                                                        successUploadAlert(
+                                                            "İlan Bildirimi",
+                                                            "İlanınız Başarılı şekilde bizlere ulaştı. İnceleme süresi ortalama 30-60 dakika arasıdır. Beklediğiniz için teşekkür ederiz."
+                                                        )
+                                                    } else {
+                                                        setupShowAlert(
+                                                            "Hata",
+                                                            "Yükleme işleminde bir sorun oluştu ${finalTask.exception?.localizedMessage}",
+                                                            "Yeniden Dene"
+                                                        )
+                                                    }
+                                                }
+                                        } else {
+                                            setupShowAlert(
+                                                "Hata",
+                                                "Yükleme işleminde bir sorun oluştu ${innerTask.exception?.localizedMessage}",
+                                                "Yeniden Dene"
+                                            )
+                                        }
+                                    }
+                            }
+                            .addOnFailureListener { error ->
+                                setupShowAlert("Hata", "Fotoğraf yüklenirken bir hata oluştu. $error", "Tamam")
+                            }
+                    } else {
+                        setupShowAlert(
+                            "Hata",
+                            "Fotoğraf yüklenirken bir sorun oluştu ${task.exception?.localizedMessage}",
+                            "Tamam"
+                        )
+                    }
+                }
+        }
+    }
+
+    // Resmi sıkıştırmak için özel bir fonksiyon
+    private fun compressImage(bitmap: Bitmap, maxFileSizeKB: Int): ByteArray {
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        var quality = 100
+        while (stream.toByteArray().size / 1024 > maxFileSizeKB && quality > 0) {
+            stream.reset()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream)
+            quality -= 10
+        }
+        return stream.toByteArray()
+    }
     }
 }
