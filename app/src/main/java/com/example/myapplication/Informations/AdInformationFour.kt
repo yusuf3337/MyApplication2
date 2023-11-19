@@ -227,32 +227,33 @@ class AdInformationFour : AppCompatActivity() {
     fun updateFirestore(customDocumentName: String, photoURLs: List<String>) {
         val db = FirebaseFirestore.getInstance()
 
+        /*
         val docData = hashMapOf<String, Any>()
 
             docData["photoURLs"] = photoURLs
-            docData["ilanBasligi"] = SallerHomeSingelton.ilanBasligi!!
-            docData["evM2"] = SallerHomeSingelton.evM2!!
+            docData["ilanBasligi"] = "bos"
+            docData["evM2"] = "bos"
             docData["evBanyoSayisi"] = SallerHomeSingelton.banyoSyisi!!
             docData["evBalkon"] = SallerHomeSingelton.balkonVarMi!!
             docData["evEsya"] = SallerHomeSingelton.esyaliMi!!
             docData["evBinaYasi"] = SallerHomeSingelton.binaYasi!!
             docData["evOdaSayisi"] = SallerHomeSingelton.odaSayisi!!
-            docData["ilanAciklamsi"] = SallerHomeSingelton.ilanAciklamasi!!
+            docData["ilanAciklamsi"] = "bos"
             docData["evBinaKatSayisi"] = SallerHomeSingelton.binaKatSayisi!!
             docData["evBulunduguKat"] = SallerHomeSingelton.bulunduguKatSayisi!!
             docData["evCephe"] = SallerHomeSingelton.cephe!!
             docData["evUlasim"] = SallerHomeSingelton.ulasim!!
             docData["evOgrenciyeUygun"] = SallerHomeSingelton.ogrenciyeUygunmudur!!
             docData["evIsitma"] = SallerHomeSingelton.isitmaVarMiNedir!!
-            docData["evAcikAdresi"] = SallerHomeSingelton.acikAdres!!
-            docData["evinSehiri"] = SallerHomeSingelton.ilanSehiri!!
+            docData["evAcikAdresi"] = "bos"
+            docData["evinSehiri"] = "bos"
             docData["binaAidatTutari"] = SallerHomeSingelton.binaAidatTutari!!
             docData["evDepozitoTutari"] = SallerHomeSingelton.evDepozitoTutari!!
             docData["ilanKategorisi"] = SallerHomeSingelton.ilanKategorisi!!
-            docData["ilanParaBirimi"] = SallerHomeSingelton.ilanParabirimi
-            docData["ilanKiraMinSuresi"] = SallerHomeSingelton.minumumKiraSuresi
-            docData["aylikAidatParaBirimi"] = SallerHomeSingelton.aidatParaBirimi
-            docData["depozitoParaBirimi"] = SallerHomeSingelton.depozitoParaBirimi
+            docData["ilanParaBirimi"] = SallerHomeSingelton.ilanParabirimi!!
+            docData["ilanKiraMinSuresi"] = SallerHomeSingelton.minumumKiraSuresi!!
+            docData["aylikAidatParaBirimi"] = SallerHomeSingelton.aidatParaBirimi!!
+            docData["depozitoParaBirimi"] = SallerHomeSingelton.depozitoParaBirimi!!
 
             docData["isActive"] = 0
 
@@ -268,6 +269,45 @@ class AdInformationFour : AppCompatActivity() {
             // Diğer alanları da buraya ekleyin
 
             docData["gosterimSayisi"] = 0
+            */
+
+        val docData = hashMapOf(
+            "photoURLs" to photoURLs,
+            "isActive" to 0,
+            "ilanBasligi" to SallerHomeSingelton.ilanBasligi,
+            "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
+            "evM2" to SallerHomeSingelton.evM2,
+            "evBanyoSayisi" to SallerHomeSingelton.banyoSyisi,
+            "evBalkon" to SallerHomeSingelton.balkonVarMi,
+            "evEsya" to SallerHomeSingelton.esyaliMi,
+            "evBinaYasi" to SallerHomeSingelton.binaYasi,
+            "evOdaSayisi" to SallerHomeSingelton.odaSayisi,
+            "ilanAciklamsi" to SallerHomeSingelton.ilanAciklamasi,
+            "evBinaKatSayisi" to SallerHomeSingelton.binaKatSayisi,
+            "evBulunduguKat" to SallerHomeSingelton.bulunduguKatSayisi,
+            "evCephe" to SallerHomeSingelton.cephe,
+            "evUlasim" to SallerHomeSingelton.ulasim,
+            "evOgrenciyeUygun" to SallerHomeSingelton.ogrenciyeUygunmudur,
+            "evIsitma" to SallerHomeSingelton.isitmaVarMiNedir,
+            "evAcikAdresi" to SallerHomeSingelton.acikAdres,
+            "evinSehiri" to SallerHomeSingelton.ilanSehiri,
+            "binaAidatTutari" to SallerHomeSingelton.binaAidatTutari,
+            "evDepozitoTutari" to SallerHomeSingelton.evDepozitoTutari,
+            "documentID" to customDocumentName,
+// "ilanSahibi" to userInfo, // Eğer userInfo bir değişkense ekleyebilirsiniz
+            "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
+            "ilanKategorisi" to SallerHomeSingelton.ilanKategorisi,
+            "ilanNumarasi" to 123456,
+            "ilanParaBirimi" to SallerHomeSingelton.ilanParabirimi,
+            "ilanKiraMinSuresi" to SallerHomeSingelton.minumumKiraSuresi,
+            "aylikAidatParaBirimi" to SallerHomeSingelton.aidatParaBirimi,
+            "depozitoParaBirimi" to SallerHomeSingelton.depozitoParaBirimi,
+            "doping" to 0,
+            "acilAcilDoping" to 0,
+            "dopingCerceve" to 0,
+            "dopingYazisi" to "",
+            "gosterimSayisi" to 0
+        )
 
         db.collection("ilanlar").document(customDocumentName)
             .set(docData)
