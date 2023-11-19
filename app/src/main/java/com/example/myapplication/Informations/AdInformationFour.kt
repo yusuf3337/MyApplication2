@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -29,6 +31,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import org.checkerframework.checker.index.qual.SameLen
 import java.io.ByteArrayOutputStream
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AdInformationFour : AppCompatActivity() {
@@ -48,11 +52,19 @@ class AdInformationFour : AppCompatActivity() {
     private lateinit var firebaseDB: FirebaseFirestore
     private lateinit var firebaseStorage: FirebaseStorage
 
+    var formattedDateTime = ""
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdInformationFourBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+
+        val localDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        formattedDateTime = localDateTime.format(formatter)
 
         auth = FirebaseAuth.getInstance()
         firebaseDB = FirebaseFirestore.getInstance()
@@ -227,49 +239,6 @@ class AdInformationFour : AppCompatActivity() {
     fun updateFirestore(customDocumentName: String, photoURLs: List<String>) {
         val db = FirebaseFirestore.getInstance()
 
-        /*
-        val docData = hashMapOf<String, Any>()
-
-            docData["photoURLs"] = photoURLs
-            docData["ilanBasligi"] = "bos"
-            docData["evM2"] = "bos"
-            docData["evBanyoSayisi"] = SallerHomeSingelton.banyoSyisi!!
-            docData["evBalkon"] = SallerHomeSingelton.balkonVarMi!!
-            docData["evEsya"] = SallerHomeSingelton.esyaliMi!!
-            docData["evBinaYasi"] = SallerHomeSingelton.binaYasi!!
-            docData["evOdaSayisi"] = SallerHomeSingelton.odaSayisi!!
-            docData["ilanAciklamsi"] = "bos"
-            docData["evBinaKatSayisi"] = SallerHomeSingelton.binaKatSayisi!!
-            docData["evBulunduguKat"] = SallerHomeSingelton.bulunduguKatSayisi!!
-            docData["evCephe"] = SallerHomeSingelton.cephe!!
-            docData["evUlasim"] = SallerHomeSingelton.ulasim!!
-            docData["evOgrenciyeUygun"] = SallerHomeSingelton.ogrenciyeUygunmudur!!
-            docData["evIsitma"] = SallerHomeSingelton.isitmaVarMiNedir!!
-            docData["evAcikAdresi"] = "bos"
-            docData["evinSehiri"] = "bos"
-            docData["binaAidatTutari"] = SallerHomeSingelton.binaAidatTutari!!
-            docData["evDepozitoTutari"] = SallerHomeSingelton.evDepozitoTutari!!
-            docData["ilanKategorisi"] = SallerHomeSingelton.ilanKategorisi!!
-            docData["ilanParaBirimi"] = SallerHomeSingelton.ilanParabirimi!!
-            docData["ilanKiraMinSuresi"] = SallerHomeSingelton.minumumKiraSuresi!!
-            docData["aylikAidatParaBirimi"] = SallerHomeSingelton.aidatParaBirimi!!
-            docData["depozitoParaBirimi"] = SallerHomeSingelton.depozitoParaBirimi!!
-
-            docData["isActive"] = 0
-
-            docData["documentID"] = customDocumentName
-            //docData["ilanSahibi"] = userInfo
-            docData["ilanYuklemeTarihi"] = FieldValue.serverTimestamp()
-
-
-            docData["doping"] = 0
-            docData["acilAcilDoping"] = 0
-            docData["dopingCerceve"] = 0
-            docData["dopingYazisi"] = "boş"
-            // Diğer alanları da buraya ekleyin
-
-            docData["gosterimSayisi"] = 0
-            */
 
         val docData = hashMapOf(
             "photoURLs" to photoURLs,

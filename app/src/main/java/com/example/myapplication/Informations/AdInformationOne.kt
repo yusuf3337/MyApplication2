@@ -43,6 +43,7 @@ class AdInformationOne : AppCompatActivity() {
         val balkon = binding.balkon.text.toString()
         val esyali = binding.esyali.text.toString()
 
+
         if (ilanBasligi.isEmpty() || fiyat.isEmpty() || m2.isEmpty() || odaSayisi.isEmpty() || binaYasi.isEmpty() || banyoSayisi.isEmpty() || balkon.isEmpty() || esyali.isEmpty()) {
             //showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
@@ -56,7 +57,7 @@ class AdInformationOne : AppCompatActivity() {
             SallerHomeSingelton.balkonVarMi = balkon
             SallerHomeSingelton.esyaliMi = esyali
             SallerHomeSingelton.ilanKategorisi = kategori
-
+// Aidat yok !! Depozitio
             if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
                 SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
                 SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSyisi != "" &&
