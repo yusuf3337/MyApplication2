@@ -54,6 +54,7 @@ class AdInformationThree : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 //showAlertDialog("hata", "singleton veri yok ")
+                //2.COMMİT
             }
         }
     }
