@@ -222,7 +222,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout26">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/aidat"
+                    android:id="@+id/binaAidatTutari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Aidat"
@@ -241,7 +241,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout37">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/depozito"
+                    android:id="@+id/evDepozitoTutari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Depozito"

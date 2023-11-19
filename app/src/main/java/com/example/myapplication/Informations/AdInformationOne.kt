@@ -42,9 +42,10 @@ class AdInformationOne : AppCompatActivity() {
         val banyoSayisi = binding.banyoSayisi.text.toString()
         val balkon = binding.balkon.text.toString()
         val esyali = binding.esyali.text.toString()
+        val binaAidatTutari = binding.binaAidatTutari.text.toString()
+        val evDepozitoTutari = binding.evDepozitoTutari.text.toString()
 
-
-        if (ilanBasligi.isEmpty() || fiyat.isEmpty() || m2.isEmpty() || odaSayisi.isEmpty() || binaYasi.isEmpty() || banyoSayisi.isEmpty() || balkon.isEmpty() || esyali.isEmpty()) {
+        if (ilanBasligi.isEmpty() || fiyat.isEmpty() || m2.isEmpty() || odaSayisi.isEmpty() || binaYasi.isEmpty() || banyoSayisi.isEmpty() || balkon.isEmpty() || esyali.isEmpty() || binaAidatTutari.isEmpty() || evDepozitoTutari.isEmpty()) {
             //showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
@@ -56,12 +57,17 @@ class AdInformationOne : AppCompatActivity() {
             SallerHomeSingelton.banyoSyisi = banyoSayisi
             SallerHomeSingelton.balkonVarMi = balkon
             SallerHomeSingelton.esyaliMi = esyali
+            SallerHomeSingelton.binaAidatTutari = binaAidatTutari
+            SallerHomeSingelton.evDepozitoTutari = evDepozitoTutari
             SallerHomeSingelton.ilanKategorisi = kategori
-// Aidat yok !! Depozitio
+
+
+            // Aidat yok !! Depozito
             if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
                 SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
                 SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSyisi != "" &&
-                SallerHomeSingelton.balkonVarMi != "" && SallerHomeSingelton.esyaliMi != ""
+                SallerHomeSingelton.balkonVarMi != "" && SallerHomeSingelton.esyaliMi != "" &&
+                SallerHomeSingelton.binaAidatTutari != "" && SallerHomeSingelton.evDepozitoTutari != ""
             ) {
                 val intent = Intent(this, AdInformationTwo::class.java)
                 startActivity(intent)

@@ -167,7 +167,7 @@ tools:context=".Informations.AdInformationTwo">
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout35">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout36">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ilanAciklamasi"
@@ -185,16 +185,17 @@ tools:context=".Informations.AdInformationTwo">
             android:id="@+id/devamButton2"
             android:layout_width="330dp"
             android:layout_height="56dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#000000"
             android:onClick="goAdInformation3"
             android:text="Devam"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout34"
-            app:layout_constraintVertical_bias="0.139" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout35"
@@ -227,6 +228,22 @@ tools:context=".Informations.AdInformationTwo">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.017" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout36"
+            android:layout_width="309dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout35">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ilanSehiri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Evin Şehri" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

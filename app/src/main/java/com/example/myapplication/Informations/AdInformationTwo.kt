@@ -55,8 +55,10 @@ class AdInformationTwo : AppCompatActivity() {
         val ulasim = binding.ulasim.text.toString()
         val isitma = binding.isitma.text.toString()
         val ogrenciyeUygun = binding.ogrenciyeUygun.text.toString()
+        val ilanAciklamasi = binding.ilanAciklamasi.text.toString()
+        val ilanSehiri = binding.ilanSehiri.text.toString()
 
-        if (katSayisi.isEmpty() || bulunduguKat.isEmpty() || kullanimDurumu.isEmpty() || cephe.isEmpty() || ulasim.isEmpty() || isitma.isEmpty() || ogrenciyeUygun.isEmpty()) {
+        if (katSayisi.isEmpty() || bulunduguKat.isEmpty() || kullanimDurumu.isEmpty() || cephe.isEmpty() || ulasim.isEmpty() || isitma.isEmpty() || ogrenciyeUygun.isEmpty() || ilanSehiri.isEmpty()) {
             // showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
@@ -67,6 +69,8 @@ class AdInformationTwo : AppCompatActivity() {
             SallerHomeSingelton.ulasim = ulasim
             SallerHomeSingelton.isitmaVarMiNedir = isitma
             SallerHomeSingelton.ogrenciyeUygunmudur = ogrenciyeUygun
+            SallerHomeSingelton.ilanAciklamasi = ilanAciklamasi
+            SallerHomeSingelton.ilanSehiri = ilanSehiri
 
             if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
                 SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
