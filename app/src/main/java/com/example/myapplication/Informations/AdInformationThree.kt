@@ -1,5 +1,6 @@
 package com.example.myapplication.Informations
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import com.example.myapplication.R
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.databinding.ActivityAdInformationThreeBinding
+import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -26,36 +28,45 @@ class AdInformationThree : AppCompatActivity() {
     var secilenAcikAdres: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ad_information_three)
+
+
         binding = ActivityAdInformationThreeBinding.inflate(layoutInflater)
         val view = binding.root
+        setContentView(view)
+
 
         auth = Firebase.auth
         firebaseDB = Firebase.firestore
         firebaseStorage = Firebase.storage
 
+
+
     }
 
     fun goAdInformation4(view: View) {
-        val acikAdres = binding.acikAdres.text.toString()
-
-        if (acikAdres.isEmpty()) {
-            //showAlerDialog("Hata!", "Lütfen Alanları Doldurunuz")
+        if (binding.acikAdres.text.toString() == "") {
+            showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
-            SallerHomeSingelton.acikAdres = acikAdres
+            SallerHomeSingelton.acikAdres = binding.acikAdres.text.toString()
+            val intent = Intent(this, AdInformationFour::class.java)
+            startActivity(intent)
+        }
+    }
 
-            if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
-                SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
-                SallerHomeSingelton.binaYasi != "" && SallerHomeSingelton.banyoSyisi != "" &&
-                SallerHomeSingelton.balkonVarMi != "" && SallerHomeSingelton.esyaliMi != ""
-            ) {
 
-                val intent = Intent(this, AdInformationFour::class.java)
-                startActivity(intent)
-            } else {
-                //showAlertDialog("hata", "singleton veri yok ")
-                //2.COMMİT
-            }
+
+
+
+    private fun showAlertDialog(title: String, message: String) {
+        if (!isFinishing) {
+            AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Tamam") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         }
     }
 }
