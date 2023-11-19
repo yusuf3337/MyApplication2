@@ -24,6 +24,7 @@ import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
@@ -64,7 +65,8 @@ class AdInformationFour : AppCompatActivity() {
             updateFotoYukleVisibility()
         }
 
-        binding.imageRecyclerView.layoutManager = GridLayoutManager(this, 3) // Adjust the span count as needed
+        binding.imageRecyclerView.layoutManager =
+            GridLayoutManager(this, 3) // Adjust the span count as needed
         binding.imageRecyclerView.adapter = imageRecyclerAdapter
 
         registerLauncher()
@@ -89,8 +91,16 @@ class AdInformationFour : AppCompatActivity() {
             return
         }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_MEDIA_IMAGES)) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_MEDIA_IMAGES
+                )
+            ) {
                 Snackbar.make(view, "Gallery için izin gereklidir", Snackbar.LENGTH_INDEFINITE)
                     .setAction("İzni Ver") {
                         permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
@@ -99,7 +109,8 @@ class AdInformationFour : AppCompatActivity() {
                 permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
             }
         } else {
-            val intentToGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            val intentToGallery =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intentToGallery)
         }
     }
@@ -222,6 +233,42 @@ class AdInformationFour : AppCompatActivity() {
             "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
             "evM2" to SallerHomeSingelton.evM2,
             "evBanyoSayisi" to SallerHomeSingelton.banyoSyisi,
+            "evBalkon" to SallerHomeSingelton.balkonVarMi,
+            "evEsya" to SallerHomeSingelton.esyaliMi,
+            "evBinaYasi" to SallerHomeSingelton.binaYasi,
+            "evOdaSayisi" to SallerHomeSingelton.odaSayisi,
+            "ilanAciklamsi" to SallerHomeSingelton.ilanAciklamasi,
+            "evBinaKatSayisi" to SallerHomeSingelton.binaKatSayisi,
+            "evBulunduguKat" to SallerHomeSingelton.bulunduguKatSayisi,
+            "evCephe" to SallerHomeSingelton.cephe,
+            "evUlasim" to SallerHomeSingelton.ulasim,
+            "evOgrenciyeUygun" to SallerHomeSingelton.ogrenciyeUygunmudur,
+            "evIsitma" to SallerHomeSingelton.isitmaVarMiNedir,
+            "evAcikAdresi" to SallerHomeSingelton.acikAdres,
+            "evinSehiri" to SallerHomeSingelton.ilanSehiri,
+
+            "binaAidatTutari" to SallerHomeSingelton.binaAidatTutari,
+            "evDepozitoTutari" to SallerHomeSingelton.evDepozitoTutari,
+
+            "documentID" to customDocumentName,
+            // "ilanSahibi" to userInfo,
+            "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
+
+            "ilanKategorisi" to SallerHomeSingelton.ilanKategorisi,
+           // "ilanNumarasi" to ilanNumarsiCreate,
+
+            // Yeni Eklenenler 31 Ekim Salı
+
+            "ilanParaBirimi" to SallerHomeSingelton.ilanParabirimi,
+            "ilanKiraMinSuresi" to SallerHomeSingelton.minumumKiraSuresi,
+
+            "aylikAidatParaBirimi" to SallerHomeSingelton.aidatParaBirimi,
+            "depozitoParaBirimi" to SallerHomeSingelton.depozitoParaBirimi,
+
+            "doping" to 0,
+            "acilAcilDoping" to 0,
+            "dopingCerceve" to 0,
+            "dopingYazisi" to "",
             // Diğer alanları da buraya ekleyin
 
             "gosterimSayisi" to 0
@@ -277,3 +324,4 @@ class AdInformationFour : AppCompatActivity() {
         return outputStream.toByteArray()
     }
 }
+
