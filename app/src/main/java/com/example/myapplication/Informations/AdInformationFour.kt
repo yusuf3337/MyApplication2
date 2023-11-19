@@ -17,18 +17,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.Singelton
 import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.util.*
-
 
 class AdInformationFour : AppCompatActivity() {
 
@@ -121,9 +120,6 @@ class AdInformationFour : AppCompatActivity() {
                 selectedImages.add(uri)
                 imageRecyclerAdapter.notifyDataSetChanged()
                 updateFotoYukleVisibility()
-
-                // Seçilen resmi selectedPicture değişkenine atayın
-                selectedPicture = uri
             }
         }
     }
@@ -138,9 +134,6 @@ class AdInformationFour : AppCompatActivity() {
                         selectedImages.add(uri)
                         imageRecyclerAdapter.notifyDataSetChanged()
                         updateFotoYukleVisibility()
-
-                        // Seçilen resmi selectedPicture değişkenine atayın
-                        selectedPicture = uri
                     }
                 }
             })
@@ -158,108 +151,129 @@ class AdInformationFour : AppCompatActivity() {
     }
 
     fun firebaseButton(view: View) {
-        binding.yayinButton.isEnabled = false
-
-        val uuid = UUID.randomUUID().toString()
-        var customDocumentName = Singelton.username + uuid
-        val userInfo = mutableListOf<String>().apply {
-            add("email : " + Singelton.email)
-            add("name : " + Singelton.name)
-            add("Surname : " + Singelton.surname)
-            add("telefonNo : " + Singelton.phone)
+        if (selectedImages.isEmpty()) {
+            showToast("Please select at least one photo.")
+            return
         }
 
-        val photoURLs = mutableListOf<String>()
+        val compressedImages = mutableListOf<ByteArray>()
+
+        for (uri in selectedImages) {
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+            val compressedImage = compressImage(bitmap, 200)
+            compressedImage?.let { compressedImages.add(it) }
+        }
+
+        if (compressedImages.isNotEmpty()) {
+            uploadFirebase(compressedImages)
+        } else {
+            showToast("Error compressing images.")
+        }
+    }
+
+    fun uploadFirebase(images: List<ByteArray>) {
+        val uuid = UUID.randomUUID().toString()
+        val customDocumentName = Singelton.username + uuid
+
+        val photoURLs: MutableList<String> = mutableListOf()
 
         for ((index, image) in images.withIndex()) {
-            val compressedImage = compressImage(image, maxFileSizeKB = 200)
-
             val photoStorage = FirebaseStorage.getInstance()
             val storageReference = photoStorage.reference
             val mediaFolder = storageReference.child("homePhoto")
 
-            val photoFileName = "${customDocumentName}-$index.jpg"
+            val photoFileName = "$customDocumentName-$index.jpg"
             val photoReference = mediaFolder.child(photoFileName)
 
-            val uploadTask = photoReference.putBytes(compressedImage)
+            val uploadTask = photoReference.putBytes(image)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Fotoğraf başarıyla yüklendi
-                        photoReference.downloadUrl
-                            .addOnSuccessListener { url ->
-                                val urlString = url.toString()
+                        photoReference.downloadUrl.addOnCompleteListener { urlTask ->
+                            if (urlTask.isSuccessful) {
+                                val urlString = urlTask.result.toString()
                                 photoURLs.add(urlString)
 
-                                val db = FirebaseFirestore.getInstance()
-
-                                val docData = hashMapOf(
-                                    "photoURLs" to photoURLs,
-                                    "isActive" to 0,
-                                    "ilanBasligi" to SallerHomeSingelton.ilanBasligi,
-                                    "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
-                                    // ... (diğer alanları ekleyin)
-
-                                    "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
-                                    // ... (diğer alanları ekleyin)
-                                )
-
-                                db.collection("ilanlar").document(customDocumentName)
-                                    .set(docData)
-                                    .addOnCompleteListener { innerTask ->
-                                        if (innerTask.isSuccessful) {
-                                            // Ortak Ilanlara kaydedildi!
-                                            db.collection(SallerHomeSingelton.ilanKategorisi)
-                                                .document(customDocumentName)
-                                                .set(docData)
-                                                .addOnCompleteListener { finalTask ->
-                                                    if (finalTask.isSuccessful) {
-                                                        // Ortak Ilanlara kaydedildi!
-                                                        successUploadAlert(
-                                                            "İlan Bildirimi",
-                                                            "İlanınız Başarılı şekilde bizlere ulaştı. İnceleme süresi ortalama 30-60 dakika arasıdır. Beklediğiniz için teşekkür ederiz."
-                                                        )
-                                                    } else {
-                                                        setupShowAlert(
-                                                            "Hata",
-                                                            "Yükleme işleminde bir sorun oluştu ${finalTask.exception?.localizedMessage}",
-                                                            "Yeniden Dene"
-                                                        )
-                                                    }
-                                                }
-                                        } else {
-                                            setupShowAlert(
-                                                "Hata",
-                                                "Yükleme işleminde bir sorun oluştu ${innerTask.exception?.localizedMessage}",
-                                                "Yeniden Dene"
-                                            )
-                                        }
-                                    }
+                                if (photoURLs.size == images.size) {
+                                    // All images uploaded, now update Firestore
+                                    updateFirestore(customDocumentName, photoURLs)
+                                }
+                            } else {
+                                // Handle URL retrieval failure
+                                val error = urlTask.exception
+                                println("URL Hatası: $error")
                             }
-                            .addOnFailureListener { error ->
-                                setupShowAlert("Hata", "Fotoğraf yüklenirken bir hata oluştu. $error", "Tamam")
-                            }
+                        }
                     } else {
-                        setupShowAlert(
-                            "Hata",
-                            "Fotoğraf yüklenirken bir sorun oluştu ${task.exception?.localizedMessage}",
-                            "Tamam"
-                        )
+                        // Handle upload failure
+                        val error = task.exception
+                        println("Yükleme Hatası: $error")
                     }
                 }
         }
     }
 
-    // Resmi sıkıştırmak için özel bir fonksiyon
-    private fun compressImage(bitmap: Bitmap, maxFileSizeKB: Int): ByteArray {
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-        var quality = 100
-        while (stream.toByteArray().size / 1024 > maxFileSizeKB && quality > 0) {
-            stream.reset()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream)
-            quality -= 10
-        }
-        return stream.toByteArray()
+    fun updateFirestore(customDocumentName: String, photoURLs: List<String>) {
+        val db = FirebaseFirestore.getInstance()
+
+        val docData = hashMapOf(
+            "photoURLs" to photoURLs,
+            "isActive" to 0,
+            "ilanBasligi" to SallerHomeSingelton.ilanBasligi,
+            "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
+            "evM2" to SallerHomeSingelton.evM2,
+            "evBanyoSayisi" to SallerHomeSingelton.banyoSyisi,
+            // Diğer alanları da buraya ekleyin
+
+            "gosterimSayisi" to 0
+        )
+
+        db.collection("ilanlar").document(customDocumentName)
+            .set(docData)
+            .addOnSuccessListener {
+                // İşlem başarılı
+                SallerHomeSingelton.ilanKategorisi?.let { it1 ->
+                    db.collection(it1)
+                        .document(customDocumentName)
+                        .set(docData)
+                        .addOnSuccessListener {
+                            // İşlem başarılı
+                            showToast("Ad successfully added to Firebase.")
+                        }
+                        .addOnFailureListener { e ->
+                            // Handle Firestore update failure
+                            println("Firestore Güncelleme Hatası: $e")
+                            showToast("Error updating Firestore.")
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                // Handle Firestore set failure
+                println("Firestore Ayarlama Hatası: $e")
+                showToast("Error setting Firestore document.")
+            }
     }
+
+
+    // Fotoğraf Sıkıştırmak
+    fun compressImage(image: Bitmap, maxFileSizeKB: Int): ByteArray? {
+        var compression: Float = 1.0f
+        val maxCompression: Float = 0.1f
+        val maxFileSizeBytes = maxFileSizeKB * 1024
+
+        val outputStream = ByteArrayOutputStream()
+
+        while (true) {
+            image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), outputStream)
+            val imageData = outputStream.toByteArray()
+
+            if (imageData.size <= maxFileSizeBytes || compression <= maxCompression) {
+                break
+            }
+
+            outputStream.reset()
+            compression -= 0.1f
+        }
+
+        return outputStream.toByteArray()
     }
 }
