@@ -46,7 +46,7 @@
         android:layout_height="28dp"
         android:text="Continue as a guest"
         android:textAlignment="center"
-        android:textColor="#35C2C1"
+        android:textColor="#020000"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -20,53 +20,48 @@
             android:rotationY="0"
             tools:layout_editor_absoluteY="1dp">
 
-    <TextView
-        android:id="@+id/loginPageTextView"
-        android:layout_width="332dp"
-        android:layout_height="90dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
-        android:lineSpacingExtra="3sp"
-        android:text="Welcome back! Glad to see you, Again!"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:translationY="-1.5sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/loginPageTextView"
+                android:layout_width="328dp"
+                android:layout_height="128dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="-60dp"
+                android:lineSpacingExtra="3sp"
+                android:text="Evin Kıbrısa Hoş Geldiniz. Lütfen Giriş Yapın"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:translationY="-1.5sp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.473"
+                tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/loginPageLoginButton"
-        android:layout_width="330dp"
-        android:layout_height="56dp"
-        android:backgroundTint="#090909"
-        android:hint="Login"
-        android:onClick="goMenu"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+            <Button
+                android:id="@+id/loginPageLoginButton"
+                android:layout_width="330dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="#090909"
+                android:hint="Login"
+                android:onClick="goMenu"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginPageTextView2" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 android:layout_width="308dp"
                 android:layout_height="64dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="250dp"
-                android:layout_marginEnd="50dp"
                 app:boxStrokeColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loginPageTextView">
+                tools:layout_editor_absoluteY="372dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextEmail"
@@ -77,74 +72,65 @@
                     android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="308dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="308dp"
+                android:layout_height="64dp"
 
-        android:layout_marginEnd="50dp"
-        app:boxStrokeColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                app:boxStrokeColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="438dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter password"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter password"
+                    android:inputType="textPassword"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/loginPageTextView2"
                 android:layout_width="152dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="504dp"
+                android:layout_marginEnd="-140dp"
                 android:text="Forgot your password?"
                 android:textAlignment="center"
                 android:textColor="#6A707C"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.891"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
             <Button
-        android:id="@+id/gotoRegister"
-        android:layout_width="314dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#FDFCFC"
-        android:hint="Don’t have an account? Register Now"
-        android:text="Don’t have an account? Register Now"
-        android:textColor="#020202"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941"
-        tools:ignore="MissingConstraints" />
+                android:id="@+id/gotoRegister"
+                android:layout_width="314dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#FDFCFC"
+                android:hint="Don’t have an account? Register Now"
+                android:text="Don’t have an account? Register Now"
+                android:textColor="#020202"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginPageLoginButton"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="356dp"
                 android:layout_height="125dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.257"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/logo"
+                tools:layout_editor_absoluteY="223dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
