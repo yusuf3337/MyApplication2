@@ -2,10 +2,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Home
 import com.example.myapplication.adapter.homeClass
 import com.example.myapplication.databinding.HomeReyclerViewBinding
 
-class HomeRecyclerAdapter(val context: Context, val homeList: MutableList<homeClass>) : RecyclerView.Adapter<HomeRecyclerAdapter.HomeHolder>() {
+class HomeRecyclerAdapter(val context: Context, val homeList: ArrayList<homeClass>) : RecyclerView.Adapter<HomeRecyclerAdapter.HomeHolder>() {
     class HomeHolder(val binding: HomeReyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
@@ -20,5 +21,7 @@ class HomeRecyclerAdapter(val context: Context, val homeList: MutableList<homeCl
 
     override fun onBindViewHolder(holder: HomeHolder, position: Int) {
         holder.binding.homeLabel.text = homeList[position].homeTitle
+        holder.binding.homeLabel.text = homeList[position].homeCategory
+        holder.binding.homeLabel.text = homeList[position].homeImage
     }
 }

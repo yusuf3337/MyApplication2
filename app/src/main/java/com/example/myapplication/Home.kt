@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.adapter.homeClass
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
@@ -21,7 +22,7 @@ class Home : Fragment() {
     private var param2: String? = null
     private var binding: FragmentHomeBinding? = null
     private lateinit var homeRecyclerAdapter: HomeRecyclerAdapter
-    private val homeList = mutableListOf<IlanBilgileri>()
+    private val homeList = ArrayList<homeClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,7 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.homeRecylerView?.layoutManager = LinearLayoutManager(requireContext())
+       // homeRecyclerAdapter = HomeRecyclerAdapter(requireContext(), homeList)
         binding?.homeRecylerView?.adapter = homeRecyclerAdapter
     }
 
