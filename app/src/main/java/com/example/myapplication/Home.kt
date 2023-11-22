@@ -48,16 +48,6 @@ class Home : Fragment() {
         binding?.homeRecylerView?.adapter = homeRecyclerAdapter
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 
     fun QuerySnapshot?.toIlanBilgileriList(): List<IlanBilgileri> {
         val ilanlar = mutableListOf<IlanBilgileri>()
@@ -116,7 +106,6 @@ class Home : Fragment() {
             return null
         }
     }
-
     data class IlanBilgileri(
         val ilanBasligi: String,
         val ilanFiyat: String,
