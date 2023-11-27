@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:rotationY="0"
+    tools:context=".evArkadasi.evArkadasiTwo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="916dp"
+            android:rotationY="0"
+            tools:layout_editor_absoluteY="1dp">
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:text="Lütfen Soruları Cevaplayınız"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="148dp"
+        android:layout_height="107dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.142"
+        app:srcCompat="@drawable/evim_kbrs_seffaf" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout48"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercihEdilenCinsiyet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tercih Edilen Cinsiyet" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout49"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout48">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercihEdilenYas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tercih Edilen Yaş Aralığı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout50"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout49">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/alkolKullanimi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alkol Kullanımı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout51"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout50">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sigaraKullanimi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sigara Kullanımı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout52"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout51">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercihEdilenUniversiteBolumu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Üniversite Bölümü" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout52">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercihEdilenUyruk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tercih Edilen Uyruk" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="330dp"
+                android:layout_height="56dp"
+                android:onClick="evArkadasi2Devam"
+                android:backgroundTint="#4CAF50"
+                android:text="Devam"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.833" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

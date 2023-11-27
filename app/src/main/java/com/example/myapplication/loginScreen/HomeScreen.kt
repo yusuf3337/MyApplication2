@@ -36,10 +36,6 @@ class HomeScreen : AppCompatActivity() {
             true
         }
 
-
-
-
-
     }
 
     fun getUserData() {

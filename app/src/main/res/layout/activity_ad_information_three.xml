@@ -75,7 +75,7 @@
                 android:id="@+id/button5"
                 android:layout_width="330dp"
                 android:layout_height="56dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#4CAF50"
                 android:onClick="goAdInformation4"
                 android:text="Devam"
                 android:textColor="#FFFFFF"

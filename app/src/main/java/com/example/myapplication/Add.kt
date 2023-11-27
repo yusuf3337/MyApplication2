@@ -32,6 +32,7 @@ class Add : Fragment() {
     private var binding: FragmentAddBinding? = null
     private val addList = ArrayList<addClass>() // RecyclerView için bir veri listesi oluşturun
     private lateinit var addRecyclerAdapter: AddRecyclerAdapter
+    //private lateinit var yurtRecyclerAdapter: AddRecyclerAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +42,6 @@ class Add : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
-
 
 
     override fun onCreateView(

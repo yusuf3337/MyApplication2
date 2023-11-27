@@ -32,14 +32,11 @@ class LoginPage : AppCompatActivity() {
         forgotPassword.setOnClickListener {
             // Yeni bir sayfaya geçiş Intent'i oluşturun
             val intent = Intent(this, ForgotPassword::class.java)
-
             // İstediğiniz ekstra verileri intent ile iletebilirsiniz (isteğe bağlı)
             // intent.putExtra("key", "value")
-
             // Yeni sayfaya geçiş yapın
             startActivity(intent)
         }
-
         val gotoRegister = findViewById<TextView>(R.id.gotoRegister)
         gotoRegister.setOnClickListener {
             // Yeni bir sayfaya geçiş Intent'i oluşturun
@@ -97,5 +94,3 @@ class LoginPage : AppCompatActivity() {
         }
     }
 }
-
-

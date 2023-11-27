@@ -15,8 +15,27 @@
         android:theme="@style/Theme.MyApplication"
         tools:ignore="ExtraText"
         tools:targetApi="31">
-        <activity android:name=".Informations.AdInformationFour"
-                  android:exported="false" />
+        <activity
+            android:name=".evArkadasi.evArkadasiThree"
+            android:exported="false" />
+        <activity
+            android:name=".evArkadasi.evArkadasiTwo"
+            android:exported="false" />
+        <activity
+            android:name=".evArkadasi.evArkadasiOne"
+            android:exported="false" />
+        <activity
+            android:name=".yurt.YurtBilgiThree"
+            android:exported="false" />
+        <activity
+            android:name=".yurt.YurtBilgiTwo"
+            android:exported="false" />
+        <activity
+            android:name=".yurt.YurtBilgiOne"
+            android:exported="false" />
+        <activity
+            android:name=".Informations.AdInformationFour"
+            android:exported="false" />
         <activity
             android:name=".Onizleme"
             android:exported="false" />

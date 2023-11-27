@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:rotationY="0"
+    tools:context=".yurt.YurtBilgiTwo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="941dp"
+            android:rotationY="0"
+            tools:layout_editor_absoluteY="1dp">
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yurt Genel Bilgiler"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:text="Yurt Bilgileri"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="16dp"
+        android:text="Adım; 2-3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout39"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/elektirikUcret"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Elektrik Ücreti Var Mı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout40"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout39">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/internetDurumu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="İnternet Var Mı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout41"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout40">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yurtGirisCikisSaatlari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Giriş Çıkış Saatleri" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout42"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout41">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yurtBlokVarmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Blok Var Mı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout43"
+        android:layout_width="308dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout42">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kizErkekKarisikMi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kız Erkek Karışık Mı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="349dp"
+        android:layout_height="263dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout43">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yurtilanAciklamasi"
+            android:layout_width="match_parent"
+            android:layout_height="253dp"
+            android:hint="Açıklama" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/yurtDevamButton2"
+                android:layout_width="334dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#4CAF50"
+                android:onClick="yurtDevamButton2"
+                android:text="Devam"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.888" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>
