@@ -40,6 +40,7 @@ class Add : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -59,6 +60,8 @@ class Add : Fragment() {
 
         val goToAdInformationOneButton = view.findViewById<Button>(R.id.evEkle)
         goToAdInformationOneButton.setOnClickListener {
+
+
             val intent = Intent(requireActivity(), AdInformationOne::class.java)
             startActivity(intent)
         }
