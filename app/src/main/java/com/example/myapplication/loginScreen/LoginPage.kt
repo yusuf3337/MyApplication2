@@ -52,6 +52,7 @@ class LoginPage : AppCompatActivity() {
         // Giriş sayfasını işlemek için buraya gerekli kodu ekleyin
     }
 
+    // Tamamlandi knk  oldu!
     fun goMenu(view: View) {
         val email = binding.editTextEmail.text.toString()
         val password = binding.editTextPassword.text.toString()
