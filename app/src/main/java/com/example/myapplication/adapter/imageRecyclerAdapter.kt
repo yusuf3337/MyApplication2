@@ -12,7 +12,9 @@ class ImageRecyclerAdapter(
     private val onDeleteClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageHolder>() {
 
-    class ImageHolder(val binding: ActivityAdInformationFourBinding) : RecyclerView.ViewHolder(binding.root)
+    class ImageHolder(val binding: ActivityAdInformationFourBinding) : RecyclerView.ViewHolder(binding.root) {
+        val imageView: ImageView = binding.fotoYukle
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
         val binding = ActivityAdInformationFourBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -32,4 +34,9 @@ class ImageRecyclerAdapter(
         imageView.setImageURI(imageList[position])
         holder.binding.imageRecyclerView.addView(imageView)
     }
+    /*override fun onBindViewHolder(holder: ImageHolder, position: Int) {
+        holder.binding.fotoYukle.setImageURI(imageList[position])
+        holder.binding.executePendingBindings()
+    }*/
+
 }
