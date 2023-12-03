@@ -3,6 +3,7 @@ package com.example.myapplication.adapter
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityAdInformationFourBinding
 
@@ -23,7 +24,12 @@ class ImageRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        holder.binding.fotoYukle.setImageURI(imageList[position])
-
+        val imageView = ImageView(holder.binding.root.context)
+        imageView.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        imageView.setImageURI(imageList[position])
+        holder.binding.imageRecyclerView.addView(imageView)
     }
 }
