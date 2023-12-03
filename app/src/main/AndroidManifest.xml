@@ -16,6 +16,9 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".evArkadasi.evArkadasiFour"
+            android:exported="false" />
+        <activity
             android:name=".evArkadasi.evArkadasiThree"
             android:exported="false" />
         <activity

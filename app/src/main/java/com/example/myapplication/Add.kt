@@ -58,13 +58,6 @@ class Add : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val goToAdInformationOneButton = view.findViewById<Button>(R.id.evEkle)
-        goToAdInformationOneButton.setOnClickListener {
-
-
-            val intent = Intent(requireActivity(), AdInformationOne::class.java)
-            startActivity(intent)
-        }
 
 
         val object1 = addClass().apply { addImage = "kiralikpng"; addTitle = "Kiralık Ev İlanı Ver" ;addCategory = "Kiralık"}

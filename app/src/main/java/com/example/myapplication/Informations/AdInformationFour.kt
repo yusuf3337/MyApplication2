@@ -79,7 +79,7 @@ class AdInformationFour : AppCompatActivity() {
         }
 
         binding.imageRecyclerView.layoutManager =
-            GridLayoutManager(this, 3) // Adjust the span count as needed
+            GridLayoutManager(this, 1) // Adjust the span count as needed
         binding.imageRecyclerView.adapter = imageRecyclerAdapter
 
         registerLauncher()
@@ -307,7 +307,7 @@ class AdInformationFour : AppCompatActivity() {
 
     // Fotoğraf Sıkıştırmak
     fun compressImage(image: Bitmap, maxFileSizeKB: Int): ByteArray? {
-        var compression: Float = 1.0f
+        var compression: Float = 3.0f
         val maxCompression: Float = 0.1f
         val maxFileSizeBytes = maxFileSizeKB * 1024
 

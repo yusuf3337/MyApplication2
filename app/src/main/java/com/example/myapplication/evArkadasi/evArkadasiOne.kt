@@ -9,6 +9,7 @@ import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.ContentView
 import androidx.annotation.RequiresApi
+import com.example.myapplication.Informations.AdInformationTwo
 import com.example.myapplication.R
 import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityEvArkadasiOneBinding
@@ -53,7 +54,8 @@ class evArkadasiOne : AppCompatActivity() {
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
 
-        val intent = intent
+        val intent = Intent(this, evArkadasiTwo::class.java)
+        startActivity(intent)
     }
 
 }

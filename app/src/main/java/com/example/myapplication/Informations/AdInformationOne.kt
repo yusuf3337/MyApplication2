@@ -1,5 +1,7 @@
 package com.example.myapplication.Informations
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -46,7 +48,7 @@ class AdInformationOne : AppCompatActivity() {
         val evDepozitoTutari = binding.evDepozitoTutari.text.toString()
 
         if (ilanBasligi.isEmpty() || fiyat.isEmpty() || m2.isEmpty() || odaSayisi.isEmpty() || binaYasi.isEmpty() || banyoSayisi.isEmpty() || balkon.isEmpty() || esyali.isEmpty() || binaAidatTutari.isEmpty() || evDepozitoTutari.isEmpty()) {
-            //showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
+            showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         } else {
             // Alanlar doluysa kayıt işlemini başlat
             SallerHomeSingelton.ilanBasligi = ilanBasligi
@@ -61,7 +63,6 @@ class AdInformationOne : AppCompatActivity() {
             SallerHomeSingelton.evDepozitoTutari = evDepozitoTutari
             SallerHomeSingelton.ilanKategorisi = kategori
 
-
             // Aidat yok !! Depozito
             if (SallerHomeSingelton.ilanBasligi != "" && SallerHomeSingelton.ilanfiyat != "" &&
                 SallerHomeSingelton.evM2 != "" && SallerHomeSingelton.odaSayisi != "" &&
@@ -75,5 +76,16 @@ class AdInformationOne : AppCompatActivity() {
                 // showAlertDialog("hata", "singleton veri yok ")
             }
         }
+    }
+
+    private fun showAlertDialog(title: String, message: String) {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle(title)
+        alertDialogBuilder.setMessage(message)
+        alertDialogBuilder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, _ ->
+            dialog.dismiss()
+        })
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 }

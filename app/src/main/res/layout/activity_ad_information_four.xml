@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Informations.AdInformationFour" >
+    tools:context=".Informations.AdInformationFour">
 
     <TextView
         android:id="@+id/textView19"
@@ -21,7 +22,27 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.723" />
+        app:layout_constraintVertical_bias="0.107" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imageRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fotoYukle"
+        android:layout_width="277dp"
+        android:layout_height="277dp"
+        android:onClick="fotoEkle"
+        app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/imageRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/imageRecyclerView"
+        app:srcCompat="@drawable/yukle" />
 
     <Button
         android:id="@+id/yayinButton"
@@ -30,48 +51,10 @@
         android:backgroundTint="#000000"
         android:onClick="firebaseButton"
         android:text="İlanı Yayına Gönder"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
-
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ev Fotoğrafı"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.911" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imageRecyclerView"
-        android:layout_width="409dp"
-        android:layout_height="360dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <ImageView
-        android:id="@+id/fotoYukle"
-        android:layout_width="193dp"
-        android:layout_height="131dp"
-        android:layout_marginBottom="132dp"
-        android:onClick="fotoEkle"
-        app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:srcCompat="@drawable/ic_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

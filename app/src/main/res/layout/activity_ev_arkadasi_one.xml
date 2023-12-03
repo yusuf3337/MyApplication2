@@ -37,6 +37,7 @@
                 android:layout_width="308dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="22dp"
+                app:boxStrokeColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imagerecyclerView3">
@@ -44,7 +45,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Adı-Soyadı" />
+                    android:hint="Adı-Soyadı"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -62,6 +64,7 @@
                 android:layout_width="308dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="12dp"
+                app:boxStrokeColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout45">
@@ -69,7 +72,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Şehir" />
+                    android:hint="Şehir"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -77,6 +81,7 @@
                 android:layout_width="308dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="12dp"
+                app:boxStrokeColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout46">
@@ -84,7 +89,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Üniversite Adı" />
+                    android:hint="Üniversite Adı"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +104,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Üniversite Bölümü" />
+                    android:hint="Üniversite Bölümü"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -109,24 +116,25 @@
                 android:text="İlan Vermeyi Onayla"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.679" />
+                app:layout_constraintVertical_bias="0.694" />
 
             <Button
-                android:onClick="evArkadasiDevam"
                 android:id="@+id/button4"
                 android:layout_width="330dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="#4CAF50"
+                android:onClick="evArkadasiDevam"
                 android:text="İlerle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button"
-                app:layout_constraintVertical_bias="0.045" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

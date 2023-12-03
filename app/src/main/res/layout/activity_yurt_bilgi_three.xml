@@ -21,7 +21,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.723" />
+        app:layout_constraintVertical_bias="0.787" />
+
 
     <Button
         android:id="@+id/yayinButton2"
@@ -33,11 +34,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
-
+        app:layout_constraintVertical_bias="0.926" />
 
     <TextView
         android:id="@+id/yurtText"
@@ -54,23 +54,25 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageRecyclerView2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="360dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.361" />
 
     <ImageView
         android:id="@+id/fotoYukle2"
-        android:layout_width="193dp"
-        android:layout_height="131dp"
+        android:layout_width="342dp"
+        android:layout_height="291dp"
         android:onClick="fotoEkle2"
         app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yurtText"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/imageRecyclerView2"
+        app:layout_constraintTop_toTopOf="@+id/imageRecyclerView2"
+        app:layout_constraintVertical_bias="0.507"
         app:srcCompat="@drawable/ic_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

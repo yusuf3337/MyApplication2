@@ -234,6 +234,7 @@ tools:context=".Informations.AdInformationTwo">
             android:layout_width="309dp"
             android:layout_height="64dp"
             android:layout_marginTop="10dp"
+            app:boxStrokeColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout35">
@@ -242,7 +243,8 @@ tools:context=".Informations.AdInformationTwo">
                 android:id="@+id/ilanSehiri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Evin Şehri" />
+                android:hint="Evin Şehri"
+                android:textColor="#000000" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
