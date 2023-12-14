@@ -53,7 +53,5 @@ class evArkadasiOne : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
-
     }
-
 }
