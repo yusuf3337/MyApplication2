@@ -111,4 +111,5 @@
         <item>Var</item>
         <item>Yok</item>
     </string-array>
+    <string name="title_activity_gunluk_kiralik">gunlukKiralik</string>
 </resources>
