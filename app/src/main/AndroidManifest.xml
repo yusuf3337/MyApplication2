@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:ignore="ExtraText"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".gunlukKiralikEv3"
+            android:exported="false" />
+        <activity
+            android:name=".gunlukKiralikEv2"
+            android:exported="false" />
         <activity
             android:name=".gunlukKiralikEv"
             android:exported="false" />
@@ -88,7 +94,7 @@
             android:exported="false" />
         <activity
             android:name=".gif.splashgif"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
