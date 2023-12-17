@@ -112,4 +112,5 @@
         <item>Yok</item>
     </string-array>
     <string name="title_activity_gunluk_kiralik">gunlukKiralik</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -83,8 +83,6 @@ class AdInformationTwo : AppCompatActivity() {
                 //showAlertDialog("hata", "singleton veri yok ")
             }
 
-
-
         }
     }
 
