@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:rotationY="0"
+    tools:context=".gunlukKiralikEv">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="941dp"
+        android:rotationY="0"
+        tools:layout_editor_absoluteY="1dp">
+
+      <ImageView
+          android:id="@+id/imageView12"
+          android:layout_width="213dp"
+          android:layout_height="155dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.109"
+          app:srcCompat="@drawable/evinkibris" />
+
+      <TextView
+          android:id="@+id/textView22"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:text="Günlük Kiralık Ev Bilgileri"
+          android:textColor="#000000"
+          android:textSize="22sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatCheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="252dp"
+          android:button="@drawable/wifi"
+          android:buttonTint="#00FF00"
+          android:text="Wifi"
+          android:textAlignment="textStart"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.066"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+
+      <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="252dp"
+          android:button="@drawable/sigara"
+          android:text="Sigara Kullanılabilir"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.933"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="332dp"
+          android:button="@drawable/pet"
+          android:text="Evcil Hayvan Kabul Edilir"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.066"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox5"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="332dp"
+          android:button="@drawable/otopark"
+          android:text="Sokakta/Binada Ücretsiz Otopark"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.937"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox6"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="416dp"
+          android:button="@drawable/yastik"
+          android:text="Fazladan Yastık Ve Battaniye"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.066"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox8"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="416dp"
+          android:button="@drawable/tv"
+          android:text="TV ve Projeksiyon"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.937"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox9"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="500dp"
+          android:button="@drawable/klima"
+          android:text="Klima"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.066"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <CheckBox
+          android:id="@+id/checkBox10"
+          android:layout_width="170dp"
+          android:layout_height="48dp"
+          android:layout_marginTop="500dp"
+          android:button="@drawable/sampuan"
+          android:text="Kişisel Temizlik Ürünleri"
+          android:textColor="#000000"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.937"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <Button
+          android:id="@+id/gunlukKiralikEvButton"
+          android:layout_width="330dp"
+          android:layout_height="56dp"
+          android:backgroundTint="#4CAF50"
+          android:onClick="gunlukEv"
+          android:text="İlerle"
+          android:textColor="#000000"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.649" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </LinearLayout>
+</ScrollView>

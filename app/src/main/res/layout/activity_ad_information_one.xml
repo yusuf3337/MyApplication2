@@ -200,7 +200,7 @@
                 android:id="@+id/devamButton"
                 android:layout_width="334dp"
                 android:layout_height="60dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#4CAF50"
                 android:onClick="goAdInformation2"
                 android:text="Devam"
                 android:textColor="#FFFFFF"

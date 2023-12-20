@@ -64,11 +64,13 @@ class Add : Fragment() {
         val object2 = addClass().apply { addImage = "satilikpng"; addTitle = "Satılık Ev İlanı Ver" ;addCategory = "Satılık"}
         val object3 = addClass().apply { addImage = "yurtilanpng"; addTitle = "Yurt Devr, İlanı Ver" ;addCategory = "Yurt"}
         val object4 = addClass().apply { addImage = "satilikpng"; addTitle = "Ev Arkadaşı Arıyorum" ;addCategory = "Ev Arkadaşı"}
+        val object5 = addClass().apply { addImage = "kiralikpng"; addTitle = "Günlük Kiralık Ev İlanı Ver" ;addCategory = "Günlük Kiralık" }
 
         addList.add(object1)
         addList.add(object2)
         addList.add(object3)
         addList.add(object4)
+        addList.add(object5)
 
         binding?.addRecylerView?.layoutManager = LinearLayoutManager(requireContext())
         addRecyclerAdapter = AddRecyclerAdapter(requireContext(), addList)

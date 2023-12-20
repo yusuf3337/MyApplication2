@@ -2,12 +2,12 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Switch
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Informations.AdInformationOne
 import com.example.myapplication.adapter.addClass
 import com.example.myapplication.databinding.AddReyclerViewBinding
 import com.example.myapplication.evArkadasi.evArkadasiOne
+import com.example.myapplication.gunlukKiralikEv
 import com.example.myapplication.yurt.YurtBilgiOne
 
 class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>) : RecyclerView.Adapter<AddRecyclerAdapter.AddHolder>() {
@@ -53,6 +53,11 @@ class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>)
                     intent.putExtra("Kategori", addList[position].addCategory)
                     context.startActivity(intent)
                 }
+                "Günlük Kiralık" ->{
+                    val intent = Intent(context, gunlukKiralikEv::class.java)
+                    intent.putExtra("Kategori", addList[position].addCategory)
+                    context.startActivity(intent)
+                }
             }
 
         }
@@ -60,4 +65,3 @@ class AddRecyclerAdapter(val context: Context, val addList: ArrayList<addClass>)
 
 
 }
-

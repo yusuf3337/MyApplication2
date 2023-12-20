@@ -14,11 +14,11 @@
         android:title="Add"
         android:icon="@drawable/ic_add"/>
     <item
-        android:id="@+id/Profile"
-        android:title="Profile"
-        android:icon="@drawable/ic_person"/>
-    <item
         android:id="@+id/Settings"
         android:title="Settings"
         android:icon="@drawable/ic_settings"/>
+    <item
+        android:id="@+id/Profile"
+        android:icon="@drawable/ic_person"
+        android:title="Profile" />
 </menu>
