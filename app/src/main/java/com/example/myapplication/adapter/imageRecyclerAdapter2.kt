@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityYurtBilgiThreeBinding
+import android.view.View
+
 
 class ImageRecyclerAdapter2(
     private val imageList: ArrayList<Uri>,
@@ -22,7 +24,17 @@ class ImageRecyclerAdapter2(
         return imageList.size
     }
 
-    override fun onBindViewHolder(holder: ImageHolder, position: Int) {
+    override fun onBindViewHolder(holder: ImageRecyclerAdapter2.ImageHolder, position: Int) {
+
+        // ImageView'ın URI'sini, bind edilmiş olan ImageView'a yükleyin.
         holder.binding.fotoYukle2.setImageURI(imageList[position])
+        holder.binding.yurtText2.visibility = View.GONE
+
+
+        // İsteğe bağlı olarak, bu kısmı kullanarak ImageView'a tıklandığında bir işlem gerçekleştirebilirsiniz.
+        holder.binding.fotoYukle2.setOnClickListener {
+            onDeleteClickListener.invoke(position)
+        }
     }
+
 }

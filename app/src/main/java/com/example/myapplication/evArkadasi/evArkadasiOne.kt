@@ -14,6 +14,7 @@ import com.example.myapplication.R
 import com.example.myapplication.adapter.ImageRecyclerAdapter
 import com.example.myapplication.databinding.ActivityEvArkadasiOneBinding
 import com.example.myapplication.databinding.ActivityYurtBilgiThreeBinding
+import com.example.myapplication.loginScreen.LoginPage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -53,5 +54,9 @@ class evArkadasiOne : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
+    }
+    fun evArkadasiDevam(){
+    val intent = Intent(this,evArkadasiTwo::class.java)
+    startActivity(intent)
     }
 }

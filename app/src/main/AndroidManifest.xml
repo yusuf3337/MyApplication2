@@ -36,13 +36,13 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".gunlukKiralikEv3"
+            android:name=".gunlukEv.gunlukKiralikEv3"
             android:exported="false" />
         <activity
-            android:name=".gunlukKiralikEv2"
+            android:name=".gunlukEv.gunlukKiralikEv2"
             android:exported="false" />
         <activity
-            android:name=".gunlukKiralikEv"
+            android:name=".gunlukEv.gunlukKiralikEv"
             android:exported="false" />
         <activity
             android:name=".evArkadasi.evArkadasiFour"

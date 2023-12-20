@@ -1,9 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.gunlukEv
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.myapplication.R
 
 class gunlukKiralikEv2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

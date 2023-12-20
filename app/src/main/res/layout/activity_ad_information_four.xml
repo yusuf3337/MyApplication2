@@ -48,15 +48,17 @@
                 app:layout_constraintVertical_bias="0.269" />
 
             <ImageView
-        android:id="@+id/fotoYukle"
-        android:layout_width="277dp"
-        android:layout_height="277dp"
-        android:onClick="fotoEkle"
-        app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView"
-        app:layout_constraintStart_toStartOf="@+id/imageRecyclerView"
-        app:layout_constraintTop_toTopOf="@+id/imageRecyclerView"
-        app:srcCompat="@drawable/yukle" />
+                android:id="@+id/fotoYukle"
+                android:layout_width="277dp"
+                android:layout_height="277dp"
+                android:onClick="fotoEkle"
+                app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
+                app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView"
+                app:layout_constraintStart_toStartOf="@+id/imageRecyclerView"
+                app:layout_constraintTop_toTopOf="@+id/imageRecyclerView"
+                app:srcCompat="@drawable/yukle"
+                android:contentDescription="Fotoğraf yükleme butonu" />
+
 
             <Button
                 android:id="@+id/yayinButton"

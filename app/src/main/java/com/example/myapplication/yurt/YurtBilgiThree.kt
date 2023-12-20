@@ -19,11 +19,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.Singelton
 import com.example.myapplication.YurtDevirSingleton
-import com.example.myapplication.adapter.ImageRecyclerAdapter
+import com.example.myapplication.adapter.ImageRecyclerAdapter2
 import com.example.myapplication.databinding.ActivityYurtBilgiThreeBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -43,8 +44,8 @@ class YurtBilgiThree : AppCompatActivity() {
     private lateinit var binding: ActivityYurtBilgiThreeBinding
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
-    private lateinit var imageRecyclerAdapter: ImageRecyclerAdapter
-    private val selectedImages = ArrayList<Uri>()
+    private lateinit var imageRecyclerAdapter2: ImageRecyclerAdapter2
+    private val selectedImages2 = ArrayList<Uri>()
     private var selectedPicture: Uri? = null
 
     private lateinit var auth: FirebaseAuth
@@ -69,15 +70,16 @@ class YurtBilgiThree : AppCompatActivity() {
         firebaseStorage = FirebaseStorage.getInstance()
 
         // RecyclerView için adaptör ve layoutManager oluşturuluyor
-        imageRecyclerAdapter = ImageRecyclerAdapter(selectedImages) { position ->
+        imageRecyclerAdapter2 = ImageRecyclerAdapter2(selectedImages2) { position ->
             // Handle the deletion of the image at the specified position
-            selectedImages.removeAt(position)
-            imageRecyclerAdapter.notifyDataSetChanged()
+            selectedImages2.removeAt(position)
+            imageRecyclerAdapter2.notifyDataSetChanged()
             updateFotoYukle2Visibility()
         }
-        binding.imageRecyclerView2.layoutManager =
-            GridLayoutManager(this, 3)
-        binding.imageRecyclerView2.adapter = imageRecyclerAdapter
+        binding.imageRecyclerView2.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.imageRecyclerView2.adapter = imageRecyclerAdapter2
+
+
 
         registerLauncher()
         updateFotoYukle2Visibility()
@@ -96,7 +98,7 @@ class YurtBilgiThree : AppCompatActivity() {
     }
 
     private fun updateFotoYukle2Visibility() {
-        if (selectedImages.isNotEmpty()) {
+        if (selectedImages2.isNotEmpty()) {
             binding.fotoYukle2.visibility = View.GONE
         } else {
             binding.fotoYukle2.visibility = View.VISIBLE
@@ -104,7 +106,7 @@ class YurtBilgiThree : AppCompatActivity() {
     }
 
     fun fotoEkle2(view: View) {
-        if (selectedImages.size >= 5) {
+        if (selectedImages2.size >= 5) {
             showToast("You can select up to 5 photos.")
             return
         }
@@ -138,8 +140,8 @@ class YurtBilgiThree : AppCompatActivity() {
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
             val intentFromResult = data?.data
             intentFromResult?.let { uri ->
-                selectedImages.add(uri)
-                imageRecyclerAdapter.notifyDataSetChanged()
+                selectedImages2.add(uri)
+                imageRecyclerAdapter2.notifyDataSetChanged()
                 updateFotoYukle2Visibility()
             }
         }
@@ -152,8 +154,8 @@ class YurtBilgiThree : AppCompatActivity() {
                 if (result.resultCode == RESULT_OK) {
                     val intentFromResult = result.data
                     intentFromResult?.data?.let { uri ->
-                        selectedImages.add(uri)
-                        imageRecyclerAdapter.notifyDataSetChanged()
+                        selectedImages2.add(uri)
+                        imageRecyclerAdapter2.notifyDataSetChanged()
                         updateFotoYukle2Visibility()
                     }
                 }
@@ -172,14 +174,14 @@ class YurtBilgiThree : AppCompatActivity() {
     }
 
     fun firebaseButton2(view: View) {
-        if (selectedImages.isEmpty()) {
+        if (selectedImages2.isEmpty()) {
             showToast("Please select at least one photo.")
             return
         }
 
         val compressedImages = mutableListOf<ByteArray>()
 
-        for (uri in selectedImages) {
+        for (uri in selectedImages2) {
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
             val compressedImage = compressImage(bitmap, 200)
             compressedImage?.let { compressedImages.add(it) }
