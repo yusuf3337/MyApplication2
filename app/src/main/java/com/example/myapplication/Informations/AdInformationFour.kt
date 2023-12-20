@@ -1,6 +1,5 @@
 package com.example.myapplication.Informations
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -98,6 +97,14 @@ class AdInformationFour : AppCompatActivity() {
             .show()
     }
 
+    private fun updateFotoYukleVisibility() {
+        if (selectedImages.isNotEmpty()) {
+            binding.fotoYukle.visibility = View.GONE
+        } else {
+            binding.fotoYukle.visibility = View.VISIBLE
+        }
+    }
+
     fun fotoEkle(view: View) {
         if (selectedImages.size >= 5) {
             showToast("You can select up to 5 photos.")
@@ -106,33 +113,25 @@ class AdInformationFour : AppCompatActivity() {
 
         if (ContextCompat.checkSelfPermission(
                 this,
-                Manifest.permission.READ_MEDIA_IMAGES
+                android.Manifest.permission.READ_MEDIA_IMAGES
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
-                    Manifest.permission.READ_MEDIA_IMAGES
+                    android.Manifest.permission.READ_MEDIA_IMAGES
                 )
             ) {
                 Snackbar.make(view, "Gallery için izin gereklidir", Snackbar.LENGTH_INDEFINITE)
                     .setAction("İzni Ver") {
-                        permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                        permissionLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
                     }.show()
             } else {
-                permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                permissionLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
             }
         } else {
             val intentToGallery =
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intentToGallery)
-        }
-    }
-
-    private fun updateFotoYukleVisibility() {
-        if (selectedImages.isNotEmpty()) {
-            binding.fotoYukle.visibility = View.GONE
-        } else {
-            binding.fotoYukle.visibility = View.VISIBLE
         }
     }
 
@@ -204,7 +203,7 @@ class AdInformationFour : AppCompatActivity() {
         for ((index, image) in images.withIndex()) {
             val photoStorage = FirebaseStorage.getInstance()
             val storageReference = photoStorage.reference
-            val mediaFolder = storageReference.child("homePhoto")
+            val mediaFolder = storageReference.child("Kiralık_Photo")
 
             val photoFileName = "$customDocumentName-$index.jpg"
             val photoReference = mediaFolder.child(photoFileName)
@@ -212,28 +211,25 @@ class AdInformationFour : AppCompatActivity() {
             val uploadTask = photoReference.putBytes(image)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Başarılı
                         photoReference.downloadUrl.addOnCompleteListener { urlTask ->
                             if (urlTask.isSuccessful) {
                                 val urlString = urlTask.result.toString()
                                 photoURLs.add(urlString)
 
                                 if (photoURLs.size == images.size) {
-                                    // Tüm resimler yüklendi, Firestore'u güncelle
+                                    // All images uploaded, now update Firestore
                                     updateFirestore(customDocumentName, photoURLs)
                                 }
                             } else {
-                                // URL alımı başarısız
+                                // Handle URL retrieval failure
                                 val error = urlTask.exception
                                 println("URL Hatası: $error")
-                                showToast("Error getting URL: ${error?.message}")
                             }
                         }
                     } else {
-                        // Yükleme başarısız
+                        // Handle upload failure
                         val error = task.exception
                         println("Yükleme Hatası: $error")
-                        showToast("Error uploading image: ${error?.message}")
                     }
                 }
         }
@@ -306,27 +302,25 @@ class AdInformationFour : AppCompatActivity() {
 
     // Fotoğraf Sıkıştırmak
     fun compressImage(image: Bitmap, maxFileSizeKB: Int): ByteArray? {
-        var compression: Float = 0.8f // Örnek bir başlangıç değeri
+        var compression: Float = 1.0f
         val maxCompression: Float = 0.1f
         val maxFileSizeBytes = maxFileSizeKB * 1024
 
-        val imageData = ByteArrayOutputStream()
+        val outputStream = ByteArrayOutputStream()
 
-        try {
-            image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), imageData)
+        while (true) {
+            image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), outputStream)
+            val imageData = outputStream.toByteArray()
 
-            while (imageData.size() > maxFileSizeBytes && compression > maxCompression) {
-                imageData.reset()
-                compression -= 0.1f
-                image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), imageData)
+            if (imageData.size <= maxFileSizeBytes || compression <= maxCompression) {
+                break
             }
 
-            return imageData.toByteArray()
-        } finally {
-            imageData.close()
+            outputStream.reset()
+            compression -= 0.1f
         }
+
+        return outputStream.toByteArray()
     }
-
-
 }
 

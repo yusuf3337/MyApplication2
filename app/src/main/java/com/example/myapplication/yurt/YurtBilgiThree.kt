@@ -1,6 +1,5 @@
 package com.example.myapplication.yurt
 
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -28,6 +27,7 @@ import com.example.myapplication.adapter.ImageRecyclerAdapter2
 import com.example.myapplication.databinding.ActivityYurtBilgiThreeBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
@@ -252,8 +252,16 @@ class YurtBilgiThree : AppCompatActivity() {
             "yurtGirisCikisSaatlari" to YurtDevirSingleton.yurtGirisCikisSaatlari,
             "yurtBlokVarmi" to YurtDevirSingleton.yurtBlokVarmi,
             "kizErkekKarisikMi" to YurtDevirSingleton.kizErkekKarisikMi,
-            "yurtilanAciklamasi" to YurtDevirSingleton.yurtilanAciklamasi
-        )
+            "yurtilanAciklamasi" to YurtDevirSingleton.yurtilanAciklamasi,
+            "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
+            "ilanNumarasi" to 997756,
+            "doping" to 0,
+            "acilAcilDoping" to 0,
+            "dopingCerceve" to 0,
+            "dopingYazisi" to "",
+            "gosterimSayisi" to 0
+
+            )
         db.collection("ilanlar").document(customDocumentName)
             .set(docData2)
             .addOnSuccessListener {

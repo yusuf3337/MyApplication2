@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="916dp"
+            android:layout_height="720dp"
             android:rotationY="0"
             tools:layout_editor_absoluteY="1dp">
 
@@ -25,25 +25,23 @@
                 android:id="@+id/yurtText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yurt Fotoğrafı Yüklemek İçin Lütfen '+' Simgesine Dokunun!"
+                android:text="Yurt Fotoğrafı Yükleyin"
                 android:textAlignment="center"
                 android:textColor="#C8BDBD"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.567" />
+                app:layout_constraintVertical_bias="0.048" />
 
             <Button
                 android:id="@+id/yayinButton2"
                 android:layout_width="334dp"
                 android:layout_height="60dp"
                 android:backgroundTint="#4CAF50"
-                android:onClick="firebaseButton"
+                android:onClick="firebaseButton2"
                 android:text="İlanı Yayına Gönder"
                 android:textColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -51,20 +49,7 @@
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.658" />
-
-            <TextView
-        android:id="@+id/yurtText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yurt Fotoğrafı"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+                app:layout_constraintVertical_bias="0.85" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imageRecyclerView2"
@@ -75,16 +60,17 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.183" />
+                app:layout_constraintVertical_bias="0.3" />
 
             <ImageView
                 android:id="@+id/fotoYukle2"
-                android:layout_width="342dp"
-                android:layout_height="291dp"
+                android:layout_width="310dp"
+                android:layout_height="239dp"
                 android:onClick="fotoEkle2"
+                android:contentDescription="Fotoğraf yükleme butonu2"
                 app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.477"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="@+id/imageRecyclerView2"
                 app:layout_constraintTop_toTopOf="@+id/imageRecyclerView2"
                 app:layout_constraintVertical_bias="0.507"

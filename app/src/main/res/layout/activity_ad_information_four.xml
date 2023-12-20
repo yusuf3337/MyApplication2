@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="916dp"
+            android:layout_height="701dp"
             android:rotationY="0"
             tools:layout_editor_absoluteY="1dp">
 
@@ -24,17 +24,16 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ev Fotoğrafı Yüklemek İçin Lütfen Bulut Simgesine Dokunun!"
+                android:text="Ev Fotoğrafı Yükleyin"
                 android:textAlignment="center"
                 android:textColor="#C8BDBD"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.037" />
+                app:layout_constraintVertical_bias="0.071" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imageRecyclerView"
@@ -51,20 +50,20 @@
                 android:id="@+id/fotoYukle"
                 android:layout_width="277dp"
                 android:layout_height="277dp"
+                android:contentDescription="Fotoğraf yükleme butonu"
                 android:onClick="fotoEkle"
                 app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
                 app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView"
                 app:layout_constraintStart_toStartOf="@+id/imageRecyclerView"
                 app:layout_constraintTop_toTopOf="@+id/imageRecyclerView"
-                app:srcCompat="@drawable/yukle"
-                android:contentDescription="Fotoğraf yükleme butonu" />
+                app:srcCompat="@drawable/yukle" />
 
 
             <Button
                 android:id="@+id/yayinButton"
                 android:layout_width="334dp"
                 android:layout_height="60dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#4CAF50"
                 android:onClick="firebaseButton"
                 android:text="İlanı Yayına Gönder"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +71,7 @@
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.655" />
+                app:layout_constraintVertical_bias="0.817" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
