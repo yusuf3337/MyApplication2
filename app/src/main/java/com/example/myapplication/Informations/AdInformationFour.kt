@@ -78,9 +78,9 @@ class AdInformationFour : AppCompatActivity() {
             updateFotoYukleVisibility()
         }
 
-        binding.imageRecyclerView.layoutManager =
-            GridLayoutManager(this, 1) // Adjust the span count as needed
+        binding.imageRecyclerView.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         binding.imageRecyclerView.adapter = imageRecyclerAdapter
+
 
         registerLauncher()
         updateFotoYukleVisibility()
@@ -212,25 +212,28 @@ class AdInformationFour : AppCompatActivity() {
             val uploadTask = photoReference.putBytes(image)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        // Başarılı
                         photoReference.downloadUrl.addOnCompleteListener { urlTask ->
                             if (urlTask.isSuccessful) {
                                 val urlString = urlTask.result.toString()
                                 photoURLs.add(urlString)
 
                                 if (photoURLs.size == images.size) {
-                                    // All images uploaded, now update Firestore
+                                    // Tüm resimler yüklendi, Firestore'u güncelle
                                     updateFirestore(customDocumentName, photoURLs)
                                 }
                             } else {
-                                // Handle URL retrieval failure
+                                // URL alımı başarısız
                                 val error = urlTask.exception
                                 println("URL Hatası: $error")
+                                showToast("Error getting URL: ${error?.message}")
                             }
                         }
                     } else {
-                        // Handle upload failure
+                        // Yükleme başarısız
                         val error = task.exception
                         println("Yükleme Hatası: $error")
+                        showToast("Error uploading image: ${error?.message}")
                     }
                 }
         }
@@ -238,11 +241,9 @@ class AdInformationFour : AppCompatActivity() {
 
     fun updateFirestore(customDocumentName: String, photoURLs: List<String>) {
         val db = FirebaseFirestore.getInstance()
-
-
         val docData = hashMapOf(
             "photoURLs" to photoURLs,
-            "isActive" to 0,
+            "isActive" to 3,
             "ilanBasligi" to SallerHomeSingelton.ilanBasligi,
             "ilanFiyat" to SallerHomeSingelton.ilanfiyat,
             "evM2" to SallerHomeSingelton.evM2,
@@ -266,7 +267,7 @@ class AdInformationFour : AppCompatActivity() {
 // "ilanSahibi" to userInfo, // Eğer userInfo bir değişkense ekleyebilirsiniz
             "ilanYuklemeTarihi" to FieldValue.serverTimestamp(),
             "ilanKategorisi" to SallerHomeSingelton.ilanKategorisi,
-            "ilanNumarasi" to 123456,
+            "ilanNumarasi" to 997755,
             "ilanParaBirimi" to SallerHomeSingelton.ilanParabirimi,
             "ilanKiraMinSuresi" to SallerHomeSingelton.minumumKiraSuresi,
             "aylikAidatParaBirimi" to SallerHomeSingelton.aidatParaBirimi,
@@ -287,11 +288,9 @@ class AdInformationFour : AppCompatActivity() {
                         .document(customDocumentName)
                         .set(docData)
                         .addOnSuccessListener {
-                            // İşlem başarılı
                             showToast("Ad successfully added to Firebase.")
                         }
                         .addOnFailureListener { e ->
-                            // Handle Firestore update failure
                             println("Firestore Güncelleme Hatası: $e")
                             showToast("Error updating Firestore.")
                         }
@@ -307,25 +306,27 @@ class AdInformationFour : AppCompatActivity() {
 
     // Fotoğraf Sıkıştırmak
     fun compressImage(image: Bitmap, maxFileSizeKB: Int): ByteArray? {
-        var compression: Float = 3.0f
+        var compression: Float = 0.8f // Örnek bir başlangıç değeri
         val maxCompression: Float = 0.1f
         val maxFileSizeBytes = maxFileSizeKB * 1024
 
-        val outputStream = ByteArrayOutputStream()
+        val imageData = ByteArrayOutputStream()
 
-        while (true) {
-            image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), outputStream)
-            val imageData = outputStream.toByteArray()
+        try {
+            image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), imageData)
 
-            if (imageData.size <= maxFileSizeBytes || compression <= maxCompression) {
-                break
+            while (imageData.size() > maxFileSizeBytes && compression > maxCompression) {
+                imageData.reset()
+                compression -= 0.1f
+                image.compress(Bitmap.CompressFormat.JPEG, (compression * 100).toInt(), imageData)
             }
 
-            outputStream.reset()
-            compression -= 0.1f
+            return imageData.toByteArray()
+        } finally {
+            imageData.close()
         }
-
-        return outputStream.toByteArray()
     }
+
+
 }
 

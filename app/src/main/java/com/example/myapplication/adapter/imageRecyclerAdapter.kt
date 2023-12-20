@@ -26,14 +26,16 @@ class ImageRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        val imageView = ImageView(holder.binding.root.context)
-        imageView.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        imageView.setImageURI(imageList[position])
-        holder.binding.imageRecyclerView.addView(imageView)
+
+        // ImageView'ın URI'sini, bind edilmiş olan ImageView'a yükleyin.
+        holder.binding.fotoYukle.setImageURI(imageList[position])
+
+        // İsteğe bağlı olarak, bu kısmı kullanarak ImageView'a tıklandığında bir işlem gerçekleştirebilirsiniz.
+        holder.binding.fotoYukle.setOnClickListener {
+            onDeleteClickListener.invoke(position)
+        }
     }
+
     /*override fun onBindViewHolder(holder: ImageHolder, position: Int) {
         holder.binding.fotoYukle.setImageURI(imageList[position])
         holder.binding.executePendingBindings()
