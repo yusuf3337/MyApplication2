@@ -173,7 +173,7 @@ class AdInformationFour : AppCompatActivity() {
                 }
             }
     }
-
+    /// Dikkat SIM TELEGON ILE WIFI SORUNU YASANIYOR
     fun firebaseButton(view: View) {
         if (selectedImages.isEmpty()) {
             showToast("Please select at least one photo.")
