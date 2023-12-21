@@ -16,47 +16,47 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="916dp"
+            android:layout_height="820dp"
             android:rotationY="0"
             tools:layout_editor_absoluteY="1dp">
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="Ev Bilgileri"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="44dp"
+                android:text="Ev Bilgileri"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Ev Fotoğrafı Ekleme"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ev Fotoğrafı Ekleme"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="Adım; 3-3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:text="Adım; 3-3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/imageRecyclerView2"
+                android:id="@+id/evArkadasiImage"
                 android:layout_width="0dp"
                 android:layout_height="360dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -67,96 +67,97 @@
                 app:layout_constraintVertical_bias="0.258" />
 
             <ImageView
-        android:id="@+id/fotoYukle2"
-        android:layout_width="263dp"
-        android:layout_height="175dp"
-        android:onClick="fotoEkle3"
-        app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/imageRecyclerView2"
-        app:layout_constraintTop_toTopOf="@+id/imageRecyclerView2"
-        app:layout_constraintVertical_bias="0.522"
-        app:srcCompat="@drawable/yukle" />
+                android:id="@+id/evArkadasiFoto"
+                android:layout_width="263dp"
+                android:layout_height="175dp"
+                android:onClick="fotoEkle3"
+                app:layout_constraintBottom_toBottomOf="@+id/evArkadasiImage"
+                app:layout_constraintEnd_toEndOf="@+id/evArkadasiImage"
+                app:layout_constraintStart_toStartOf="@+id/evArkadasiImage"
+                app:layout_constraintTop_toTopOf="@+id/evArkadasiImage"
+                app:layout_constraintVertical_bias="0.522"
+                app:srcCompat="@drawable/yukle" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout54"
-        android:layout_width="400dp"
-        android:layout_height="64dp"
-        app:boxStrokeColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView2"
-        app:layout_constraintVertical_bias="0.0">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout54"
+                android:layout_width="361dp"
+                android:layout_height="61dp"
+                app:boxStrokeColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.48"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/evArkadasiImage"
+                app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Şehir/Bölge Seçiniz"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Şehir/Bölge Seçiniz"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout55"
-        android:layout_width="133dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:boxStrokeColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout55"
+                android:layout_width="133dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout54"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fiyat:75.000"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fiyat:75.000"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout56"
-        android:layout_width="133dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout55"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout56"
+                android:layout_width="133dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayout55"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Birim" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Birim" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="135dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout56"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="95dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout54"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayout56"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout54">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="12Ay" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="12Ay" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="334dp"
                 android:layout_height="60dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#4CAF50"
                 android:text="Ön İzle"
+                android:onClick="evArkadasiFirebase"
+                android:textColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.761" />
+                app:layout_constraintVertical_bias="0.827" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

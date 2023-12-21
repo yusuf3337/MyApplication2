@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.myapplication.EvArkadasiSingelton
+import com.example.myapplication.EvArkSingleton
 import com.example.myapplication.databinding.ActivityEvArkadasiTwoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,32 +29,31 @@ class evArkadasiTwo : AppCompatActivity() {
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
 
-        val intent = intent
     }
     fun evArkadasi2Devam(view: View) {
         var tercihEdilenCinsiyet = binding.tercihEdilenCinsiyet.text.toString()
-        var tercihEdilenYas = binding.tercihEdilenYas.text.toString()
+        var tercihEdilenYasAraligi = binding.tercihEdilenYas.text.toString()
         var alkolKullanimi = binding.alkolKullanimi.text.toString()
         var sigaraKullanimi = binding.sigaraKullanimi.text.toString()
-        var tercihEdilenUniversiteBolumu = binding.tercihEdilenUniversiteBolumu.text.toString()
+        var universiteBolumu = binding.tercihEdilenUniversiteBolumu.text.toString()
         var tercihEdilenUyruk = binding.tercihEdilenUyruk.text.toString()
 
-        if (tercihEdilenCinsiyet.isEmpty() || tercihEdilenYas.isEmpty() || alkolKullanimi.isEmpty() || sigaraKullanimi.isEmpty() || tercihEdilenUniversiteBolumu.isEmpty() || tercihEdilenUyruk.isEmpty()){
+        if (tercihEdilenCinsiyet.isEmpty() || tercihEdilenYasAraligi.isEmpty() || alkolKullanimi.isEmpty() || sigaraKullanimi.isEmpty() || universiteBolumu.isEmpty() || tercihEdilenUyruk.isEmpty()){
             //showAlertDialog("Hata!", "Lütfen Alanları Doldurunuz")
         }else {
             // Alanlar doluysa kayıt işlemini başlat
-            EvArkadasiSingelton.tercihEdilenCinsiyet = tercihEdilenCinsiyet
-            EvArkadasiSingelton.tercihEdilenYas = tercihEdilenYas
-            EvArkadasiSingelton.alkolKullanimi = alkolKullanimi
-            EvArkadasiSingelton.sigaraKullanimi = sigaraKullanimi
-            EvArkadasiSingelton.tercihEdilenUniversiteBolumu = tercihEdilenUniversiteBolumu
-            EvArkadasiSingelton.tercihEdilenUyruk = tercihEdilenUyruk
+            EvArkSingleton.tercihEdilenCinsiyet = tercihEdilenCinsiyet
+            EvArkSingleton.tercihEdilenYasAraligi = tercihEdilenYasAraligi
+            EvArkSingleton.alkolKullanimi = alkolKullanimi
+            EvArkSingleton.sigaraKullanimi = sigaraKullanimi
+            EvArkSingleton.universiteBolumu = universiteBolumu
+            EvArkSingleton.tercihEdilenUyruk = tercihEdilenUyruk
 
             //Aidat yok !! Depozito
 
-            if (EvArkadasiSingelton.tercihEdilenCinsiyet != "" && EvArkadasiSingelton.tercihEdilenYas != "" &&
-                EvArkadasiSingelton.alkolKullanimi != "" && EvArkadasiSingelton.sigaraKullanimi != "" &&
-                EvArkadasiSingelton.tercihEdilenUniversiteBolumu != "" && EvArkadasiSingelton.tercihEdilenUyruk != ""
+            if (EvArkSingleton.tercihEdilenCinsiyet != "" && EvArkSingleton.tercihEdilenYasAraligi != "" &&
+                EvArkSingleton.alkolKullanimi != "" && EvArkSingleton.sigaraKullanimi != "" &&
+                EvArkSingleton.universiteBolumu != "" && EvArkSingleton.tercihEdilenUyruk != ""
                 ){
                 val intent = Intent(this, evArkadasiThree::class.java)
                 startActivity(intent)

@@ -55,7 +55,7 @@ class evArkadasiOne : AppCompatActivity() {
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
     }
-    fun evArkadasiDevam(){
+    fun evArkadasiDevam(view: View){
     val intent = Intent(this,evArkadasiTwo::class.java)
     startActivity(intent)
     }
