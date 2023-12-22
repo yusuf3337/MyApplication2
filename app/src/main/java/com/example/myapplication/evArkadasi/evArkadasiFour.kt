@@ -102,7 +102,7 @@ class evArkadasiFour : AppCompatActivity() {
             binding.evArkadasiFoto.visibility = View.VISIBLE
         }
     }
-    fun evArkadasiFoto(view: View) {
+    fun fotoEkle3(view: View) {
         if (selectedImages3.size >= 5) {
             showToast("You can select up to 5 photos.")
             return
