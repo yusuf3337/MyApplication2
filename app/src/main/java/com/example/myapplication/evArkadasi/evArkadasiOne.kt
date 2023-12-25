@@ -28,17 +28,12 @@ class evArkadasiOne : AppCompatActivity() {
         private const val GALLERY_REQUEST_CODE = 123 // Bu kodu değiştirebilirsiniz
     }
     private lateinit var binding: ActivityEvArkadasiOneBinding
-    private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var permissionLauncher: ActivityResultLauncher<String>
-    private lateinit var imageRecyclerAdapter: ImageRecyclerAdapter
-    private val selectedImages = ArrayList<Uri>()
-    private var selectedPicture: Uri? = null
+
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseDB: FirebaseFirestore
     private lateinit var firebaseStorage: FirebaseStorage
 
-    var formattedDateTime = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +41,6 @@ class evArkadasiOne : AppCompatActivity() {
         binding = ActivityEvArkadasiOneBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        val localDateTime = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        formattedDateTime = localDateTime.format(formatter)
 
         auth = FirebaseAuth.getInstance()
         firebaseDB = FirebaseFirestore.getInstance()

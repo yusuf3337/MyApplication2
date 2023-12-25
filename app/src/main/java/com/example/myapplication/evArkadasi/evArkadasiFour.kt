@@ -73,14 +73,14 @@ class evArkadasiFour : AppCompatActivity() {
         evArkadasiRecyclerAdapter = evArkadasiRecyclerAdapter(selectedImages3) { position ->
             selectedImages3.removeAt(position)
             evArkadasiRecyclerAdapter.notifyDataSetChanged()
-            updateFotoYukle3Visibility()
+            updateevArkadasiFoto2Visibility()
         }
 
         binding.evArkadasiImage.layoutManager = LinearLayoutManager(this)
         binding.evArkadasiImage.adapter = evArkadasiRecyclerAdapter
 
         registerLauncher2()
-        updateFotoYukle3Visibility()
+        updateevArkadasiFoto2Visibility()
     }
 
     private fun showToast(message: String) {
@@ -95,14 +95,14 @@ class evArkadasiFour : AppCompatActivity() {
             .show()
     }
 
-    private fun updateFotoYukle3Visibility() {
+    private fun updateevArkadasiFoto2Visibility() {
         if (selectedImages3.isNotEmpty()) {
             binding.evArkadasiFoto.visibility = View.GONE
         }else{
             binding.evArkadasiFoto.visibility = View.VISIBLE
         }
     }
-    fun fotoEkle3(view: View) {
+    fun evArkadasiFoto2(view: View) {
         if (selectedImages3.size >= 5) {
             showToast("You can select up to 5 photos.")
             return
@@ -138,7 +138,7 @@ class evArkadasiFour : AppCompatActivity() {
             intentFromResult?.let { uri ->
                 selectedImages3.add(uri)
                 evArkadasiRecyclerAdapter.notifyDataSetChanged()
-                updateFotoYukle3Visibility()
+                updateevArkadasiFoto2Visibility()
             }
         }
     }
@@ -151,7 +151,7 @@ class evArkadasiFour : AppCompatActivity() {
                     intentFromResult?.data?.let { uri ->
                         selectedImages3.add(uri)
                         evArkadasiRecyclerAdapter.notifyDataSetChanged()
-                        updateFotoYukle3Visibility()
+                        updateevArkadasiFoto2Visibility()
                     }
                 }
             })

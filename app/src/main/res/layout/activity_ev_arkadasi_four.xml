@@ -152,7 +152,7 @@
                 android:id="@+id/evArkadasiFoto"
                 android:layout_width="266dp"
                 android:layout_height="234dp"
-                android:onClick="fotoEkle3"
+                android:onClick="evArkadasiFoto2"
                 app:layout_constraintBottom_toBottomOf="@+id/evArkadasiImage"
                 app:layout_constraintEnd_toEndOf="@+id/evArkadasiImage"
                 app:layout_constraintStart_toStartOf="@+id/evArkadasiImage"

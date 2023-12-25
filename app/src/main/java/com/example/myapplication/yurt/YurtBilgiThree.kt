@@ -1,5 +1,6 @@
 package com.example.myapplication.yurt
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -7,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
@@ -17,9 +19,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.SallerHomeSingelton
 import com.example.myapplication.Singelton
 import com.example.myapplication.YurtDevirSingleton
@@ -35,11 +37,31 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+class HorizontalRecyclerView : RecyclerView {
+
+    constructor(context: Context) : super(context) {
+        initialize()
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        initialize()
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
+        initialize()
+    }
+
+    private fun initialize() {
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
+}
+
 class YurtBilgiThree : AppCompatActivity() {
 
     companion object {
         private const val GALLERY_REQUEST_CODE = 123 // Bu kodu değiştirebilirsiniz
     }
+
 
     private lateinit var binding: ActivityYurtBilgiThreeBinding
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
@@ -69,9 +91,7 @@ class YurtBilgiThree : AppCompatActivity() {
         firebaseDB = FirebaseFirestore.getInstance()
         firebaseStorage = FirebaseStorage.getInstance()
 
-        // RecyclerView için adaptör ve layoutManager oluşturuluyor
         imageRecyclerAdapter2 = ImageRecyclerAdapter2(selectedImages2) { position ->
-            // Handle the deletion of the image at the specified position
             selectedImages2.removeAt(position)
             imageRecyclerAdapter2.notifyDataSetChanged()
             updateFotoYukle2Visibility()
@@ -79,7 +99,8 @@ class YurtBilgiThree : AppCompatActivity() {
         binding.imageRecyclerView2.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         binding.imageRecyclerView2.adapter = imageRecyclerAdapter2
 
-
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.imageRecyclerView2)
 
         registerLauncher()
         updateFotoYukle2Visibility()
@@ -106,7 +127,7 @@ class YurtBilgiThree : AppCompatActivity() {
     }
 
     fun fotoEkle2(view: View) {
-        if (selectedImages2.size >= 5) {
+        if (selectedImages2.size >= 10) {
             showToast("You can select up to 5 photos.")
             return
         }
@@ -217,17 +238,14 @@ class YurtBilgiThree : AppCompatActivity() {
                                 photoURLs.add(urlString)
 
                                 if (photoURLs.size == images.size) {
-                                    // All images uploaded, now update Firestore
                                     updateFirestore2(customDocumentName, photoURLs)
                                 }
                             } else {
-                                // Handle URL retrieval failure
                                 val error = urlTask.exception
                                 println("URL Hatası: $error")
                             }
                         }
                     } else {
-                        // Handle upload failure
                         val error = task.exception
                         println("Yükleme Hatası: $error")
                     }
@@ -260,35 +278,30 @@ class YurtBilgiThree : AppCompatActivity() {
             "dopingCerceve" to 0,
             "dopingYazisi" to "",
             "gosterimSayisi" to 0
+        )
 
-            )
         db.collection("ilanlar").document(customDocumentName)
             .set(docData2)
             .addOnSuccessListener {
-                // İşlem başarılı
                 SallerHomeSingelton.ilanKategorisi?.let { it1 ->
                     db.collection(it1)
                         .document(customDocumentName)
                         .set(docData2)
                         .addOnSuccessListener {
-                            // İşlem başarılı
                             showToast("Ad successfully added to Firebase.")
                         }
                         .addOnFailureListener { e ->
-                            // Handle Firestore update failure
                             println("Firestore Güncelleme Hatası: $e")
                             showToast("Error updating Firestore.")
                         }
                 }
             }
             .addOnFailureListener { e ->
-                // Handle Firestore set failure
                 println("Firestore Ayarlama Hatası: $e")
                 showToast("Error setting Firestore document.")
             }
     }
 
-    // Foto Sıkıştırıcı
     fun compressImage(image: Bitmap, maxFileSizeKB: Int): ByteArray? {
         var compression: Float = 1.0f
         val maxCompression: Float = 0.1f

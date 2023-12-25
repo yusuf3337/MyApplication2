@@ -55,10 +55,10 @@
                 app:layout_constraintVertical_bias="0.047" />
 
             <ImageView
-                android:id="@+id/fotoYukle3"
+                android:id="@+id/gunlukKiralikFoto"
                 android:layout_width="277dp"
                 android:layout_height="277dp"
-                android:onClick="fotoEkle4"
+                android:onClick="gunlukKiralikfoto2"
                 app:layout_constraintBottom_toBottomOf="@+id/imageRecyclerView"
                 app:layout_constraintEnd_toEndOf="@+id/imageRecyclerView"
                 app:layout_constraintStart_toStartOf="@+id/imageRecyclerView"
