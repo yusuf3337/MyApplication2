@@ -27,7 +27,7 @@
             android:layout_height="220dp">
 
             <TextView
-                android:id="@+id/markaFiyatText"
+                android:id="@+id/ilanBasligiTEXT"
                 android:layout_width="121dp"
                 android:layout_height="36dp"
                 android:text="80TL"
@@ -55,7 +55,7 @@
                 app:srcCompat="@drawable/kokarmokar" />
 
             <TextView
-                android:id="@+id/markaAdText"
+                android:id="@+id/ilanAciklamasiTEXT"
                 android:layout_width="180dp"
                 android:layout_height="38dp"
                 android:text="Göçmen"
