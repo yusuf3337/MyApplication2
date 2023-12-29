@@ -77,7 +77,7 @@ class Home : Fragment() {
 
         val drawable5 = requireContext().getDrawable(R.drawable.rasgelepng)
         ikonList.add(drawable5!!)
-
+//yap acil
         val drawable6 = requireContext().getDrawable(R.drawable.ev5)
         ikonList.add(drawable6!!)
 
