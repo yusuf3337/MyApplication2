@@ -1,16 +1,22 @@
 package com.example.myapplication
 
 import IlanBilgileri
+import android.graphics.drawable.Drawable
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.adapter.IkonAdapter
 import com.example.myapplication.adapter.IlanlarAdapter
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,8 +24,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 val ilanlarKarma = mutableListOf<IlanBilgileri>()
-
-
+val ikonList = mutableListOf<Drawable>()
 /**
  * A simple [Fragment] subclass.
  * Use the [Settings.newInstance] factory method to
@@ -29,6 +34,7 @@ class Home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +60,46 @@ class Home : Fragment() {
         Log.d("Home", "BASLATILDI")
         firebaseGetData()
 
+
         val recyclerView: RecyclerView = view.findViewById(R.id.homeRecylerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = IlanlarAdapter(ilanlarKarma)
+
+
+        val drawable1 = requireContext().getDrawable(R.drawable.kiralikpng)
+        ikonList.add(drawable1!!)
+
+        val drawable2 = requireContext().getDrawable(R.drawable.satilikpng)
+        ikonList.add(drawable2!!)
+
+        val drawable3 = requireContext().getDrawable(R.drawable.yurtilanpng)
+        ikonList.add(drawable3!!)
+
+        val drawable5 = requireContext().getDrawable(R.drawable.rasgelepng)
+        ikonList.add(drawable5!!)
+
+        val drawable6 = requireContext().getDrawable(R.drawable.ev5)
+        ikonList.add(drawable6!!)
+
+        val drawable7 = requireContext().getDrawable(R.drawable.ev6)
+        ikonList.add(drawable7!!)
+
+        val drawable8 = requireContext().getDrawable(R.drawable.ev7)
+        ikonList.add(drawable7!!)
+
+        // İkon RecyclerView'ını bulun
+        val ikonRecylerView: RecyclerView = view.findViewById(R.id.ikonRecylerView)
+
+        // LinearLayoutManager oluşturun ve yatay yönde ayarlayın
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // İkon RecyclerView'ına layoutManager'ı ayarlayın
+        ikonRecylerView.layoutManager = layoutManager
+
+        // İkon RecyclerView için adaptör oluşturun ve ikonListesi'ni adaptöre ekleyin
+        val ikonAdapter = IkonAdapter(ikonList)
+        ikonRecylerView.adapter = ikonAdapter
+
     }
 
     fun firebaseGetData() {
@@ -137,3 +180,4 @@ class Home : Fragment() {
             }
     }
 }
+
