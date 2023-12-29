@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.SallerHomeSingelton
+import com.example.myapplication.Singelton.SallerHomeSingelton
 import com.example.myapplication.databinding.ActivityAdInformationOneBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

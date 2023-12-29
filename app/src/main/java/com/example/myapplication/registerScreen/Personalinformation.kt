@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.myapplication.Register3
-import com.example.myapplication.Singelton
+import com.example.myapplication.Singelton.Singelton
 import com.example.myapplication.databinding.ActivityPersonalinformationBinding
 
 class Personalinformation : AppCompatActivity() {

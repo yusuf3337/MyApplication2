@@ -5,10 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.myapplication.R
-import com.example.myapplication.SallerHomeSingelton
+import com.example.myapplication.Singelton.SallerHomeSingelton
 import com.example.myapplication.databinding.ActivityAdInformationThreeBinding
-import com.example.myapplication.databinding.ActivityRegister3Binding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth

@@ -22,9 +22,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.SallerHomeSingelton
-import com.example.myapplication.Singelton
-import com.example.myapplication.YurtDevirSingleton
+import com.example.myapplication.Singelton.SallerHomeSingelton
+import com.example.myapplication.Singelton.Singelton
+import com.example.myapplication.Singelton.YurtDevirSingleton
 import com.example.myapplication.adapter.ImageRecyclerAdapter2
 import com.example.myapplication.databinding.ActivityYurtBilgiThreeBinding
 import com.google.android.material.snackbar.Snackbar
@@ -75,6 +75,8 @@ class YurtBilgiThree : AppCompatActivity() {
     private lateinit var firebaseStorage: FirebaseStorage
 
     var formattedDateTime = ""
+    var uploadedPhotoCount = 0
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,7 +130,7 @@ class YurtBilgiThree : AppCompatActivity() {
 
     fun fotoEkle2(view: View) {
         if (selectedImages2.size >= 10) {
-            showToast("You can select up to 5 photos.")
+            showToast("You can select up to 10 photos.")
             return
         }
 
@@ -237,7 +239,9 @@ class YurtBilgiThree : AppCompatActivity() {
                                 val urlString = urlTask.result.toString()
                                 photoURLs.add(urlString)
 
-                                if (photoURLs.size == images.size) {
+                                uploadedPhotoCount++
+
+                                if (uploadedPhotoCount == images.size) {
                                     updateFirestore2(customDocumentName, photoURLs)
                                 }
                             } else {
@@ -255,6 +259,7 @@ class YurtBilgiThree : AppCompatActivity() {
 
     fun updateFirestore2(customDocumentName: String, photoURLs: List<String>) {
         val db = FirebaseFirestore.getInstance()
+
 
         val docData2 = hashMapOf(
             "photoURLs" to photoURLs,

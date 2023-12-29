@@ -10,7 +10,7 @@ import com.example.myapplication.Profile
 import com.example.myapplication.R
 import com.example.myapplication.Search
 import com.example.myapplication.Settings
-import com.example.myapplication.Singelton
+import com.example.myapplication.Singelton.Singelton
 import com.example.myapplication.databinding.ActivityHomeScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -4,11 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.core.content.ContextCompat
 import com.example.myapplication.R
-import com.example.myapplication.SallerHomeSingelton
+import com.example.myapplication.Singelton.SallerHomeSingelton
 import com.example.myapplication.databinding.ActivityAdInformationTwoBinding
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -17,8 +14,6 @@ import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.storage
-
-import java.util.UUID
 
 class AdInformationTwo : AppCompatActivity() {
     private lateinit var binding: ActivityAdInformationTwoBinding

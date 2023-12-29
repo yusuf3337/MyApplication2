@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Singelton
 
 object SallerHomeSingelton  {
     var ilanBasligi : String? = null

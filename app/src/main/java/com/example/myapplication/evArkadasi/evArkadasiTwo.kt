@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.myapplication.EvArkSingleton
+import com.example.myapplication.Singelton.EvArkSingleton
 import com.example.myapplication.databinding.ActivityEvArkadasiTwoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

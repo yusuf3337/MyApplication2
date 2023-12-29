@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Singelton
 
 import java.util.Date
 

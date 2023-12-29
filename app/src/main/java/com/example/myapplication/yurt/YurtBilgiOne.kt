@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.myapplication.R
-import com.example.myapplication.YurtDevirSingleton
+import com.example.myapplication.Singelton.YurtDevirSingleton
 import com.example.myapplication.databinding.ActivityYurtBilgiOneBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
