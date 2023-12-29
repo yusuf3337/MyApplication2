@@ -10,5 +10,6 @@ object Singelton {
     var universitydepartment : String? = null
     var universityyear : String? = null
     var age : String? = null
+    //annen
     var gender : String? = null
 }
