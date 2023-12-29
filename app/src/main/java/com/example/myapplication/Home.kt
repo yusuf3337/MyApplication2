@@ -87,6 +87,11 @@ class Home : Fragment() {
         val drawable8 = requireContext().getDrawable(R.drawable.ev7)
         ikonList.add(drawable7!!)
 
+        val drawable9 = requireContext().getDrawable(R.drawable.ev3)
+        ikonList.add(drawable9!!)
+
+        // YUSUFCEPNI
+
         // İkon RecyclerView'ını bulun
         val ikonRecylerView: RecyclerView = view.findViewById(R.id.ikonRecylerView)
 
